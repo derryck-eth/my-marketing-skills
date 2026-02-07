@@ -1,0 +1,154 @@
+{
+  "name": "my-marketing-skills",
+  "version": "2.0.0",
+  "owner": "derryck-eth",
+  "description": "29 marketing AI agent skills covering copywriting, CRO, SEO, paid ads, email, content strategy, and growth — plus 29 tool integrations. SEO skills built on Google Content Warehouse leak analysis.",
+  "repository": "https://github.com/derryck-eth/my-marketing-skills",
+  "skills": [
+    {
+      "name": "ab-test-setup",
+      "description": "Set up and run A/B tests and experiments. Hypothesis creation, sample size calculation, test design, statistical significance, and result analysis.",
+      "path": "skills/ab-test-setup"
+    },
+    {
+      "name": "analytics-tracking",
+      "description": "Set up, improve, and audit analytics tracking for GA4 and other platforms. Event tracking, conversion goals, UTM parameters, and data quality.",
+      "path": "skills/analytics-tracking"
+    },
+    {
+      "name": "competitor-alternatives",
+      "description": "Create comparison and alternatives pages to rank for competitive search terms. VS pages, alternatives pages, feature comparison tables, and honest positioning.",
+      "path": "skills/competitor-alternatives"
+    },
+    {
+      "name": "content-strategy",
+      "description": "Plan comprehensive content strategies including topic research, content calendars, distribution plans, content pillars, and performance measurement.",
+      "path": "skills/content-strategy"
+    },
+    {
+      "name": "copy-editing",
+      "description": "Edit and improve existing marketing copy. Clarity, conciseness, tone consistency, grammar, readability, and conversion optimization.",
+      "path": "skills/copy-editing"
+    },
+    {
+      "name": "copywriting",
+      "description": "Write persuasive marketing copy using proven frameworks like PAS, AIDA, and BAB for landing pages, ads, emails, and CTAs.",
+      "path": "skills/copywriting"
+    },
+    {
+      "name": "eeat-optimization",
+      "description": "E-E-A-T optimization mapping Experience, Expertise, Authoritativeness, and Trust to Google's technical signals. YMYL assessment, Firefly abuse detection, Craps click quality, and quality pruning.",
+      "path": "skills/eeat-optimization"
+    },
+    {
+      "name": "email-sequence",
+      "description": "Plan and write email drip campaigns including welcome sequences, launch sequences, nurture flows, and re-engagement campaigns.",
+      "path": "skills/email-sequence"
+    },
+    {
+      "name": "form-cro",
+      "description": "Optimize lead capture forms for higher completion rates. Field reduction, multi-step forms, progressive profiling, validation UX, and mobile optimization.",
+      "path": "skills/form-cro"
+    },
+    {
+      "name": "free-tool-strategy",
+      "description": "Use free tools as a marketing and acquisition strategy. Calculator, generator, and checker tools that drive organic traffic and capture leads.",
+      "path": "skills/free-tool-strategy"
+    },
+    {
+      "name": "image-seo",
+      "description": "Image SEO optimization covering originality detection, NIMA quality scoring, semantic understanding via OCR and entity linking, Amarna indexing, and engagement metrics.",
+      "path": "skills/image-seo"
+    },
+    {
+      "name": "launch-strategy",
+      "description": "Plan product launches, feature announcements, and release strategies. Pre-launch buildup, launch day execution, and post-launch follow-through.",
+      "path": "skills/launch-strategy"
+    },
+    {
+      "name": "link-building",
+      "description": "Link building strategy based on the Trinity of Authority (siteAuthority, Homepage PageRank, PageRank-NearestSeeds), three-tiered link index, anchor optimization, and spam avoidance.",
+      "path": "skills/link-building"
+    },
+    {
+      "name": "marketing-ideas",
+      "description": "Generate marketing ideas and brainstorm campaigns. Ideation frameworks, growth channels, campaign concepts, and creative marketing tactics.",
+      "path": "skills/marketing-ideas"
+    },
+    {
+      "name": "marketing-psychology",
+      "description": "Apply psychological principles and behavioral science to marketing. Persuasion triggers, cognitive biases, decision architecture, and emotional drivers.",
+      "path": "skills/marketing-psychology"
+    },
+    {
+      "name": "on-page-seo",
+      "description": "On-page SEO optimization covering the full ranking pipeline (Mustang, T* Topicality, NavBoost, Twiddlers), content effort signals, title tag Goldmine system, and signal coherence.",
+      "path": "skills/on-page-seo"
+    },
+    {
+      "name": "onboarding-cro",
+      "description": "Optimize post-signup activation and onboarding flows. First-run experience, activation metrics, progressive disclosure, and time-to-value reduction.",
+      "path": "skills/onboarding-cro"
+    },
+    {
+      "name": "page-cro",
+      "description": "Audit and optimize marketing pages for higher conversion rates. Hero sections, CTAs, page structure, trust elements, and common conversion killers.",
+      "path": "skills/page-cro"
+    },
+    {
+      "name": "paid-ads",
+      "description": "Create and optimize paid advertising campaigns across Google Ads, Meta, LinkedIn, and Twitter/X. Campaign structure, bidding, targeting, ad copy, and ROAS optimization.",
+      "path": "skills/paid-ads"
+    },
+    {
+      "name": "paywall-upgrade-cro",
+      "description": "Optimize paywall and upgrade flows. Free-to-paid conversion, trial-to-paid, plan upgrade prompts, pricing page optimization, and churn reduction.",
+      "path": "skills/paywall-upgrade-cro"
+    },
+    {
+      "name": "popup-cro",
+      "description": "Optimize modals, overlays, and popups for lead capture. Exit-intent triggers, scroll-based triggers, timing rules, copy, and A/B testing.",
+      "path": "skills/popup-cro"
+    },
+    {
+      "name": "pricing-strategy",
+      "description": "Develop and optimize pricing strategies. Value-based pricing, tier design, anchoring, psychological pricing, freemium models, and competitive positioning.",
+      "path": "skills/pricing-strategy"
+    },
+    {
+      "name": "programmatic-seo",
+      "description": "Generate and optimize pages at scale using templates and data. Head term + modifier strategy, template design, data sourcing, and indexation management.",
+      "path": "skills/programmatic-seo"
+    },
+    {
+      "name": "referral-program",
+      "description": "Create and optimize referral, affiliate, and word-of-mouth programs. Reward mechanics, viral coefficient, referral triggers, and ambassador programs.",
+      "path": "skills/referral-program"
+    },
+    {
+      "name": "schema-markup",
+      "description": "Add, fix, or optimize schema markup and structured data. JSON-LD for Organization, Product, Article, FAQ, HowTo, Review, LocalBusiness, and more.",
+      "path": "skills/schema-markup"
+    },
+    {
+      "name": "seo-audit",
+      "description": "Comprehensive SEO audit framework with 31 tasks across 5 pillars: Trust, Experience, Expertise, Authoritativeness, and Image SEO. Mapped to Google's ranking pipeline.",
+      "path": "skills/seo-audit"
+    },
+    {
+      "name": "signup-flow-cro",
+      "description": "Optimize signup and registration flows. Friction reduction, social login, progressive profiling, micro-copy, and activation optimization.",
+      "path": "skills/signup-flow-cro"
+    },
+    {
+      "name": "social-content",
+      "description": "Create social media content for LinkedIn, Twitter/X, Instagram, and TikTok. Platform-specific formats, hook writing, carousels, threads, and engagement tactics.",
+      "path": "skills/social-content"
+    },
+    {
+      "name": "topical-authority",
+      "description": "Build and maintain topical authority using siteFocusScore, siteRadius, the Solar System content model, hub-and-spoke clustering, and content pruning strategies.",
+      "path": "skills/topical-authority"
+    }
+  ]
+}
