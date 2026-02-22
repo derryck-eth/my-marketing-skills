@@ -2,9 +2,6 @@
 
 A collection of AI agent skills focused on marketing tasks. Built for technical marketers and founders who want Claude Code (or similar AI coding assistants) to help with conversion optimization, copywriting, SEO, analytics, and growth engineering.
 
-New to the terminal and coding agents? Check out the companion guide [Coding for Marketers](https://codingformarketers.com?ref=marketingskills).
-
-**Contributions welcome!** Found a way to improve a skill or have a new one to add? [Open a PR](#contributing).
 
 
 ## Available Skills
