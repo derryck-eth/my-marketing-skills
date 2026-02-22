@@ -1,27 +1,144 @@
 # Tolt
 
-## What It Does
-Tolt is an affiliate and referral program management platform for SaaS and online businesses. It handles referral tracking, commission calculations, and payouts.
+Affiliate program management for SaaS, with Stripe and Paddle integration.
 
-## Key Capabilities for Marketing
-- **Referral tracking** - Monitor referred customers and their LTV
-- **Commission automation** - Calculate commissions based on rules
-- **Affiliate recruitment** - Manage affiliate applications and approvals
-- **Payout processing** - Distribute payments automatically
-- **Performance analytics** - Track program ROI and affiliate metrics
-- **Integration support** - Connect with billing and payment systems
+## Capabilities
 
-## How to Connect via MCP
-1. Log into Tolt dashboard
-2. Navigate to Settings > API Integration
-3. Generate API token
-4. Copy token and workspace ID
-5. Configure MCP with credentials
-6. Define commission structure
+| Integration | Available | Notes |
+|-------------|-----------|-------|
+| API | ✓ | REST API for affiliates, referrals, payouts |
+| MCP | - | Not available |
+| CLI | - | Not available |
+| SDK | - | JavaScript snippet for tracking |
 
-## Example Agent Queries
-- "Show me high-performing affiliates"
-- "What's the lifetime value of referred customers?"
-- "Process payout for [affiliate_id]"
-- "Create a new affiliate referral link"
-- "Generate program performance report"
+## Authentication
+
+- **Type**: API Key
+- **Header**: `Authorization: Bearer {api_key}`
+- **Get key**: Settings > API in Tolt dashboard
+
+## Common Agent Operations
+
+### List affiliates
+
+```bash
+GET https://api.tolt.io/v1/affiliates
+```
+
+### Get affiliate
+
+```bash
+GET https://api.tolt.io/v1/affiliates/{affiliate_id}
+```
+
+### Create affiliate
+
+```bash
+POST https://api.tolt.io/v1/affiliates
+
+{
+  "email": "affiliate@example.com",
+  "name": "John Doe"
+}
+```
+
+### List referrals
+
+```bash
+GET https://api.tolt.io/v1/referrals?affiliate_id={affiliate_id}
+```
+
+### Get referral by customer
+
+```bash
+GET https://api.tolt.io/v1/referrals?customer_id={stripe_customer_id}
+```
+
+### List commissions
+
+```bash
+GET https://api.tolt.io/v1/commissions?affiliate_id={affiliate_id}
+```
+
+### Get payout history
+
+```bash
+GET https://api.tolt.io/v1/payouts?affiliate_id={affiliate_id}
+```
+
+### Update affiliate
+
+```bash
+PATCH https://api.tolt.io/v1/affiliates/{affiliate_id}
+
+{
+  "commission_rate": 30,
+  "payout_method": "paypal",
+  "paypal_email": "affiliate@paypal.com"
+}
+```
+
+## JavaScript Tracking
+
+### Install snippet
+
+```html
+<script src="https://cdn.tolt.io/tolt.js" data-tolt="YOUR_PUBLIC_KEY"></script>
+```
+
+### Track signup
+
+```javascript
+window.tolt.signup(stripeCustomerId);
+```
+
+### Identify existing customer
+
+```javascript
+window.tolt.identify(stripeCustomerId);
+```
+
+## Webhook Events
+
+| Event | When |
+|-------|------|
+| `affiliate.created` | New affiliate registered |
+| `affiliate.approved` | Affiliate approved |
+| `referral.created` | New referral tracked |
+| `referral.converted` | Referral converted to customer |
+| `commission.created` | Commission earned |
+| `payout.completed` | Payout sent |
+
+## Key Features
+
+- **Stripe native** - Automatic commission tracking
+- **Paddle support** - Works with Paddle billing
+- **Affiliate dashboard** - White-labeled portal
+- **Payout automation** - PayPal and Wise payouts
+- **Custom commission tiers** - Different rates per affiliate
+
+## Key Objects
+
+- **Affiliate** - Partner in your program
+- **Referral** - Tracked conversion
+- **Commission** - Earned affiliate payment
+- **Payout** - Processed payment to affiliate
+- **Program** - Campaign configuration
+
+## When to Use
+
+- Setting up SaaS affiliate programs
+- Managing affiliate relationships
+- Tracking Stripe or Paddle-based referrals
+- Processing affiliate payouts
+- Building affiliate dashboards
+
+## Rate Limits
+
+- 100 requests per minute
+- Higher limits on enterprise plans
+
+## Relevant Skills
+
+- referral-program
+- pricing-strategy

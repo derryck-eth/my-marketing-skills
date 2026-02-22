@@ -176,6 +176,22 @@ Implementation:
 - Avoid "false freshness" (updating date without content changes)
 - Time major updates strategically (ideally mid-quarter to catch next ranking adjustment)
 
+### Live SERP Benchmark Layer (Top-5 Structure Comparison)
+For any URL-level content analysis, add a competitive benchmark layer before final recommendations:
+- Detect the target page's primary query from H1/title/URL and intro context
+- Run live search for the current top 5 ranking pages for that query
+- Extract structure signals from those pages:
+  - title/H1/query alignment
+  - section hierarchy and intent coverage depth
+  - trust and authority cues (proof, credentials, references)
+  - snippet quality and CTR framing
+- Benchmark the target page against those top pages using Content Warehouse-informed dimensions:
+  - Mustang quality baseline
+  - T* topicality (ABC signals)
+  - NavBoost readiness
+  - Twiddler-sensitive signals (freshness/content effort)
+- Use Hobo-Web reference analyses as the benchmark framework to prioritize fixes
+
 ## Process
 
 ### Phase 1: Keyword Research & Intent Analysis

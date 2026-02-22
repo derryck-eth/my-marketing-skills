@@ -1,0 +1,2102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agency Marketing OS</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+    :root {
+      --bg: #0a0a0a;
+      --bg-2: #0f0f23;
+      --card: #1a1a2e;
+      --line: #2a2a3e;
+      --ink: #f3f4f6;
+      --muted: #9ca3af;
+      --brand: #6366f1;
+      --brand-2: #8b5cf6;
+      --ok: #10b981;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --radius: 12px;
+      --shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at 5% -10%, rgba(99, 102, 241, 0.25), transparent 28%),
+        radial-gradient(circle at 94% 15%, rgba(16, 185, 129, 0.2), transparent 24%),
+        var(--bg);
+      color: var(--ink);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(15, 15, 35, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .pill {
+      border-radius: 999px;
+      border: 1px solid rgba(99, 102, 241, 0.6);
+      padding: 3px 9px;
+      font-size: 0.7rem;
+      color: #c7d2fe;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .nav-btn {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      padding: 8px 11px;
+      border-radius: 8px;
+      font: 600 0.86rem/1 "Inter", sans-serif;
+      cursor: pointer;
+    }
+
+    .nav-btn.active,
+    .nav-btn:hover {
+      color: #c7d2fe;
+      background: rgba(99, 102, 241, 0.14);
+    }
+
+    .live {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--ok);
+      box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.12);
+    }
+
+    .shell {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .page {
+      display: none;
+      animation: fadeUp 0.25s ease;
+    }
+
+    .page.active { display: grid; gap: 14px; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 30px 20px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(99, 102, 241, 0.2), transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(16, 185, 129, 0.18), transparent 26%),
+        #121226;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(1.9rem, 5vw, 3.3rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 40%, #6ee7b7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      margin: 12px auto 0;
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    .hero-actions {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button,
+    .btn {
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font: 600 0.87rem/1 "Inter", sans-serif;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: #4f46e5; }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--brand);
+      color: #c7d2fe;
+    }
+
+    .btn-secondary:hover { background: rgba(99, 102, 241, 0.14); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(120px, 1fr));
+      gap: 8px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: linear-gradient(135deg, #24243c 0%, #1a1a2e 100%);
+      padding: 10px;
+      min-height: 82px;
+    }
+
+    .stat .k {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 7px;
+    }
+
+    .stat .v {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #e0e7ff;
+    }
+
+    .chips {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 0.72rem;
+      background: rgba(99, 102, 241, 0.16);
+      color: #c7d2fe;
+      border: 1px solid rgba(99, 102, 241, 0.35);
+    }
+
+    .stepper {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .step-line-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .step-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #4b5563;
+    }
+
+    .step-dot.active,
+    .step-dot.done {
+      background: var(--brand);
+    }
+
+    .step-line {
+      flex: 1;
+      height: 3px;
+      border-radius: 999px;
+      background: #374151;
+    }
+
+    .step-line.done {
+      background: var(--brand);
+    }
+
+    .intake-step {
+      display: none;
+      animation: fadeUp 0.22s ease;
+    }
+
+    .intake-step.active {
+      display: grid;
+      gap: 9px;
+    }
+
+    .selection-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .skill-chip,
+    .integration-chip {
+      width: 100%;
+      text-align: left;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: #151529;
+      color: #d1d5db;
+      padding: 8px 9px;
+      font: 600 0.79rem/1.3 "Inter", sans-serif;
+      cursor: pointer;
+    }
+
+    .skill-chip.selected,
+    .integration-chip.selected {
+      background: rgba(99, 102, 241, 0.2);
+      border-color: var(--brand);
+      color: #c7d2fe;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 12px;
+    }
+
+    .stack { display: grid; gap: 9px; }
+
+    label {
+      display: grid;
+      gap: 5px;
+      font-size: 0.79rem;
+      color: var(--muted);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border-radius: 9px;
+      border: 1px solid var(--line);
+      background: #101022;
+      color: #f3f4f6;
+      padding: 9px 10px;
+      font: 500 0.86rem/1.2 "Inter", sans-serif;
+    }
+
+    textarea {
+      min-height: 84px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.17);
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+    }
+
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #151529;
+      padding: 7px 8px;
+      font-size: 0.8rem;
+      color: #d1d5db;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .hint {
+      margin: 0;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+    }
+
+    th,
+    td {
+      padding: 8px 7px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+    }
+
+    .tag {
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .seo { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+    .cro { background: rgba(245, 158, 11, 0.2); color: #fcd34d; }
+    .content { background: rgba(236, 72, 153, 0.2); color: #f9a8d4; }
+    .growth { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; }
+
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+    }
+
+    .lane {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #16162a;
+      padding: 10px;
+    }
+
+    .lane h3 {
+      margin: 0 0 8px;
+      font-size: 0.9rem;
+      color: #dbeafe;
+    }
+
+    .lane ul { margin: 0; padding-left: 17px; }
+    .lane li { margin-bottom: 7px; font-size: 0.82rem; color: #d1d5db; }
+
+    .prompt {
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #111224;
+      padding: 11px;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      white-space: pre-wrap;
+      min-height: 120px;
+      max-height: 420px;
+      overflow: auto;
+    }
+
+    .workbench-grid,
+    .seo-grid,
+    .content-grid {
+      display: grid;
+      gap: 8px;
+      align-items: end;
+    }
+
+    .workbench-grid {
+      grid-template-columns: 1fr 1fr 1fr auto;
+    }
+
+    .seo-grid {
+      grid-template-columns: 220px 1fr auto;
+    }
+
+    .content-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    #seoPayload,
+    #contentContext {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.78rem;
+    }
+
+    .msg-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .msg-box {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #16162a;
+      padding: 10px;
+    }
+
+    .msg-box h3 {
+      margin: 0 0 8px;
+      font-size: 0.9rem;
+    }
+
+    .msg-box ol { margin: 0; padding-left: 18px; }
+    .msg-box li { margin-bottom: 6px; font-size: 0.82rem; color: #d1d5db; }
+
+    .list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .list-item {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #151529;
+      padding: 10px;
+    }
+
+    .list-item h4 {
+      margin: 0;
+      font-size: 0.88rem;
+    }
+
+    .list-item p {
+      margin: 5px 0 0;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 35;
+      background: rgba(26, 26, 46, 0.97);
+      border-top: 1px solid var(--line);
+      padding: 6px 4px;
+    }
+
+    .mobile-btn {
+      flex: 1;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      border-radius: 8px;
+      padding: 9px 0;
+      font: 600 0.73rem/1 "Inter", sans-serif;
+    }
+
+    .mobile-btn.active { color: #c7d2fe; background: rgba(99, 102, 241, 0.15); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 1140px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(3, minmax(120px, 1fr)); }
+      .roadmap { grid-template-columns: 1fr; }
+      .workbench-grid,
+      .seo-grid,
+      .content-grid,
+      .msg-options { grid-template-columns: 1fr; }
+      .selection-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 860px) {
+      .topbar-inner { padding: 12px 10px; }
+      .brand-name { display: none; }
+      .nav { display: none; }
+      .mobile-nav { display: flex; }
+      body { padding-bottom: 68px; }
+      .stats { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+      .controls,
+      .check-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-mark">A</span>
+        <span class="brand-name">Anything Marketing OS</span>
+        <span class="pill">AI</span>
+      </div>
+      <nav class="nav">
+        <button class="nav-btn active" data-page="home">Home</button>
+        <button class="nav-btn" data-page="dashboard">Dashboard</button>
+        <button class="nav-btn" data-page="new-client">New Client</button>
+        <button class="nav-btn" data-page="strategy">Strategy</button>
+        <button class="nav-btn" data-page="content">Content</button>
+      </nav>
+      <div class="live">
+        <span class="dot"></span>
+        <span id="apiStatus">Checking...</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="page active" id="page-home">
+      <div class="card hero">
+        <h1>AI Operating System For Marketing Agencies</h1>
+        <p>One command center for strategy, research, execution, and optimization across SEO, CRO, paid media, lifecycle, and content using your full skills knowledge base.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" data-nav="new-client">Launch Campaign</button>
+          <button class="btn-secondary" data-nav="strategy">Open Strategy Workspace</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="stats">
+          <div class="stat">
+            <div class="k">Intelligence Runs</div>
+            <div class="v" id="homeRuns">0</div>
+          </div>
+          <div class="stat">
+            <div class="k">Task Backlog</div>
+            <div class="v" id="homeTasks">0</div>
+          </div>
+          <div class="stat">
+            <div class="k">Skills Loaded</div>
+            <div class="v" id="homeSkills">31</div>
+          </div>
+          <div class="stat">
+            <div class="k">Research Mode</div>
+            <div class="v" id="homeResearchMode">-</div>
+          </div>
+          <div class="stat">
+            <div class="k">Primary LLM</div>
+            <div class="v" id="homeLlm">-</div>
+          </div>
+          <div class="stat">
+            <div class="k">Task Sync</div>
+            <div class="v" id="homeSync">-</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="margin-top:0;">How This Stack Operates</h3>
+          <div class="list">
+            <div class="list-item">
+              <h4>1. Intake + Goal Framing</h4>
+              <p>Capture market, customer, constraints, budget, and channels.</p>
+            </div>
+            <div class="list-item">
+              <h4>2. Full-Facet Competitor Research</h4>
+              <p>Cross-channel intelligence from SEO/CRO/paid/content/lifecycle/analytics facets.</p>
+            </div>
+            <div class="list-item">
+              <h4>3. Strategy + Execution Backlog</h4>
+              <p>Generate roadmap, KPI tree, owners, and tasks, persisted to DB.</p>
+            </div>
+            <div class="list-item">
+              <h4>4. Execute + Sync + Improve</h4>
+              <p>Run skill tasks, sync to your PM stack, and optimize every week.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0;">Recent Runs</h3>
+          <div class="list" id="homeRecentRuns">
+            <div class="list-item">
+              <h4>No runs yet</h4>
+              <p>Go to New Client and click Generate Strategy.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-dashboard">
+      <div class="card">
+        <h2 style="margin:0 0 6px;">Agency Operations Dashboard</h2>
+        <p class="hint">Live run history, task pipeline, and system health from your backend APIs.</p>
+      </div>
+
+      <div class="card">
+        <div class="stats">
+          <div class="stat">
+            <div class="k">Total Runs</div>
+            <div class="v" id="dashRuns">0</div>
+          </div>
+          <div class="stat">
+            <div class="k">Total Tasks</div>
+            <div class="v" id="dashTasks">0</div>
+          </div>
+          <div class="stat">
+            <div class="k">Planned Tasks</div>
+            <div class="v" id="dashPlanned">0</div>
+          </div>
+          <div class="stat">
+            <div class="k">Synced Tasks</div>
+            <div class="v" id="dashSynced">0</div>
+          </div>
+          <div class="stat">
+            <div class="k">DB Status</div>
+            <div class="v" id="dashDb">-</div>
+          </div>
+          <div class="stat">
+            <div class="k">MCP Mode</div>
+            <div class="v" id="dashMcp">-</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="margin-top:0;">Latest Runs</h3>
+          <div class="list" id="dashboardRuns">
+            <div class="list-item"><h4>No data yet</h4></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0;">Latest Tasks</h3>
+          <div class="list" id="dashboardTasks">
+            <div class="list-item"><h4>No data yet</h4></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-new-client">
+      <div class="grid-2">
+        <aside class="card">
+          <h2 style="margin:0;">New Client Intake</h2>
+          <p class="hint">Preview.html format: business details -> market context -> goals -> skills + integrations.</p>
+
+          <div class="stepper">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span id="intakeStepLabel" class="hint">Step 1 of 4</span>
+              <span id="selectedCount" class="hint">0 skills selected</span>
+            </div>
+            <div class="step-line-wrap">
+              <span class="step-dot active" id="stepDot1"></span>
+              <span class="step-line" id="stepLine1"></span>
+              <span class="step-dot" id="stepDot2"></span>
+              <span class="step-line" id="stepLine2"></span>
+              <span class="step-dot" id="stepDot3"></span>
+              <span class="step-line" id="stepLine3"></span>
+              <span class="step-dot" id="stepDot4"></span>
+            </div>
+          </div>
+
+          <div id="intakeStep1" class="intake-step active">
+            <label>Agency Name
+              <input id="input-agency" value="Northline Growth Partners">
+            </label>
+            <label>Business Name
+              <input id="input-business" value="Northline Commercial Roofing">
+            </label>
+            <label>Industry
+              <select id="input-industry">
+                <option value="">Select an industry</option>
+                <option value="saas">SaaS / Software</option>
+                <option value="ecommerce">E-commerce</option>
+                <option value="service" selected>Service-based</option>
+                <option value="agency">Agency</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="education">Education</option>
+              </select>
+            </label>
+            <label>Website URL
+              <input id="input-website" value="https://example.com">
+            </label>
+            <label>Geography
+              <input id="input-geography" value="United States">
+            </label>
+            <div class="controls">
+              <button id="sampleBtn" class="btn-secondary" type="button">Load Example</button>
+              <button id="nextStep1" class="btn-primary" type="button">Continue</button>
+            </div>
+          </div>
+
+          <div id="intakeStep2" class="intake-step">
+            <label>Product / Service
+              <input id="input-product" value="Commercial roofing installation and maintenance">
+            </label>
+            <label>Target Audience
+              <textarea id="input-audience">Property managers and facility operations teams.</textarea>
+            </label>
+            <label>Current Marketing Efforts
+              <textarea id="input-current">Running paid ads and occasional SEO updates with inconsistent attribution.</textarea>
+            </label>
+            <label>Main Competitors (comma/newline)
+              <textarea id="input-competitors">Competitor A, Competitor B, Competitor C</textarea>
+            </label>
+            <label>Client Market
+              <input id="input-market" value="Commercial services and B2B lead generation">
+            </label>
+            <div class="controls">
+              <button id="prevStep2" class="btn-secondary" type="button">Back</button>
+              <button id="nextStep2" class="btn-primary" type="button">Continue</button>
+            </div>
+          </div>
+
+          <div id="intakeStep3" class="intake-step">
+            <label>Primary Goal
+              <select id="input-goal">
+                <option value="lead-gen" selected>Commercial Lead Generation</option>
+                <option value="organic">Organic Traffic Growth</option>
+                <option value="conversion">Conversion Rate Lift</option>
+                <option value="retention">Retention and Expansion</option>
+                <option value="launch">Product or Service Launch</option>
+                <option value="full-funnel">Full-Funnel Growth</option>
+              </select>
+            </label>
+            <label>Goal Detail
+              <textarea id="input-goals">Increase qualified lead flow and close rates in 90 days.</textarea>
+            </label>
+            <label>Budget Range
+              <select id="input-budget-range">
+                <option value="under5k">Under $5,000</option>
+                <option value="5k-10k">$5,000 - $10,000</option>
+                <option value="10k-25k" selected>$10,000 - $25,000</option>
+                <option value="25k-50k">$25,000 - $50,000</option>
+                <option value="50k-plus">$50,000+</option>
+              </select>
+            </label>
+            <label>Timeline
+              <select id="input-timeline">
+                <option value="urgent">ASAP (1-2 weeks)</option>
+                <option value="1month">1 month</option>
+                <option value="3months" selected>3 months</option>
+                <option value="6months">6 months</option>
+              </select>
+            </label>
+            <label>Team Capacity (hours/week)
+              <input id="input-capacity" type="number" value="180">
+            </label>
+            <div class="stack">
+              <label>Priority Channels</label>
+              <div class="check-grid">
+                <label class="check"><input class="channel-checkbox" type="checkbox" value="seo" checked> SEO</label>
+                <label class="check"><input class="channel-checkbox" type="checkbox" value="cro" checked> CRO</label>
+                <label class="check"><input class="channel-checkbox" type="checkbox" value="paid" checked> Paid Ads</label>
+                <label class="check"><input class="channel-checkbox" type="checkbox" value="email" checked> Email</label>
+                <label class="check"><input class="channel-checkbox" type="checkbox" value="content" checked> Content</label>
+                <label class="check"><input class="channel-checkbox" type="checkbox" value="strategy" checked> Strategy</label>
+              </div>
+            </div>
+            <div class="controls">
+              <button id="prevStep3" class="btn-secondary" type="button">Back</button>
+              <button id="nextStep3" class="btn-primary" type="button">Continue</button>
+            </div>
+          </div>
+
+          <div id="intakeStep4" class="intake-step">
+            <div>
+              <h3 style="margin:0 0 8px;">Select Skills</h3>
+              <div id="skillPicker" class="selection-grid"></div>
+            </div>
+            <div>
+              <h3 style="margin:0 0 8px;">Select Integrations</h3>
+              <div id="integrationPicker" class="selection-grid"></div>
+            </div>
+            <div class="controls">
+              <button id="prevStep4" class="btn-secondary" type="button">Back</button>
+              <button id="runBtn" class="btn-primary" type="button">Generate Strategy</button>
+            </div>
+          </div>
+        </aside>
+
+        <div class="stack">
+          <div class="card">
+            <h3 style="margin-top:0;">Instant Recommendation Preview</h3>
+            <p class="hint">Preview updates automatically as intake changes.</p>
+            <div class="chips" id="summaryChips"></div>
+          </div>
+
+          <div class="card table-wrap">
+            <h3 style="margin-top:0;">Top Recommended Skills</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Skill</th>
+                  <th>Category</th>
+                  <th>Why</th>
+                </tr>
+              </thead>
+              <tbody id="skillsTable"></tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-top:0;">Messaging Angles</h3>
+            <div class="msg-options">
+              <div class="msg-box">
+                <h3>Headlines</h3>
+                <ol id="headlineList"></ol>
+              </div>
+              <div class="msg-box">
+                <h3>CTAs</h3>
+                <ol id="ctaList"></ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-strategy">
+      <section class="card">
+        <h2 id="planTitle" style="margin:0 0 8px;">Agency Marketing OS Strategy</h2>
+        <div class="stats">
+          <div class="stat"><div class="k">Selected Skills</div><div class="v" id="skillsCount">0</div></div>
+          <div class="stat"><div class="k">Core Motion</div><div class="v" id="coreMotion">-</div></div>
+          <div class="stat"><div class="k">Primary KPI</div><div class="v" id="primaryKpi">-</div></div>
+          <div class="stat"><div class="k">Quick Wins</div><div class="v" id="quickWinsCount">0</div></div>
+          <div class="stat"><div class="k">Execution Risk</div><div class="v" id="executionRisk">-</div></div>
+          <div class="stat"><div class="k">Run ID</div><div class="v" id="currentRunId">-</div></div>
+        </div>
+      </section>
+
+      <section class="card roadmap">
+        <div class="lane">
+          <h3>Days 1-30</h3>
+          <ul id="lane1"></ul>
+        </div>
+        <div class="lane">
+          <h3>Days 31-60</h3>
+          <ul id="lane2"></ul>
+        </div>
+        <div class="lane">
+          <h3>Days 61-90</h3>
+          <ul id="lane3"></ul>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3 style="margin-top:0;">Market and Competitor Research</h3>
+        <p class="hint" id="researchMeta">Click Generate Strategy to run research first.</p>
+        <div class="prompt" id="researchBox">No research run yet.</div>
+      </section>
+
+      <section class="card">
+        <h3 style="margin-top:0;">Generated Strategy Narrative</h3>
+        <p class="hint" id="strategyMeta">Waiting for generation.</p>
+        <div class="prompt" id="strategyBox">No strategy run yet.</div>
+      </section>
+
+      <section class="card table-wrap">
+        <h3 style="margin-top:0;">Execution Backlog</h3>
+        <p class="hint" id="backlogMeta">No execution backlog generated yet.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Task</th>
+              <th>Skill</th>
+              <th>Owner</th>
+              <th>Priority</th>
+              <th>Due (Days)</th>
+            </tr>
+          </thead>
+          <tbody id="backlogTable"><tr><td colspan="6">Run strategy to populate execution tasks.</td></tr></tbody>
+        </table>
+        <div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;">
+          <button id="syncTasksBtn" class="btn-primary" type="button">Sync Tasks To Integrations</button>
+        </div>
+        <p class="hint" id="syncMeta">Task sync status will appear here.</p>
+      </section>
+
+      <section class="card">
+        <h3 style="margin-top:0;">Implementation Workbench</h3>
+        <div class="workbench-grid">
+          <label>Skill
+            <select id="workbenchSkill"></select>
+          </label>
+          <label>Task Type
+            <select id="workbenchTask">
+              <option value="audit">Audit</option>
+              <option value="strategy">Strategy Plan</option>
+              <option value="implementation">Implementation</option>
+              <option value="copy">Copy Generation</option>
+              <option value="experiment">Experiment Setup</option>
+            </select>
+          </label>
+          <label>Deliverable
+            <input id="workbenchOutput" value="Client-ready action plan">
+          </label>
+          <button id="promptBtn" class="btn-primary" type="button">Generate Prompt</button>
+        </div>
+        <div class="prompt" id="promptBox"></div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+          <button id="executeBtn" class="btn-primary" type="button">Run Skill Task</button>
+          <button id="copyBtn" class="btn-secondary" type="button">Copy Prompt</button>
+        </div>
+        <p class="hint" id="executionMeta">Run a task to generate implementation output using the selected skill.</p>
+        <div class="prompt" id="executionBox">No task run yet.</div>
+      </section>
+
+      <section class="card">
+        <h3 style="margin-top:0;">SEO Toolkit Suite</h3>
+        <div class="seo-grid">
+          <label>Module
+            <select id="seoModule">
+              <option value="scan">Single URL Scan</option>
+              <option value="bulk">Bulk URL Scan</option>
+              <option value="compare">Competitor Compare</option>
+              <option value="schema">Schema Generator</option>
+              <option value="ai-visibility">AI Visibility</option>
+              <option value="market-research">Market Research</option>
+              <option value="gsc-profile-audit">GSC Profile Audit</option>
+              <option value="snippet-lab">Snippet Lab</option>
+              <option value="content-analysis">Content Analysis (Top-5 SERP + Benchmark)</option>
+              <option value="full-audit">Full SEO Command Audit</option>
+              <option value="report">Master Report</option>
+            </select>
+          </label>
+          <label>Module Inputs (JSON)
+            <textarea id="seoPayload"></textarea>
+          </label>
+          <button id="seoRunBtn" class="btn-primary" type="button">Run SEO Module</button>
+        </div>
+        <p class="hint" id="seoMeta">Run an SEO module to generate diagnostics and execution guidance.</p>
+        <div class="prompt" id="seoOutput">No SEO module run yet.</div>
+      </section>
+    </section>
+
+    <section class="page" id="page-content">
+      <div class="card">
+        <h2 style="margin:0 0 6px;">Content Generator</h2>
+        <p class="hint">Uses your intake context plus selected format to generate deliverables through skill execution APIs.</p>
+      </div>
+
+      <div class="content-grid">
+        <div class="card stack">
+          <label>Content Type
+            <select id="contentType">
+              <option value="social">Social Post</option>
+              <option value="email">Email Sequence</option>
+              <option value="ad">Ad Copy</option>
+              <option value="blog">Blog Outline</option>
+              <option value="landing">Landing Page Copy</option>
+              <option value="tagline">Taglines</option>
+            </select>
+          </label>
+          <label>Tone
+            <select id="contentTone">
+              <option value="professional">Professional</option>
+              <option value="direct">Direct</option>
+              <option value="premium">Premium</option>
+              <option value="bold">Bold</option>
+            </select>
+          </label>
+          <label>Prompt Context
+            <textarea id="contentContext">Focus on commercial lead generation and differentiation against local competitors.</textarea>
+          </label>
+          <button id="contentGenerateBtn" class="btn-primary" type="button">Generate Content</button>
+          <p class="hint" id="contentMeta">Generated output will appear on the right.</p>
+        </div>
+
+        <div class="card">
+          <div class="prompt" id="contentOutput">No content generated yet.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="mobile-nav">
+    <button class="mobile-btn active" data-page="home">Home</button>
+    <button class="mobile-btn" data-page="dashboard">Dash</button>
+    <button class="mobile-btn" data-page="new-client">Client</button>
+    <button class="mobile-btn" data-page="strategy">Strategy</button>
+    <button class="mobile-btn" data-page="content">Content</button>
+  </nav>
+
+  <script>
+    const skillCatalog = [
+      { id: "agency-command-center", label: "Agency Command Center", category: "growth", channel: "strategy", deliverable: "90-day operating blueprint", why: "Orchestrates full-service execution across client accounts." },
+      { id: "ab-test-setup", label: "A/B Test Setup", category: "cro", channel: "cro", deliverable: "Prioritized test backlog", why: "Converts hypotheses into measurable experiments." },
+      { id: "analytics-tracking", label: "Analytics Tracking", category: "growth", channel: "strategy", deliverable: "Tracking plan and QA checklist", why: "Creates reliable data for decisions and reporting." },
+      { id: "competitor-alternatives", label: "Competitor Alternatives", category: "seo", channel: "seo", deliverable: "Comparison page strategy", why: "Captures high-intent competitor traffic." },
+      { id: "content-strategy", label: "Content Strategy", category: "content", channel: "content", deliverable: "Content calendar and distribution map", why: "Builds demand and authority over time." },
+      { id: "copy-editing", label: "Copy Editing", category: "content", channel: "content", deliverable: "Conversion-focused copy revisions", why: "Improves clarity and persuasion on existing assets." },
+      { id: "copywriting", label: "Copywriting", category: "content", channel: "content", deliverable: "Messaging framework and draft assets", why: "Creates new conversion assets quickly." },
+      { id: "eeat-optimization", label: "E-E-A-T Optimization", category: "seo", channel: "seo", deliverable: "Trust and authority upgrade plan", why: "Improves quality and trust signals for search." },
+      { id: "email-sequence", label: "Email Sequence", category: "content", channel: "email", deliverable: "Lifecycle email sequence", why: "Converts and nurtures leads across stages." },
+      { id: "form-cro", label: "Form CRO", category: "cro", channel: "cro", deliverable: "High-completion form redesign", why: "Reduces friction at conversion points." },
+      { id: "free-tool-strategy", label: "Free Tool Strategy", category: "growth", channel: "content", deliverable: "Tool-led acquisition plan", why: "Creates compounding inbound lead flow." },
+      { id: "image-seo", label: "Image SEO", category: "seo", channel: "seo", deliverable: "Image optimization spec", why: "Strengthens visual search and page relevance." },
+      { id: "launch-strategy", label: "Launch Strategy", category: "growth", channel: "strategy", deliverable: "Launch campaign plan", why: "Aligns channels for a synchronized release." },
+      { id: "link-building", label: "Link Building", category: "seo", channel: "seo", deliverable: "Authority acquisition roadmap", why: "Improves ranking potential through external authority." },
+      { id: "marketing-ideas", label: "Marketing Ideas", category: "growth", channel: "strategy", deliverable: "Campaign concept bank", why: "Finds high-leverage campaign angles quickly." },
+      { id: "marketing-psychology", label: "Marketing Psychology", category: "growth", channel: "content", deliverable: "Persuasion framework by funnel stage", why: "Raises conversion through behavioral design." },
+      { id: "on-page-seo", label: "On-Page SEO", category: "seo", channel: "seo", deliverable: "Page-level optimization map", why: "Improves ranking and intent alignment." },
+      { id: "onboarding-cro", label: "Onboarding CRO", category: "cro", channel: "email", deliverable: "Activation flow improvements", why: "Improves activation and reduces early churn." },
+      { id: "page-cro", label: "Page CRO", category: "cro", channel: "cro", deliverable: "Conversion page audit and rewrite plan", why: "Fixes page-level leakage in acquisition funnels." },
+      { id: "paid-ads", label: "Paid Ads", category: "growth", channel: "paid", deliverable: "Channel and budget architecture", why: "Generates fast demand and measurable pipeline." },
+      { id: "paywall-upgrade-cro", label: "Paywall Upgrade CRO", category: "cro", channel: "cro", deliverable: "Upgrade path optimization", why: "Increases free-to-paid conversion rates." },
+      { id: "popup-cro", label: "Popup CRO", category: "cro", channel: "cro", deliverable: "Lead capture overlay strategy", why: "Improves capture without major rebuild." },
+      { id: "pricing-strategy", label: "Pricing Strategy", category: "growth", channel: "strategy", deliverable: "Tier and offer redesign", why: "Increases ARPU and win rate." },
+      { id: "programmatic-seo", label: "Programmatic SEO", category: "seo", channel: "seo", deliverable: "Scalable page generation model", why: "Expands search footprint efficiently." },
+      { id: "referral-program", label: "Referral Program", category: "growth", channel: "strategy", deliverable: "Referral engine design", why: "Turns clients and users into acquisition channels." },
+      { id: "schema-markup", label: "Schema Markup", category: "seo", channel: "seo", deliverable: "Structured data deployment plan", why: "Improves crawl clarity and SERP enhancements." },
+      { id: "seo-toolkit-suite", label: "SEO Toolkit Suite", category: "seo", channel: "seo", deliverable: "SEO platform-style diagnostics and execution roadmap", why: "Combines scanner, bulk analysis, competitor comparison, schema, and AI visibility planning." },
+      { id: "seo-audit", label: "SEO Audit", category: "seo", channel: "seo", deliverable: "Technical and content diagnostics", why: "Finds highest-impact ranking issues." },
+      { id: "signup-flow-cro", label: "Signup Flow CRO", category: "cro", channel: "cro", deliverable: "Signup flow redesign", why: "Raises completion through friction reduction." },
+      { id: "social-content", label: "Social Content", category: "content", channel: "content", deliverable: "Platform-native content plan", why: "Builds demand and credibility across social channels." },
+      { id: "topical-authority", label: "Topical Authority", category: "seo", channel: "seo", deliverable: "Cluster and hub roadmap", why: "Improves long-term topical depth and rankings." }
+    ];
+
+    const goalProfiles = {
+      "lead-gen": {
+        motion: "Pipeline Acceleration",
+        kpi: "Qualified Leads",
+        boosts: ["agency-command-center", "paid-ads", "page-cro", "form-cro", "email-sequence", "analytics-tracking", "copywriting", "ab-test-setup", "signup-flow-cro"]
+      },
+      "organic": {
+        motion: "Authority Compounding",
+        kpi: "Qualified Organic Sessions",
+        boosts: ["agency-command-center", "seo-toolkit-suite", "seo-audit", "on-page-seo", "topical-authority", "content-strategy", "link-building", "schema-markup", "eeat-optimization", "programmatic-seo", "image-seo"]
+      },
+      "conversion": {
+        motion: "Funnel Efficiency",
+        kpi: "Conversion Rate",
+        boosts: ["agency-command-center", "page-cro", "form-cro", "signup-flow-cro", "ab-test-setup", "copy-editing", "copywriting", "analytics-tracking", "popup-cro"]
+      },
+      "retention": {
+        motion: "Lifecycle Expansion",
+        kpi: "Net Revenue Retention",
+        boosts: ["agency-command-center", "onboarding-cro", "email-sequence", "pricing-strategy", "paywall-upgrade-cro", "referral-program", "analytics-tracking", "marketing-psychology"]
+      },
+      "launch": {
+        motion: "Coordinated Launch",
+        kpi: "Launch Pipeline Value",
+        boosts: ["agency-command-center", "launch-strategy", "paid-ads", "social-content", "email-sequence", "copywriting", "page-cro", "analytics-tracking", "content-strategy"]
+      },
+      "full-funnel": {
+        motion: "Integrated Growth System",
+        kpi: "Revenue Growth Rate",
+        boosts: ["agency-command-center", "seo-toolkit-suite", "paid-ads", "page-cro", "analytics-tracking", "content-strategy", "email-sequence", "seo-audit", "pricing-strategy", "onboarding-cro", "social-content"]
+      }
+    };
+
+    const categoryClass = { seo: "seo", cro: "cro", content: "content", growth: "growth" };
+    const apiBase = location.protocol === "file:" ? "http://127.0.0.1:8787" : "";
+
+    let lastSelectedSkills = [];
+    let lastRunId = null;
+    let lastBacklog = [];
+    let intakeStep = 1;
+    const selectedSkillIds = new Set();
+    const selectedIntegrationTools = new Set(["ga4", "google-search-console", "google-ads", "meta-ads"]);
+
+    const integrationCatalog = [
+      { id: "ga4", label: "GA4" },
+      { id: "google-search-console", label: "Google Search Console" },
+      { id: "google-ads", label: "Google Ads" },
+      { id: "meta-ads", label: "Meta Ads" },
+      { id: "linkedin-ads", label: "LinkedIn Ads" },
+      { id: "mailchimp", label: "Mailchimp" },
+      { id: "customer-io", label: "Customer.io" },
+      { id: "hubspot", label: "HubSpot" },
+      { id: "salesforce", label: "Salesforce" },
+      { id: "ahrefs", label: "Ahrefs" },
+      { id: "semrush", label: "Semrush" },
+      { id: "posthog", label: "PostHog" },
+      { id: "segment", label: "Segment" }
+    ];
+
+    const budgetMap = {
+      "under5k": 4000,
+      "5k-10k": 8000,
+      "10k-25k": 18000,
+      "25k-50k": 35000,
+      "50k-plus": 60000
+    };
+
+    const timelineMap = {
+      urgent: 14,
+      "1month": 30,
+      "3months": 90,
+      "6months": 180
+    };
+
+    const seoModuleDefaults = {
+      scan: (input) => ({ url: input.website || "https://example.com", targetKeyword: "commercial roofing services" }),
+      bulk: (input) => ({ urls: [input.website || "https://example.com", `${input.website || "https://example.com"}/services`, `${input.website || "https://example.com"}/contact`] }),
+      compare: (input) => ({ primaryUrl: input.website || "https://example.com", competitorUrls: ["https://competitor-a.example.com/page", "https://competitor-b.example.com/page"] }),
+      schema: (input) => ({ pageType: "Service", pageTitle: `${input.businessName || input.agencyName || "Business"} Services`, pageDescription: "Commercial service page structured data payload.", pageUrl: `${input.website || "https://example.com"}/services` }),
+      "ai-visibility": (input) => ({ urls: [input.website || "https://example.com", `${input.website || "https://example.com"}/services`], entities: [input.businessName || "Business", "Commercial services", "Lead generation"] }),
+      "market-research": (input) => ({ competitorUrls: ["https://competitor-a.example.com", "https://competitor-b.example.com"], competitors: input.competitors || [] }),
+      "gsc-profile-audit": (input) => ({ propertyUrl: input.website || "https://example.com" }),
+      "snippet-lab": (input) => ({ pageUrl: `${input.website || "https://example.com"}/services`, primaryKeyword: "commercial roofing services", offerAngle: "faster qualified lead growth" }),
+      "content-analysis": (input) => ({ url: `${input.website || "https://example.com"}/services`, primaryQuery: "commercial roofing services", competitorUrls: ["https://competitor-a.example.com/services", "https://competitor-b.example.com/services"] }),
+      "full-audit": (input) => ({
+        primaryUrl: input.website || "https://example.com",
+        urls: [input.website || "https://example.com", `${input.website || "https://example.com"}/services`, `${input.website || "https://example.com"}/contact`],
+        competitorUrls: ["https://competitor-a.example.com", "https://competitor-b.example.com"],
+        targetKeyword: "commercial roofing services"
+      }),
+      report: (input) => ({ primaryUrl: input.website || "https://example.com", targetKeyword: "commercial roofing services" })
+    };
+
+    function normalize(str) {
+      return String(str || "").toLowerCase();
+    }
+
+    function updateSelectedCount() {
+      document.getElementById("selectedCount").textContent = `${selectedSkillIds.size} skills selected`;
+    }
+
+    function applyIndustrySkillDefaults() {
+      const industry = document.getElementById("input-industry").value;
+      const defaults = {
+        saas: ["content-strategy", "paid-ads", "seo-audit", "analytics-tracking", "email-sequence"],
+        ecommerce: ["paid-ads", "page-cro", "email-sequence", "analytics-tracking", "copywriting"],
+        service: ["seo-toolkit-suite", "page-cro", "paid-ads", "copywriting", "analytics-tracking"],
+        agency: ["agency-command-center", "analytics-tracking", "content-strategy", "paid-ads", "seo-audit"],
+        healthcare: ["seo-audit", "eeat-optimization", "content-strategy", "copy-editing", "analytics-tracking"],
+        education: ["content-strategy", "email-sequence", "seo-audit", "social-content", "analytics-tracking"]
+      };
+      selectedSkillIds.clear();
+      (defaults[industry] || ["agency-command-center", "seo-toolkit-suite", "page-cro", "paid-ads", "analytics-tracking"]).forEach((id) => selectedSkillIds.add(id));
+      renderSkillPicker();
+    }
+
+    function renderSkillPicker() {
+      const container = document.getElementById("skillPicker");
+      container.innerHTML = skillCatalog.map((skill) => `
+        <button type="button" class="skill-chip ${selectedSkillIds.has(skill.id) ? "selected" : ""}" data-skill-id="${skill.id}">
+          ${skill.id}
+        </button>
+      `).join("");
+
+      container.querySelectorAll("[data-skill-id]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.dataset.skillId;
+          if (selectedSkillIds.has(id)) {
+            selectedSkillIds.delete(id);
+            btn.classList.remove("selected");
+          } else {
+            selectedSkillIds.add(id);
+            btn.classList.add("selected");
+          }
+          updateSelectedCount();
+          runEngine();
+        });
+      });
+      updateSelectedCount();
+    }
+
+    function renderIntegrationPicker() {
+      const container = document.getElementById("integrationPicker");
+      container.innerHTML = integrationCatalog.map((tool) => `
+        <button type="button" class="integration-chip ${selectedIntegrationTools.has(tool.id) ? "selected" : ""}" data-integration-id="${tool.id}">
+          ${tool.label}
+        </button>
+      `).join("");
+
+      container.querySelectorAll("[data-integration-id]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.dataset.integrationId;
+          if (selectedIntegrationTools.has(id)) {
+            selectedIntegrationTools.delete(id);
+            btn.classList.remove("selected");
+          } else {
+            selectedIntegrationTools.add(id);
+            btn.classList.add("selected");
+          }
+        });
+      });
+    }
+
+    function updateStepUi() {
+      document.getElementById("intakeStepLabel").textContent = `Step ${intakeStep} of 4`;
+      for (let i = 1; i <= 4; i++) {
+        const step = document.getElementById(`intakeStep${i}`);
+        if (step) step.classList.toggle("active", i === intakeStep);
+        const dot = document.getElementById(`stepDot${i}`);
+        if (dot) dot.className = `step-dot ${i < intakeStep ? "done" : i === intakeStep ? "active" : ""}`.trim();
+        if (i < 4) {
+          const line = document.getElementById(`stepLine${i}`);
+          if (line) line.className = `step-line ${i < intakeStep ? "done" : ""}`.trim();
+        }
+      }
+    }
+
+    function validateStep(step) {
+      if (step === 1) {
+        return document.getElementById("input-business").value.trim() && document.getElementById("input-industry").value;
+      }
+      if (step === 2) {
+        return document.getElementById("input-audience").value.trim() && document.getElementById("input-market").value.trim();
+      }
+      if (step === 3) {
+        return document.getElementById("input-goal").value && document.getElementById("input-budget-range").value;
+      }
+      return true;
+    }
+
+    function nextStep() {
+      if (!validateStep(intakeStep)) {
+        alert("Please complete required fields before continuing.");
+        return;
+      }
+      if (intakeStep < 4) intakeStep += 1;
+      updateStepUi();
+    }
+
+    function prevStep() {
+      if (intakeStep > 1) intakeStep -= 1;
+      updateStepUi();
+    }
+
+    function selectedChannels() {
+      return [...document.querySelectorAll(".channel-checkbox:checked")].map((n) => n.value);
+    }
+
+    function buildInputs() {
+      const budgetRange = document.getElementById("input-budget-range").value;
+      const timeline = document.getElementById("input-timeline").value;
+      const competitors = document.getElementById("input-competitors").value
+        .split(/[\n,]+/)
+        .map((v) => v.trim())
+        .filter(Boolean);
+
+      return {
+        agencyName: document.getElementById("input-agency").value.trim() || "Agency",
+        businessName: document.getElementById("input-business").value.trim(),
+        website: document.getElementById("input-website").value.trim(),
+        geography: document.getElementById("input-geography").value.trim(),
+        industry: document.getElementById("input-industry").value.trim(),
+        product: document.getElementById("input-product").value.trim(),
+        targetCustomer: document.getElementById("input-audience").value.trim(),
+        currentEfforts: document.getElementById("input-current").value.trim(),
+        goalsDetail: document.getElementById("input-goals").value.trim(),
+        competitors,
+        market: document.getElementById("input-market").value.trim(),
+        goal: document.getElementById("input-goal").value,
+        horizon: Number(timelineMap[timeline] || 90),
+        budget: Number(budgetMap[budgetRange] || 0),
+        capacity: Number(document.getElementById("input-capacity").value) || 0,
+        constraints: `${document.getElementById("input-current").value.trim()} ${document.getElementById("input-goals").value.trim()}`.trim(),
+        channels: selectedChannels(),
+        selectedSkills: [...selectedSkillIds],
+        selectedIntegrations: [...selectedIntegrationTools]
+      };
+    }
+
+    function scoreSkill(skill, input) {
+      let score = 0;
+      const goal = goalProfiles[input.goal];
+      if (goal.boosts.includes(skill.id)) score += 8;
+      if (input.channels.includes(skill.channel)) score += 4;
+      if (selectedSkillIds.has(skill.id)) score += 20;
+      if (skill.id === "agency-command-center") score += 5;
+
+      if (normalize(input.market).includes("local")) {
+        if (["seo-audit", "schema-markup", "on-page-seo", "competitor-alternatives"].includes(skill.id)) score += 3;
+      }
+      if (normalize(input.market).includes("b2b")) {
+        if (["paid-ads", "email-sequence", "content-strategy", "copywriting", "analytics-tracking"].includes(skill.id)) score += 2;
+      }
+      if (input.budget < 8000) {
+        if (skill.id === "paid-ads") score -= 3;
+        if (["seo-audit", "content-strategy", "copywriting", "email-sequence"].includes(skill.id)) score += 2;
+      }
+      if (input.budget > 20000 && ["paid-ads", "ab-test-setup", "programmatic-seo"].includes(skill.id)) score += 2;
+      if (input.capacity < 90 && ["programmatic-seo", "launch-strategy", "free-tool-strategy"].includes(skill.id)) score -= 2;
+      if (normalize(input.constraints).includes("data") && skill.id === "analytics-tracking") score += 4;
+      if (normalize(input.constraints).includes("approval") && ["copy-editing", "page-cro", "email-sequence"].includes(skill.id)) score += 1;
+
+      return score;
+    }
+
+    function rankSkills(input) {
+      return skillCatalog
+        .map((skill) => ({ ...skill, score: scoreSkill(skill, input) }))
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 10);
+    }
+
+    function renderSummary(input, selected) {
+      const profile = goalProfiles[input.goal];
+      document.getElementById("planTitle").textContent = `${input.agencyName} - Marketing OS Strategy`;
+      document.getElementById("skillsCount").textContent = String(selected.length);
+      document.getElementById("coreMotion").textContent = profile.motion;
+      document.getElementById("primaryKpi").textContent = profile.kpi;
+      document.getElementById("quickWinsCount").textContent = String(Math.min(4, selected.length));
+      document.getElementById("executionRisk").textContent = input.capacity < 90 || input.budget < 6000 ? "High" : input.capacity < 140 ? "Medium" : "Low";
+      document.getElementById("currentRunId").textContent = lastRunId ? String(lastRunId) : "-";
+
+      const chips = [
+        `Business: ${input.businessName || "Not set"}`,
+        `Goal: ${document.getElementById("input-goal").selectedOptions[0].text}`,
+        `Market: ${input.market || "Not set"}`,
+        `Geo: ${input.geography || "Not set"}`,
+        `Budget: $${input.budget.toLocaleString()}/mo`,
+        `Capacity: ${input.capacity}h/wk`,
+        `Horizon: ${input.horizon} days`
+      ];
+      document.getElementById("summaryChips").innerHTML = chips.map((chip) => `<span class="chip">${chip}</span>`).join("");
+    }
+
+    function renderSkillsTable(selected) {
+      document.getElementById("skillsTable").innerHTML = selected.map((skill, i) => `
+        <tr>
+          <td>${i + 1}</td>
+          <td><strong>${skill.id}</strong></td>
+          <td><span class="tag ${categoryClass[skill.category]}">${skill.category.toUpperCase()}</span></td>
+          <td>${skill.why}</td>
+        </tr>
+      `).join("");
+    }
+
+    function renderRoadmap(selected) {
+      const phase1 = selected.slice(0, 4);
+      const phase2 = selected.slice(2, 7);
+      const phase3 = selected.slice(5, 10);
+      document.getElementById("lane1").innerHTML = phase1.map((s) => `<li><strong>${s.id}</strong>: ship ${s.deliverable.toLowerCase()} and baseline KPIs.</li>`).join("");
+      document.getElementById("lane2").innerHTML = phase2.map((s) => `<li><strong>${s.id}</strong>: implement and optimize in weekly cycles.</li>`).join("");
+      document.getElementById("lane3").innerHTML = phase3.map((s) => `<li><strong>${s.id}</strong>: scale winners and systemize execution.</li>`).join("");
+    }
+
+    function populateWorkbench(skills) {
+      const skillSelect = document.getElementById("workbenchSkill");
+      const previous = skillSelect.value;
+      skillSelect.innerHTML = skills.map((s) => `<option value="${s.id}">${s.id}</option>`).join("");
+      if (skills.some((s) => s.id === previous)) skillSelect.value = previous;
+    }
+
+    function buildPrompt() {
+      const input = buildInputs();
+      const skill = document.getElementById("workbenchSkill").value;
+      const taskType = document.getElementById("workbenchTask").value;
+      const deliverable = document.getElementById("workbenchOutput").value.trim() || "action plan";
+      const channels = input.channels.length ? input.channels.join(", ") : "none specified";
+
+      const prompt = [
+        `Use skill '${skill}' from this repository to produce a ${taskType} deliverable.`,
+        "",
+        "Context:",
+        `- Agency: ${input.agencyName}`,
+        `- Business: ${input.businessName || "Not specified"}`,
+        `- Website: ${input.website || "Not specified"}`,
+        `- Geography: ${input.geography || "Not specified"}`,
+        `- Product/service: ${input.product || "Not specified"}`,
+        `- Target customer: ${input.targetCustomer || "Not specified"}`,
+        `- Client market: ${input.market}`,
+        `- Primary goal: ${document.getElementById("input-goal").selectedOptions[0].text}`,
+        `- Time horizon: ${input.horizon} days`,
+        `- Monthly budget: $${input.budget}`,
+        `- Team capacity: ${input.capacity} hours/week`,
+        `- Priority channels: ${channels}`,
+        `- Constraints: ${input.constraints}`,
+        "",
+        `Required output: ${deliverable}`,
+        "Requirements:",
+        "- Gather context first, then provide prioritized strategy.",
+        "- Include concrete implementation steps and owners.",
+        "- Provide KPI targets and weekly checkpoints.",
+        "- Provide 3 headline options and 3 CTA options where relevant."
+      ].join("\n");
+
+      document.getElementById("promptBox").textContent = prompt;
+    }
+
+    function renderMessaging(selected, input) {
+      const topSkills = selected.slice(0, 3).map((s) => s.id);
+      const goalLabel = document.getElementById("input-goal").selectedOptions[0].text;
+
+      const headlines = [
+        `Turn ${input.market || "your market"} into a predictable growth engine in ${input.horizon} days.`,
+        `One operating system for ${goalLabel.toLowerCase()} across every client account.`,
+        `From strategy to execution: deploy ${topSkills.join(", ")} in one coordinated plan.`
+      ];
+
+      const ctas = [
+        "Build my 90-day client growth plan",
+        "Generate my cross-channel roadmap",
+        "Show me highest-impact skills to run now"
+      ];
+
+      document.getElementById("headlineList").innerHTML = headlines.map((h) => `<li>${h}</li>`).join("");
+      document.getElementById("ctaList").innerHTML = ctas.map((c) => `<li>${c}</li>`).join("");
+    }
+
+    function renderBacklog(tasks) {
+      const tbody = document.getElementById("backlogTable");
+      if (!Array.isArray(tasks) || !tasks.length) {
+        tbody.innerHTML = '<tr><td colspan="6">No tasks generated.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = tasks.map((task, idx) => `
+        <tr>
+          <td>${idx + 1}</td>
+          <td>${task.title || "Execution task"}</td>
+          <td>${task.skillId || "-"}</td>
+          <td>${task.ownerRole || "-"}</td>
+          <td>${task.priority || "-"}</td>
+          <td>${task.dueInDays ?? "-"}</td>
+        </tr>
+      `).join("");
+    }
+
+    function runEngine() {
+      const input = buildInputs();
+      const selected = rankSkills(input);
+      lastSelectedSkills = selected;
+      renderSummary(input, selected);
+      renderSkillsTable(selected);
+      renderRoadmap(selected);
+      populateWorkbench(selected);
+      buildPrompt();
+      renderMessaging(selected, input);
+    }
+
+    async function apiRequest(path, payload) {
+      const response = await fetch(`${apiBase}${path}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const json = await response.json();
+      if (!response.ok || !json.ok) {
+        throw new Error(json.error || `Request failed (${response.status})`);
+      }
+      return json;
+    }
+
+    async function checkApiHealth() {
+      const statusEl = document.getElementById("apiStatus");
+      try {
+        const response = await fetch(`${apiBase}/api/health`);
+        const json = await response.json();
+        if (!response.ok || !json.ok) throw new Error("API unavailable");
+
+        const openaiReady = Boolean(json.llm?.openai?.hasApiKey);
+        const anthropicReady = Boolean(json.llm?.anthropic?.hasApiKey);
+        const llm = openaiReady || anthropicReady
+          ? `${openaiReady ? "OpenAI" : ""}${openaiReady && anthropicReady ? "+" : ""}${anthropicReady ? "Anthropic" : ""}`
+          : "Fallback";
+
+        statusEl.textContent = `Online · ${llm}`;
+        document.getElementById("homeLlm").textContent = llm;
+        document.getElementById("homeResearchMode").textContent = json.llm?.marketResearchWeb ? "Web" : "No-Web";
+        document.getElementById("homeSync").textContent = json.taskIntegrations?.provider || "none";
+        document.getElementById("dashDb").textContent = json.db ? "Ready" : "No";
+        document.getElementById("dashMcp").textContent = json.mcpRuntime?.mode || "unknown";
+        document.getElementById("homeSkills").textContent = String(json.skillsCount || 31);
+      } catch {
+        statusEl.textContent = "Offline";
+      }
+    }
+
+    async function runStrategyApi() {
+      const researchMeta = document.getElementById("researchMeta");
+      const researchBox = document.getElementById("researchBox");
+      const strategyMeta = document.getElementById("strategyMeta");
+      const strategyBox = document.getElementById("strategyBox");
+      const backlogMeta = document.getElementById("backlogMeta");
+      const syncMeta = document.getElementById("syncMeta");
+      if (!selectedSkillIds.size) {
+        alert("Select at least one skill in Step 4.");
+        return;
+      }
+      const input = buildInputs();
+      const payload = {
+        ...input,
+        selectedSkills: selectedSkillIds.size ? [...selectedSkillIds] : lastSelectedSkills.map((s) => s.id),
+        selectedIntegrations: [...selectedIntegrationTools]
+      };
+
+      researchMeta.textContent = "Running competitor and market research...";
+      researchBox.textContent = "Researching market landscape...";
+      strategyMeta.textContent = "Generating strategy...";
+      strategyBox.textContent = "Running strategy engine...";
+      backlogMeta.textContent = "Building execution backlog...";
+      syncMeta.textContent = "Task sync status will appear here.";
+      renderBacklog([]);
+
+      try {
+        const result = await apiRequest("/api/intelligence/run", payload);
+        const researchSource = result.researchUsedFallback ? "fallback research" : `${result.researchLlm?.provider || "llm"}:${result.researchLlm?.model || "unknown"}`;
+        const source = result.usedFallback ? "fallback template" : `${result.llm.provider}:${result.llm.model}`;
+        const executionSource = result.executionBacklogUsedFallback
+          ? "fallback backlog"
+          : `${result.executionLlm?.provider || "llm"}:${result.executionLlm?.model || "unknown"}`;
+
+        lastRunId = result.runId || null;
+        lastBacklog = Array.isArray(result.executionBacklog) ? result.executionBacklog : [];
+        document.getElementById("currentRunId").textContent = lastRunId ? String(lastRunId) : "-";
+
+        researchMeta.textContent = `Research generated via ${researchSource}.`;
+        researchBox.textContent = result.research || "No research output.";
+        strategyMeta.textContent = `Generated via ${source}. Recommended skills: ${result.recommendedSkills.slice(0, 5).map((s) => s.id).join(", ")}`;
+        strategyBox.textContent = result.strategy;
+        backlogMeta.textContent = `Execution backlog generated via ${executionSource}. Tasks: ${lastBacklog.length}.`;
+        renderBacklog(lastBacklog);
+
+        navigate("strategy");
+        await loadDashboardData();
+      } catch (error) {
+        researchMeta.textContent = "Research generation failed.";
+        researchBox.textContent = `Error: ${error.message}`;
+        strategyMeta.textContent = "Strategy generation failed.";
+        strategyBox.textContent = `Error: ${error.message}`;
+        backlogMeta.textContent = "Execution backlog generation failed.";
+        renderBacklog([]);
+      }
+    }
+
+    async function runExecutionApi() {
+      const executionMeta = document.getElementById("executionMeta");
+      const executionBox = document.getElementById("executionBox");
+      const input = buildInputs();
+      const payload = {
+        ...input,
+        runId: lastRunId,
+        skillId: document.getElementById("workbenchSkill").value,
+        taskType: document.getElementById("workbenchTask").value,
+        deliverable: document.getElementById("workbenchOutput").value.trim()
+      };
+
+      executionMeta.textContent = "Running skill task...";
+      executionBox.textContent = "Executing...";
+
+      try {
+        const result = await apiRequest("/api/execute", payload);
+        const source = result.usedFallback ? "fallback template" : `${result.llm.provider}:${result.llm.model}`;
+        const mcp = result.mcp?.status || "unknown";
+        executionMeta.textContent = `Completed via ${source}. MCP status: ${mcp}.`;
+        executionBox.textContent = result.output;
+        await loadDashboardData();
+      } catch (error) {
+        executionMeta.textContent = "Task execution failed.";
+        executionBox.textContent = `Error: ${error.message}`;
+      }
+    }
+
+    async function syncTasksApi() {
+      const syncMeta = document.getElementById("syncMeta");
+      if (!lastRunId) {
+        syncMeta.textContent = "Run strategy first so tasks can be synced.";
+        return;
+      }
+
+      syncMeta.textContent = `Syncing tasks for run ${lastRunId}...`;
+      try {
+        const result = await apiRequest("/api/tasks/sync", { runId: lastRunId });
+        syncMeta.textContent = `Sync provider: ${result.provider}. Status: ${result.status}. Synced: ${result.syncedCount || 0}/${result.tasksCount || 0}.`;
+        await loadDashboardData();
+      } catch (error) {
+        syncMeta.textContent = `Task sync failed: ${error.message}`;
+      }
+    }
+
+    function updateSeoPayloadTemplate() {
+      const input = buildInputs();
+      const module = document.getElementById("seoModule").value;
+      const builder = seoModuleDefaults[module] || (() => ({}));
+      document.getElementById("seoPayload").value = JSON.stringify(builder(input), null, 2);
+    }
+
+    function toList(value) {
+      if (!Array.isArray(value)) return [];
+      return value.map((item) => String(item || "").trim()).filter(Boolean);
+    }
+
+    function renderKeyValue(obj = {}, keys = []) {
+      return keys
+        .filter((key) => obj && obj[key] != null && obj[key] !== "")
+        .map((key) => `- ${key}: ${typeof obj[key] === "object" ? JSON.stringify(obj[key]) : obj[key]}`);
+    }
+
+    function renderScanSection(data = {}) {
+      const findings = Array.isArray(data.findings) ? data.findings : [];
+      const quickWins = toList(data.quickWins);
+      const nextActions = toList(data.nextActions);
+      return [
+        "## Scanner Summary",
+        ...renderKeyValue(data, ["url", "targetKeyword", "score"]),
+        "",
+        "## Findings",
+        ...(findings.length
+          ? findings.slice(0, 8).map((item, idx) => `${idx + 1}. [${item.severity || "info"}] ${item.issue || "Issue"} -> ${item.recommendation || "No recommendation provided"}`)
+          : ["- No findings returned."]),
+        "",
+        "## Quick Wins",
+        ...(quickWins.length ? quickWins.map((line) => `- ${line}`) : ["- None provided."]),
+        "",
+        "## Next Actions",
+        ...(nextActions.length ? nextActions.map((line) => `- ${line}`) : ["- None provided."])
+      ].join("\n");
+    }
+
+    function renderBulkSection(data = {}) {
+      const rows = Array.isArray(data.rows) ? data.rows : [];
+      return [
+        "## Bulk Scan Summary",
+        ...renderKeyValue(data.summary || {}, ["totalUrls", "averageScore", "criticalIssueUrls"]),
+        "",
+        "## URL Priority Table",
+        ...(rows.length
+          ? rows.slice(0, 12).map((row, idx) => `${idx + 1}. ${row.url || "URL"} | score ${row.score ?? "-"} | critical ${row.criticalIssues ?? "-"} | top fix: ${row.topFix || "n/a"}`)
+          : ["- No URL rows returned."]),
+        "",
+        "## Recurring Issues",
+        ...toList(data.recurringIssues).map((line) => `- ${line}`),
+        "",
+        "## Prioritized Queue",
+        ...toList(data.prioritizedFixQueue).map((line) => `- ${line}`)
+      ].join("\n");
+    }
+
+    function renderCompareSection(data = {}) {
+      const comparison = Array.isArray(data.comparison) ? data.comparison : [];
+      return [
+        "## Competitor Comparison",
+        ...renderKeyValue(data, ["primaryUrl"]),
+        `- competitorUrls: ${(Array.isArray(data.competitorUrls) ? data.competitorUrls.join(", ") : "n/a") || "n/a"}`,
+        "",
+        "## Gap Matrix",
+        ...(comparison.length
+          ? comparison.map((row, idx) => `${idx + 1}. ${row.dimension || "dimension"} | yours ${row.yourScore ?? "-"} vs comp ${row.competitorAverage ?? "-"} | gap ${row.gap ?? "-"} | action: ${row.action || "n/a"}`)
+          : ["- No comparison matrix returned."]),
+        "",
+        "## Strategic Recommendations",
+        ...toList(data.strategicRecommendations).map((line) => `- ${line}`)
+      ].join("\n");
+    }
+
+    function renderAuditOrReportSection(data = {}, module) {
+      const isReport = module === "report";
+      const roadmap = data.roadmap || data.priorityPlan || {};
+      return [
+        `## ${isReport ? "Master SEO Report" : "Full SEO Audit"}`,
+        ...renderKeyValue(data, ["business", "market", "overallSeoHealth", "overallScore"]),
+        "",
+        "## Executive Summary",
+        ...toList(data.executiveSummary || data.topOpportunities).map((line) => `- ${line}`),
+        "",
+        "## Roadmap",
+        `### Days 1-30`,
+        ...toList(roadmap.days1to30 || roadmap.days1to14).map((line) => `- ${line}`),
+        `### Days 31-60`,
+        ...toList(roadmap.days31to60 || roadmap.days15to45).map((line) => `- ${line}`),
+        `### Days 61-90`,
+        ...toList(roadmap.days61to90 || roadmap.days46to90).map((line) => `- ${line}`)
+      ].join("\n");
+    }
+
+    function renderContentAnalysisSection(data = {}) {
+      const topPages = Array.isArray(data.topPagesAnalyzed) ? data.topPagesAnalyzed : [];
+      const findings = Array.isArray(data.comparativeFindings) ? data.comparativeFindings : [];
+      const fixes = Array.isArray(data.prioritizedFixes) ? data.prioritizedFixes : [];
+      const roadmap = data.implementationRoadmap || {};
+      const benchmarks = Array.isArray(data.benchmarkSources) ? data.benchmarkSources : [];
+      return [
+        "## Content Analysis Summary",
+        ...renderKeyValue(data, ["url", "detectedPrimaryQuery", "searchIntent"]),
+        "",
+        "## Benchmark Score",
+        ...renderKeyValue(data.benchmarkScore || {}, ["overall", "signalCoherence", "contentEffort", "navboostReadiness", "authoritySignals", "technicalHygiene"]),
+        "",
+        "## Top-5 SERP Pages",
+        ...(topPages.length
+          ? topPages.slice(0, 5).map((page) => `${page.rank || "-"}). ${page.title || page.url} (${page.domain || "domain"}) -> ${page.whyRanking || "No rationale provided"}`)
+          : ["- No SERP pages returned."]),
+        "",
+        "## Comparative Findings",
+        ...(findings.length
+          ? findings.map((item, idx) => `${idx + 1}. ${item.area || "Area"} | ${item.targetStatus || "status"} | gap: ${item.gap || "n/a"} | fix: ${item.recommendation || "n/a"}`)
+          : ["- No comparative findings returned."]),
+        "",
+        "## Prioritized Fixes",
+        ...(fixes.length
+          ? fixes.map((item, idx) => `${idx + 1}. [${item.priority || "priority"}] ${item.fix || "Fix"} | owner: ${item.owner || "-"} | effort: ${item.effort || "-"} | impact: ${item.expectedImpact || "-"}`)
+          : ["- No prioritized fixes returned."]),
+        "",
+        "## Implementation Roadmap",
+        "### Days 1-7",
+        ...toList(roadmap.days1to7).map((line) => `- ${line}`),
+        "### Days 8-30",
+        ...toList(roadmap.days8to30).map((line) => `- ${line}`),
+        "### Days 31-60",
+        ...toList(roadmap.days31to60).map((line) => `- ${line}`),
+        "",
+        "## Benchmark Sources (Hobo-Web)",
+        ...(benchmarks.length
+          ? benchmarks.slice(0, 12).map((item) => `- ${item.topic || "Topic"}: ${item.url || "-"}`)
+          : ["- No benchmark sources returned."])
+      ].join("\n");
+    }
+
+    function formatSeoModuleOutput(module, apiResult) {
+      const data = apiResult?.result || {};
+      const workflow = Array.isArray(apiResult?.workflow) ? apiResult.workflow : [];
+      const sources = Array.isArray(apiResult?.sourcesUsed) ? apiResult.sourcesUsed : [];
+      const evidence = apiResult?.evidence || {};
+      const parts = [];
+
+      if (module === "scan") parts.push(renderScanSection(data));
+      else if (module === "bulk") parts.push(renderBulkSection(data));
+      else if (module === "compare") parts.push(renderCompareSection(data));
+      else if (module === "content-analysis") parts.push(renderContentAnalysisSection(data));
+      else if (module === "full-audit" || module === "report") parts.push(renderAuditOrReportSection(data, module));
+      else {
+        parts.push(`## ${module} output`);
+        parts.push(JSON.stringify(data, null, 2));
+      }
+
+      if (workflow.length) {
+        parts.push("");
+        parts.push("## Workflow Trace");
+        parts.push(...workflow.map((step, idx) => `${idx + 1}. [${step.status || "unknown"}] ${step.step || "step"} - ${step.detail || ""}`));
+      }
+
+      if (evidence?.integrationSummary) {
+        parts.push("");
+        parts.push("## Integration Evidence");
+        parts.push(...renderKeyValue(evidence.integrationSummary, ["status", "note", "toolCount"]));
+      }
+
+      if (sources.length) {
+        parts.push("");
+        parts.push("## Sources Used");
+        parts.push(...sources.slice(0, 15).map((source) => `- ${source}`));
+      }
+
+      parts.push("");
+      parts.push("## Raw JSON");
+      parts.push("```json");
+      parts.push(JSON.stringify(data, null, 2));
+      parts.push("```");
+
+      return parts.join("\n");
+    }
+
+    async function runSeoModuleApi() {
+      const seoMeta = document.getElementById("seoMeta");
+      const seoOutput = document.getElementById("seoOutput");
+      const input = buildInputs();
+      const module = document.getElementById("seoModule").value;
+      let payloadExtras = {};
+
+      try {
+        const raw = document.getElementById("seoPayload").value.trim();
+        payloadExtras = raw ? JSON.parse(raw) : {};
+      } catch {
+        seoMeta.textContent = "SEO module input JSON is invalid.";
+        seoOutput.textContent = "Fix JSON in Module Inputs before running.";
+        return;
+      }
+
+      seoMeta.textContent = `Running SEO module: ${module}...`;
+      seoOutput.textContent = "Executing...";
+
+      try {
+        const result = await apiRequest(`/api/seo/${module}`, { ...input, ...payloadExtras });
+        const source = result.usedFallback ? "fallback template" : `${result.llm?.provider || "llm"}:${result.llm?.model || "unknown"}`;
+        const mcpStatus = result.mcp?.status || result.evidence?.integrationSummary?.status || "unknown";
+        const confidence = Number.isFinite(Number(result.confidence)) ? `, confidence: ${Math.round(Number(result.confidence) * 100)}%` : "";
+        seoMeta.textContent = `Completed via ${source}, MCP: ${mcpStatus}${confidence}.`;
+        seoOutput.textContent = formatSeoModuleOutput(module, result);
+      } catch (error) {
+        seoMeta.textContent = `SEO module failed: ${module}.`;
+        seoOutput.textContent = `Error: ${error.message}`;
+      }
+    }
+
+    async function generateContentFromApi() {
+      const contentMeta = document.getElementById("contentMeta");
+      const contentOutput = document.getElementById("contentOutput");
+      const input = buildInputs();
+      const contentType = document.getElementById("contentType").value;
+      const tone = document.getElementById("contentTone").value;
+      const context = document.getElementById("contentContext").value.trim();
+
+      const skillMap = {
+        social: "social-content",
+        email: "email-sequence",
+        ad: "paid-ads",
+        blog: "content-strategy",
+        landing: "copywriting",
+        tagline: "copywriting"
+      };
+
+      const taskType = contentType === "email" || contentType === "social" ? "copy" : "implementation";
+      const payload = {
+        ...input,
+        runId: lastRunId,
+        skillId: skillMap[contentType] || "copywriting",
+        taskType,
+        deliverable: `${contentType} content deliverable (${tone} tone). Context: ${context || "none"}`
+      };
+
+      contentMeta.textContent = "Generating content...";
+      contentOutput.textContent = "Running content engine...";
+
+      try {
+        const result = await apiRequest("/api/execute", payload);
+        const source = result.usedFallback ? "fallback template" : `${result.llm.provider}:${result.llm.model}`;
+        contentMeta.textContent = `Generated via ${source}.`;
+        contentOutput.textContent = result.output;
+        await loadDashboardData();
+      } catch (error) {
+        contentMeta.textContent = "Content generation failed.";
+        contentOutput.textContent = `Error: ${error.message}`;
+      }
+    }
+
+    async function loadDashboardData() {
+      try {
+        const [runsRes, tasksRes, healthRes] = await Promise.all([
+          fetch(`${apiBase}/api/runs?limit=8`),
+          fetch(`${apiBase}/api/tasks?limit=20`),
+          fetch(`${apiBase}/api/health`)
+        ]);
+
+        const runsJson = await runsRes.json();
+        const tasksJson = await tasksRes.json();
+        const healthJson = await healthRes.json();
+
+        const runs = Array.isArray(runsJson?.runs) ? runsJson.runs : [];
+        const tasks = Array.isArray(tasksJson?.tasks) ? tasksJson.tasks : [];
+
+        document.getElementById("homeRuns").textContent = String(runs.length);
+        document.getElementById("homeTasks").textContent = String(tasks.length);
+
+        document.getElementById("dashRuns").textContent = String(runs.length);
+        document.getElementById("dashTasks").textContent = String(tasks.length);
+        document.getElementById("dashPlanned").textContent = String(tasks.filter((t) => t.status === "planned").length);
+        document.getElementById("dashSynced").textContent = String(tasks.filter((t) => t.integrationStatus === "ok").length);
+
+        if (healthJson?.db) {
+          document.getElementById("dashDb").textContent = `Runs ${healthJson.db.strategyRuns}`;
+        }
+        if (healthJson?.mcpRuntime) {
+          document.getElementById("dashMcp").textContent = healthJson.mcpRuntime.mode || "unknown";
+        }
+
+        const runListHtml = runs.length
+          ? runs.map((run) => `<div class="list-item"><h4>#${run.id} · ${run.agencyName || "Agency"} · ${run.goal || "goal"}</h4><p>${new Date(run.createdAt).toLocaleString()}</p></div>`).join("")
+          : '<div class="list-item"><h4>No runs yet</h4><p>Generate your first strategy from New Client.</p></div>';
+
+        const taskListHtml = tasks.length
+          ? tasks.slice(0, 8).map((task) => `<div class="list-item"><h4>#${task.id} · ${task.title || "Task"}</h4><p>status: ${task.status || "planned"} · sync: ${task.integrationStatus || "not_synced"}</p></div>`).join("")
+          : '<div class="list-item"><h4>No tasks yet</h4><p>Run intelligence to generate a backlog.</p></div>';
+
+        document.getElementById("homeRecentRuns").innerHTML = runListHtml;
+        document.getElementById("dashboardRuns").innerHTML = runListHtml;
+        document.getElementById("dashboardTasks").innerHTML = taskListHtml;
+      } catch {
+        // Ignore dashboard refresh failures.
+      }
+    }
+
+    function loadExample() {
+      document.getElementById("input-agency").value = "Harborline Demand Studio";
+      document.getElementById("input-business").value = "Harborline Roofing";
+      document.getElementById("input-industry").value = "service";
+      document.getElementById("input-website").value = "https://example.com";
+      document.getElementById("input-geography").value = "United States";
+      document.getElementById("input-product").value = "Commercial roofing and emergency repair services";
+      document.getElementById("input-audience").value = "Facilities managers, property managers, and general contractors";
+      document.getElementById("input-current").value = "Need faster SQL volume in 30 days and better CRM attribution.";
+      document.getElementById("input-competitors").value = "Competitor One, Competitor Two, Competitor Three";
+      document.getElementById("input-market").value = "Local commercial contractors and home services";
+      document.getElementById("input-goal").value = "lead-gen";
+      document.getElementById("input-goals").value = "Increase lead quality and booked appointments within 90 days.";
+      document.getElementById("input-budget-range").value = "10k-25k";
+      document.getElementById("input-timeline").value = "3months";
+      document.getElementById("input-capacity").value = "110";
+
+      document.querySelectorAll(".channel-checkbox").forEach((box) => {
+        box.checked = ["seo", "cro", "paid", "strategy"].includes(box.value);
+      });
+
+      selectedIntegrationTools.clear();
+      ["ga4", "google-search-console", "google-ads", "meta-ads", "hubspot"].forEach((tool) => selectedIntegrationTools.add(tool));
+      applyIndustrySkillDefaults();
+      renderIntegrationPicker();
+      intakeStep = 1;
+      updateStepUi();
+      lastRunId = null;
+      lastBacklog = [];
+      document.getElementById("currentRunId").textContent = "-";
+      document.getElementById("syncMeta").textContent = "Task sync status will appear here.";
+      renderBacklog([]);
+      runEngine();
+      updateSeoPayloadTemplate();
+    }
+
+    function navigate(page) {
+      const normalized = String(page || "home");
+      document.querySelectorAll(".page").forEach((p) => p.classList.remove("active"));
+      const target = document.getElementById(`page-${normalized}`);
+      if (target) target.classList.add("active");
+
+      document.querySelectorAll(".nav-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.page === normalized);
+      });
+      document.querySelectorAll(".mobile-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.page === normalized);
+      });
+
+      if (normalized === "dashboard") {
+        loadDashboardData();
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.querySelectorAll(".nav-btn, .mobile-btn").forEach((btn) => {
+      btn.addEventListener("click", () => navigate(btn.dataset.page));
+    });
+
+    document.querySelectorAll("[data-nav]").forEach((btn) => {
+      btn.addEventListener("click", () => navigate(btn.dataset.nav));
+    });
+
+    document.getElementById("runBtn").addEventListener("click", async () => {
+      runEngine();
+      await runStrategyApi();
+    });
+    document.getElementById("sampleBtn").addEventListener("click", loadExample);
+    document.getElementById("promptBtn").addEventListener("click", buildPrompt);
+    document.getElementById("executeBtn").addEventListener("click", runExecutionApi);
+    document.getElementById("syncTasksBtn").addEventListener("click", syncTasksApi);
+    document.getElementById("seoRunBtn").addEventListener("click", runSeoModuleApi);
+    document.getElementById("contentGenerateBtn").addEventListener("click", generateContentFromApi);
+
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      const text = document.getElementById("promptBox").textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        document.getElementById("copyBtn").textContent = "Copied";
+        setTimeout(() => { document.getElementById("copyBtn").textContent = "Copy Prompt"; }, 1200);
+      } catch {
+        document.getElementById("copyBtn").textContent = "Copy failed";
+        setTimeout(() => { document.getElementById("copyBtn").textContent = "Copy Prompt"; }, 1200);
+      }
+    });
+
+    document.getElementById("nextStep1").addEventListener("click", nextStep);
+    document.getElementById("nextStep2").addEventListener("click", nextStep);
+    document.getElementById("nextStep3").addEventListener("click", nextStep);
+    document.getElementById("prevStep2").addEventListener("click", prevStep);
+    document.getElementById("prevStep3").addEventListener("click", prevStep);
+    document.getElementById("prevStep4").addEventListener("click", prevStep);
+
+    document.getElementById("input-industry").addEventListener("change", () => {
+      applyIndustrySkillDefaults();
+      runEngine();
+    });
+
+    [
+      "input-agency",
+      "input-business",
+      "input-industry",
+      "input-website",
+      "input-geography",
+      "input-product",
+      "input-audience",
+      "input-current",
+      "input-competitors",
+      "input-market",
+      "input-goal",
+      "input-goals",
+      "input-budget-range",
+      "input-timeline",
+      "input-capacity"
+    ].forEach((id) => {
+      document.getElementById(id).addEventListener("change", runEngine);
+    });
+    document.querySelectorAll(".channel-checkbox").forEach((box) => {
+      box.addEventListener("change", runEngine);
+    });
+
+    document.getElementById("workbenchSkill").addEventListener("change", buildPrompt);
+    document.getElementById("workbenchTask").addEventListener("change", buildPrompt);
+    document.getElementById("workbenchOutput").addEventListener("input", buildPrompt);
+    document.getElementById("seoModule").addEventListener("change", updateSeoPayloadTemplate);
+
+    applyIndustrySkillDefaults();
+    renderIntegrationPicker();
+    updateStepUi();
+    runEngine();
+    updateSeoPayloadTemplate();
+    checkApiHealth();
+    loadDashboardData();
+  </script>
+</body>
+</html>

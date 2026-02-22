@@ -1,53 +1,89 @@
 # Contributing
 
-How to add or improve skills in this marketing skills collection.
+Thanks for your interest in contributing to Marketing Skills! This guide will help you add new skills or improve existing ones.
+
+## Requesting a Skill
+
+You can also suggest new skills by [opening a skill request](https://github.com/coreyhaines31/marketingskills/issues/new?template=skill-request.yml).
 
 ## Adding a New Skill
 
-1. Fork this repo and create a new branch
-2. Create a folder inside `skills/` with a descriptive, hyphenated name
-3. Add a `SKILL.md` file following this structure:
+### 1. Create the skill directory
 
-```markdown
-# [Skill Name]
-
-## Purpose
-[What this skill does and what expertise it provides]
-
-## When to Use This Skill
-[Scenarios that should trigger this skill]
-
-## Core Frameworks / Knowledge
-[Main frameworks, best practices, and domain knowledge]
-
-## Process: How to [Do the Thing]
-[Step-by-step process — Step 1 should gather context from the user]
-
-## Output Format
-[Template for how the agent should structure its response]
+```bash
+mkdir -p skills/your-skill-name
 ```
 
-4. Update `README.md` to list your new skill
-5. Update `.claude-plugin/marketplace.json` with the new skill entry
-6. Submit a pull request
+### 2. Create the SKILL.md file
 
-## Improving an Existing Skill
+Every skill needs a `SKILL.md` file with YAML frontmatter:
 
-- Fix errors or outdated information
-- Add new frameworks or techniques
-- Improve output format templates
-- Add concrete examples
-- Clarify agent instructions
+```yaml
+---
+name: your-skill-name
+description: When to use this skill. Include trigger phrases and keywords that help agents identify relevant tasks.
+---
 
-## Adding a Tool Integration
+# Your Skill Name
 
-1. Create a `.md` file in `tools/integrations/`
-2. Cover: what the tool does, key capabilities, MCP connection steps, example queries
-3. Update `tools/REGISTRY.md` with the new entry
+Instructions for the agent go here...
+```
 
-## Guidelines
+Optional frontmatter fields: `license` (default: MIT), `metadata` (author, version, etc.)
 
-- Write for an AI agent audience — be specific and actionable
-- Include concrete examples, not just abstract advice
-- Use tables for structured information
-- Test your skill with an AI agent before submitting
+### 3. Follow the naming conventions
+
+- **Directory name**: lowercase, hyphens only (e.g., `email-sequence`)
+- **Name field**: must match directory name exactly
+- **Description**: 1-1024 characters, include trigger phrases
+
+### 4. Structure your skill
+
+```
+skills/your-skill-name/
+├── SKILL.md           # Required - main instructions
+├── references/        # Optional - additional documentation
+│   └── guide.md
+├── scripts/           # Optional - executable code
+│   └── helper.py
+└── assets/            # Optional - templates, images, data
+    └── template.json
+```
+
+### 5. Write effective instructions
+
+- Keep `SKILL.md` under 500 lines
+- Move detailed reference material to `references/`
+- Include step-by-step instructions
+- Add examples of inputs and outputs
+- Cover common edge cases
+
+## Improving Existing Skills
+
+1. Read the existing skill thoroughly
+2. Test your changes locally
+3. Keep changes focused and minimal
+4. Update the version in metadata if making significant changes
+
+## Submitting Your Contribution
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/new-skill-name`)
+3. Make your changes
+4. Test locally with an AI agent
+5. Submit a pull request using the appropriate template:
+   - [New Skill](?template=new-skill.md)
+   - [Skill Update](?template=skill-update.md)
+   - [Documentation](?template=documentation.md)
+
+## Skill Quality Checklist
+
+- [ ] `name` matches directory name
+- [ ] `description` clearly explains when to use the skill
+- [ ] Instructions are clear and actionable
+- [ ] No sensitive data or credentials
+- [ ] Follows existing skill patterns in the repo
+
+## Questions?
+
+Open an issue if you have questions or need help with your contribution.

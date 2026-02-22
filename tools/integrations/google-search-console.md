@@ -1,28 +1,147 @@
 # Google Search Console
 
-## What It Does
-Google Search Console monitors website visibility in Google Search results. It shows which keywords drive traffic, indexing status, and Core Web Vitals performance.
+Free tool for monitoring website search performance and indexing.
 
-## Key Capabilities for Marketing
-- **Search performance** - Track impressions, clicks, and average position
-- **Indexing status** - See which pages are indexed and identify crawl errors
-- **Core Web Vitals** - Monitor page experience signals
-- **Keyword data** - View search queries and landing pages
-- **Mobile usability** - Identify mobile-specific issues
-- **Sitemaps** - Submit and monitor XML sitemaps
+## Capabilities
 
-## How to Connect via MCP
-1. Log into Google Search Console
-2. Select property
-3. Go to Settings > Property Settings
-4. Verify site ownership (if needed)
-5. Create API credentials via Google Cloud
-6. Enable Search Console API
-7. Configure MCP with credentials
+| Integration | Available | Notes |
+|-------------|-----------|-------|
+| API | ✓ | Search Analytics API, URL Inspection API |
+| MCP | - | Not available |
+| CLI | - | Use gcloud or API scripts |
+| SDK | ✓ | Google API client libraries |
 
-## Example Agent Queries
-- "Show me the top 50 keywords driving traffic"
-- "Which pages have the lowest click-through rate?"
-- "What's our average ranking position for branded keywords?"
-- "Are there any critical indexing errors to fix?"
-- "How are our Core Web Vitals trending?"
+## Authentication
+
+- **Type**: OAuth 2.0 or Service Account
+- **Scopes**: `https://www.googleapis.com/auth/webmasters.readonly`
+- **Setup**: Create credentials in Google Cloud Console
+
+## Common Agent Operations
+
+### Get search analytics
+
+```bash
+POST https://searchconsole.googleapis.com/webmasters/v3/sites/{site_url}/searchAnalytics/query
+
+{
+  "startDate": "2024-01-01",
+  "endDate": "2024-01-31",
+  "dimensions": ["query"],
+  "rowLimit": 100
+}
+```
+
+### Get performance by page
+
+```bash
+POST https://searchconsole.googleapis.com/webmasters/v3/sites/{site_url}/searchAnalytics/query
+
+{
+  "startDate": "2024-01-01",
+  "endDate": "2024-01-31",
+  "dimensions": ["page"],
+  "rowLimit": 50
+}
+```
+
+### Get performance by country
+
+```bash
+POST https://searchconsole.googleapis.com/webmasters/v3/sites/{site_url}/searchAnalytics/query
+
+{
+  "startDate": "2024-01-01",
+  "endDate": "2024-01-31",
+  "dimensions": ["country", "query"],
+  "rowLimit": 100
+}
+```
+
+### Inspect URL
+
+```bash
+POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect
+
+{
+  "inspectionUrl": "https://example.com/page",
+  "siteUrl": "https://example.com/"
+}
+```
+
+### List sitemaps
+
+```bash
+GET https://searchconsole.googleapis.com/webmasters/v3/sites/{site_url}/sitemaps
+
+Authorization: Bearer {access_token}
+```
+
+### Submit sitemap
+
+```bash
+PUT https://searchconsole.googleapis.com/webmasters/v3/sites/{site_url}/sitemaps/{sitemap_url}
+
+Authorization: Bearer {access_token}
+```
+
+### Request indexing
+
+```bash
+POST https://indexing.googleapis.com/v3/urlNotifications:publish
+
+{
+  "url": "https://example.com/new-page",
+  "type": "URL_UPDATED"
+}
+```
+
+## Dimensions
+
+- `query` - Search query
+- `page` - Page URL
+- `country` - Country code
+- `device` - Device type (MOBILE, DESKTOP, TABLET)
+- `date` - Date
+- `searchAppearance` - Search result type
+
+## Metrics
+
+- `clicks` - Clicks from search
+- `impressions` - Search impressions
+- `ctr` - Click-through rate
+- `position` - Average position
+
+## Filters
+
+```json
+{
+  "dimensionFilterGroups": [{
+    "filters": [{
+      "dimension": "query",
+      "operator": "contains",
+      "expression": "keyword"
+    }]
+  }]
+}
+```
+
+## When to Use
+
+- Analyzing search performance
+- Finding keyword opportunities
+- Monitoring indexing status
+- Submitting new pages for indexing
+- Identifying crawl issues
+- Tracking position changes
+
+## Rate Limits
+
+- 200 queries per minute
+- 1,200 requests per minute
+
+## Relevant Skills
+
+- seo-audit
+- programmatic-seo
+- analytics-tracking

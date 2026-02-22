@@ -1,27 +1,159 @@
 # Segment
 
-## What It Does
-Segment is a customer data platform (CDP) that collects event data from multiple sources, resolves customer identity, and routes data to analytics, marketing, and business intelligence tools.
+Customer data platform for collecting, routing, and activating user data.
 
-## Key Capabilities for Marketing
-- **Data collection** - Unified tracking from websites, apps, and servers
-- **Identity resolution** - Unify customer profiles across devices and touchpoints
-- **Event routing** - Send data to 400+ destinations automatically
-- **Audience sync** - Activate audiences in ad platforms and CRM systems
-- **Data governance** - Control who can access what data
-- **Real-time segmentation** - Create audiences and sync instantly
+## Capabilities
 
-## How to Connect via MCP
-1. Log into Segment workspace
-2. Navigate to Connections > Catalog
-3. Create or manage API tokens in Settings > API Access
-4. Generate workspace token for API access
-5. Configure MCP with workspace ID and token
-6. Enable destination sources you want to sync
+| Integration | Available | Notes |
+|-------------|-----------|-------|
+| API | ✓ | Tracking API, Profile API, Config API |
+| MCP | - | Not available |
+| CLI | - | Not available |
+| SDK | ✓ | analytics.js, iOS, Android, server libraries |
 
-## Example Agent Queries
-- "Sync high-value customers to Facebook Ads as a custom audience"
-- "Create a unified profile for user [email]"
-- "Show me events collected from all sources for user [ID]"
-- "Route events to our data warehouse in real-time"
-- "Build an audience of users from our email who visited the site"
+## Authentication
+
+- **Tracking**: Write Key (per source)
+- **API**: Access Token (OAuth 2.0)
+- **Header**: `Authorization: Bearer {access_token}`
+
+## Common Agent Operations
+
+### Track event
+
+```bash
+POST https://api.segment.io/v1/track
+
+Authorization: Basic {base64(write_key:)}
+
+{
+  "userId": "user_123",
+  "event": "signup_completed",
+  "properties": {
+    "plan": "pro",
+    "method": "email"
+  }
+}
+```
+
+### Identify user
+
+```bash
+POST https://api.segment.io/v1/identify
+
+Authorization: Basic {base64(write_key:)}
+
+{
+  "userId": "user_123",
+  "traits": {
+    "email": "user@example.com",
+    "name": "John Doe",
+    "plan": "pro"
+  }
+}
+```
+
+### Track page view
+
+```bash
+POST https://api.segment.io/v1/page
+
+Authorization: Basic {base64(write_key:)}
+
+{
+  "userId": "user_123",
+  "name": "Pricing",
+  "properties": {
+    "title": "Pricing - Example",
+    "url": "https://example.com/pricing"
+  }
+}
+```
+
+### Batch events
+
+```bash
+POST https://api.segment.io/v1/batch
+
+Authorization: Basic {base64(write_key:)}
+
+{
+  "batch": [
+    {"type": "identify", "userId": "user_1", "traits": {"plan": "free"}},
+    {"type": "track", "userId": "user_1", "event": "signup"}
+  ]
+}
+```
+
+### Get user profile (Profile API)
+
+```bash
+GET https://profiles.segment.com/v1/spaces/{space_id}/collections/users/profiles/user_id:{user_id}/traits
+
+Authorization: Basic {base64(access_token:)}
+```
+
+### Get user events
+
+```bash
+GET https://profiles.segment.com/v1/spaces/{space_id}/collections/users/profiles/user_id:{user_id}/events
+
+Authorization: Basic {base64(access_token:)}
+```
+
+## JavaScript SDK
+
+```javascript
+// Initialize
+analytics.load('WRITE_KEY');
+
+// Identify user
+analytics.identify('user_123', {
+  email: 'user@example.com',
+  plan: 'pro'
+});
+
+// Track event
+analytics.track('Feature Used', {
+  feature_name: 'export'
+});
+
+// Page view
+analytics.page('Pricing');
+```
+
+## Key Concepts
+
+- **Sources** - Where data comes from (website, app, server)
+- **Destinations** - Where data goes (analytics, CRM, ads)
+- **Tracking Plan** - Schema for events and properties
+- **Protocols** - Data governance and validation
+- **Personas** - Unified user profiles
+- **Audiences** - Computed user segments
+
+## Common Destinations
+
+- Analytics: GA4, Mixpanel, Amplitude
+- CRM: HubSpot, Salesforce
+- Email: Customer.io, Mailchimp
+- Ads: Google Ads, Meta
+- Data Warehouse: BigQuery, Snowflake
+
+## When to Use
+
+- Centralizing event tracking
+- Routing data to multiple tools
+- Maintaining consistent tracking
+- Building unified user profiles
+- Syncing audiences across platforms
+
+## Rate Limits
+
+- 500 requests/second per source
+- Batch up to 500KB or 32KB per event
+
+## Relevant Skills
+
+- analytics-tracking
+- email-sequence
+- paid-ads

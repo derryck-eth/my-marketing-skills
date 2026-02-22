@@ -1,27 +1,150 @@
 # Zapier
 
-## What It Does
-Zapier connects apps together through no-code automations. It enables workflows where triggers in one app automatically execute actions in another app.
+Workflow automation platform connecting apps without code.
 
-## Key Capabilities for Marketing
-- **Workflow automation** - Connect 5000+ apps without code
-- **Triggers and actions** - Set up if-this-then-that automations
-- **Multi-step workflows** - Build complex automations with conditions
-- **Data passing** - Transfer data between applications
-- **Scheduling** - Run automations on a schedule
-- **Error handling** - Built-in error catching and notifications
+## Capabilities
 
-## How to Connect via MCP
-1. Log into Zapier account
-2. Go to Settings > API
-3. Generate API credentials
-4. Copy key and secret
-5. Configure MCP with credentials
-6. Grant access to Zaps to manage
+| Integration | Available | Notes |
+|-------------|-----------|-------|
+| API | ✓ | REST API for Zaps, tasks, and webhooks |
+| MCP | ✓ | Available via Zapier MCP server |
+| CLI | - | Not available |
+| SDK | - | API and webhooks only |
 
-## Example Agent Queries
-- "Create a Zap that sends Slack notification when new CRM lead arrives"
-- "Build an automation adding new email subscribers to Google Sheet"
-- "Set up workflow that creates task in project management tool"
-- "Connect form submissions to email notification"
-- "Show me all active Zaps and their performance"
+## Authentication
+
+- **Type**: API Key
+- **Header**: `X-API-Key: {api_key}`
+- **Get key**: Settings > API in Zapier account
+
+## Common Agent Operations
+
+### List Zaps
+
+```bash
+GET https://api.zapier.com/v1/zaps
+```
+
+### Get Zap details
+
+```bash
+GET https://api.zapier.com/v1/zaps/{zap_id}
+```
+
+### Turn Zap on/off
+
+```bash
+POST https://api.zapier.com/v1/zaps/{zap_id}/on
+POST https://api.zapier.com/v1/zaps/{zap_id}/off
+```
+
+### Get task history
+
+```bash
+GET https://api.zapier.com/v1/zaps/{zap_id}/tasks
+```
+
+### Get profile info
+
+```bash
+GET https://api.zapier.com/v1/profiles/me
+```
+
+## Webhooks (Triggers)
+
+### Catch Hook (receive data)
+
+Create a "Webhooks by Zapier" trigger to receive data:
+
+```bash
+POST https://hooks.zapier.com/hooks/catch/{webhook_id}/
+
+{
+  "event": "user.created",
+  "user_id": "123",
+  "email": "user@example.com"
+}
+```
+
+### Send data to Zapier
+
+Most common: trigger a Zap from your app:
+
+```bash
+POST https://hooks.zapier.com/hooks/catch/{account_id}/{hook_id}/
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "plan": "pro"
+}
+```
+
+## Common Marketing Automations
+
+### Lead capture to CRM
+```
+Typeform → Zapier → HubSpot
+```
+
+### New customer notifications
+```
+Stripe (new customer) → Zapier → Slack
+```
+
+### Email sequence triggers
+```
+Form submission → Zapier → Customer.io
+```
+
+### Social proof automation
+```
+New review → Zapier → Twitter/Slack
+```
+
+### Referral tracking
+```
+New referral → Zapier → Spreadsheet + Slack
+```
+
+## Webhook Payload Structure
+
+When sending to Zapier, structure data as flat JSON:
+
+```json
+{
+  "customer_name": "John Doe",
+  "customer_email": "john@example.com",
+  "plan_name": "Pro",
+  "plan_price": 99,
+  "signup_date": "2024-01-15"
+}
+```
+
+## Key Concepts
+
+- **Zap** - Automated workflow
+- **Trigger** - Event that starts a Zap
+- **Action** - Task performed by Zap
+- **Task** - Single action execution
+- **Filter** - Conditional logic
+- **Path** - Branching logic
+
+## When to Use
+
+- Connecting marketing tools without code
+- Automating lead routing
+- Syncing data between platforms
+- Triggering notifications
+- Building marketing workflows
+
+## Rate Limits
+
+- 100 requests per minute
+- Task limits by plan tier
+
+## Relevant Skills
+
+- email-sequence
+- analytics-tracking
+- referral-program

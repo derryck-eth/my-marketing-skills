@@ -1,28 +1,126 @@
-# Google Analytics 4
+# Google Analytics 4 (GA4)
 
-## What It Does
-Google Analytics 4 tracks website and app traffic, user behavior, conversions, and event data. It provides insights into user journeys, audience segments, and campaign performance.
+Web analytics platform for tracking user behavior, conversions, and marketing performance.
 
-## Key Capabilities for Marketing
-- **Real-time traffic monitoring** - Track active users and sessions in real-time
-- **Conversion tracking** - Monitor purchase completions, sign-ups, and key business events
-- **Audience segmentation** - Create custom audiences based on behavior, demographics, and events
-- **Event tracking** - Measure specific user interactions (clicks, form submissions, video plays)
-- **User journey analysis** - Understand the path users take before converting
-- **Campaign performance** - Attribution across channels and campaign ROI measurement
+## Capabilities
 
-## How to Connect via MCP
-1. Visit [Google Cloud Console](https://console.cloud.google.com)
-2. Create or select a project
-3. Enable the Google Analytics Data API
-4. Create a service account and download JSON key
-5. Connect via MCP using the service account credentials
-6. Grant the service account access to your Google Analytics 4 property
+| Integration | Available | Notes |
+|-------------|-----------|-------|
+| API | ✓ | Data API for reports, Admin API for configuration |
+| MCP | ✓ | Available via Google Analytics MCP server |
+| CLI | - | Use gcloud for some operations |
+| SDK | ✓ | gtag.js, Google Analytics SDK for mobile |
 
-## Example Agent Queries
-- "Show me traffic sources for the past 30 days"
-- "What's our conversion rate by user segment?"
-- "Which pages have the highest bounce rate?"
-- "Create an audience of users who viewed product pages but didn't purchase"
-- "What's the average session duration for mobile vs desktop?"
-- "Which campaigns drove the most revenue last month?"
+## Authentication
+
+- **Type**: OAuth 2.0 or Service Account
+- **Scopes**: `https://www.googleapis.com/auth/analytics.readonly` (read), `https://www.googleapis.com/auth/analytics.edit` (write)
+- **Setup**: Create credentials in Google Cloud Console
+
+## Common Agent Operations
+
+### Run a report (Data API)
+
+```bash
+POST https://analyticsdata.googleapis.com/v1beta/properties/{property_id}:runReport
+
+{
+  "dateRanges": [{"startDate": "30daysAgo", "endDate": "today"}],
+  "dimensions": [{"name": "sessionSource"}],
+  "metrics": [{"name": "sessions"}, {"name": "conversions"}]
+}
+```
+
+### Get real-time data
+
+```bash
+POST https://analyticsdata.googleapis.com/v1beta/properties/{property_id}:runRealtimeReport
+
+{
+  "dimensions": [{"name": "country"}],
+  "metrics": [{"name": "activeUsers"}]
+}
+```
+
+### List conversion events
+
+```bash
+GET https://analyticsadmin.googleapis.com/v1beta/properties/{property_id}/conversionEvents
+```
+
+### Create a conversion event
+
+```bash
+POST https://analyticsadmin.googleapis.com/v1beta/properties/{property_id}/conversionEvents
+
+{
+  "eventName": "purchase"
+}
+```
+
+## Client-Side Tracking
+
+### Send custom event (gtag.js)
+
+```javascript
+gtag('event', 'signup_completed', {
+  'method': 'email',
+  'plan': 'free'
+});
+```
+
+### Send event via Measurement Protocol
+
+```bash
+POST https://www.google-analytics.com/mp/collect?measurement_id={measurement_id}&api_secret={api_secret}
+
+{
+  "client_id": "client_123",
+  "events": [{
+    "name": "purchase",
+    "params": {
+      "value": 99.99,
+      "currency": "USD"
+    }
+  }]
+}
+```
+
+## Key Dimensions & Metrics
+
+### Common Dimensions
+- `sessionSource` - Traffic source
+- `sessionMedium` - Traffic medium
+- `sessionCampaignName` - Campaign name
+- `landingPage` - Entry page
+- `deviceCategory` - Device type
+- `country` - User country
+
+### Common Metrics
+- `sessions` - Total sessions
+- `activeUsers` - Active users
+- `newUsers` - New users
+- `conversions` - Conversion events
+- `engagementRate` - Engaged sessions rate
+- `averageSessionDuration` - Session duration
+
+## When to Use
+
+- Tracking website traffic and user behavior
+- Measuring marketing campaign performance
+- Setting up conversion tracking
+- Analyzing user journeys and funnels
+- Attribution modeling
+
+## Rate Limits
+
+- Data API: 10 requests per second per property
+- Admin API: Varies by endpoint
+- Measurement Protocol: 1M hits/day for free tier
+
+## Relevant Skills
+
+- analytics-tracking
+- ab-test-setup
+- seo-audit
+- page-cro

@@ -1,1 +1,6 @@
 .DS_Store
+.env
+backups/
+apps/agency-marketing-os/data/*.db
+apps/agency-marketing-os/data/*.db-shm
+apps/agency-marketing-os/data/*.db-wal

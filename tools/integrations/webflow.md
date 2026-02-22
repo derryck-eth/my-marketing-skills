@@ -1,27 +1,198 @@
 # Webflow
 
-## What It Does
-Webflow is a visual website builder and CMS platform enabling creation and management of websites without coding, including form submissions and content management.
+Visual web design and CMS platform for marketing sites.
 
-## Key Capabilities for Marketing
-- **Website design** - Visual builder for responsive websites
-- **CMS** - Manage content, collections, and dynamic pages
-- **Form submissions** - Capture leads and customer data
-- **Publishing** - Host sites with Webflow or export code
-- **E-commerce** - Sell products directly on Webflow sites
-- **Analytics** - Track form submissions and site performance
+## Capabilities
 
-## How to Connect via MCP
-1. Log into Webflow account
-2. Go to Account Settings > API
-3. Create an API token
-4. Copy token and site ID
-5. Configure MCP with credentials
-6. Grant access to forms and collections
+| Integration | Available | Notes |
+|-------------|-----------|-------|
+| API | ✓ | REST API for sites, CMS, forms |
+| MCP | - | Not available |
+| CLI | ✓ | Webflow CLI for devlink and apps |
+| SDK | ✓ | Official SDK for Node.js |
 
-## Example Agent Queries
-- "Get all form submissions from last week"
-- "Create a new blog post in our CMS"
-- "Export customer data from contact form submissions"
-- "What's the most popular page on our site?"
-- "Update product inventory in our e-commerce collection"
+## Authentication
+
+- **Type**: API Token (Site token or OAuth)
+- **Header**: `Authorization: Bearer {api_token}`
+- **Get token**: Site Settings > Integrations > API Access
+
+## Common Agent Operations
+
+### List sites
+
+```bash
+GET https://api.webflow.com/v2/sites
+
+Authorization: Bearer {api_token}
+```
+
+### Get site
+
+```bash
+GET https://api.webflow.com/v2/sites/{site_id}
+
+Authorization: Bearer {api_token}
+```
+
+### List collections
+
+```bash
+GET https://api.webflow.com/v2/sites/{site_id}/collections
+
+Authorization: Bearer {api_token}
+```
+
+### List collection items
+
+```bash
+GET https://api.webflow.com/v2/collections/{collection_id}/items
+
+Authorization: Bearer {api_token}
+```
+
+### Get collection item
+
+```bash
+GET https://api.webflow.com/v2/collections/{collection_id}/items/{item_id}
+
+Authorization: Bearer {api_token}
+```
+
+### Create collection item
+
+```bash
+POST https://api.webflow.com/v2/collections/{collection_id}/items
+
+Authorization: Bearer {api_token}
+
+{
+  "fieldData": {
+    "name": "Item Name",
+    "slug": "item-name",
+    "custom-field": "value"
+  }
+}
+```
+
+### Update collection item
+
+```bash
+PATCH https://api.webflow.com/v2/collections/{collection_id}/items/{item_id}
+
+Authorization: Bearer {api_token}
+
+{
+  "fieldData": {
+    "custom-field": "new value"
+  }
+}
+```
+
+### Publish collection items
+
+```bash
+POST https://api.webflow.com/v2/collections/{collection_id}/items/publish
+
+Authorization: Bearer {api_token}
+
+{
+  "itemIds": ["item_id_1", "item_id_2"]
+}
+```
+
+### List form submissions
+
+```bash
+GET https://api.webflow.com/v2/sites/{site_id}/forms/{form_id}/submissions
+
+Authorization: Bearer {api_token}
+```
+
+### Publish site
+
+```bash
+POST https://api.webflow.com/v2/sites/{site_id}/publish
+
+Authorization: Bearer {api_token}
+
+{
+  "publishToWebflowSubdomain": true,
+  "publishToCustomDomains": true
+}
+```
+
+## Node.js SDK
+
+```javascript
+const Webflow = require('webflow-api');
+
+const webflow = new Webflow({ token: 'api_token' });
+
+// List sites
+const sites = await webflow.sites.list();
+
+// Get collection items
+const items = await webflow.collections.items.listItems(collectionId);
+
+// Create item
+const item = await webflow.collections.items.createItem(collectionId, {
+  fieldData: {
+    name: 'New Item',
+    slug: 'new-item'
+  }
+});
+```
+
+## CLI Commands
+
+```bash
+# Install
+npm install -g @webflow/webflow-cli
+
+# Login
+webflow login
+
+# Initialize devlink
+webflow devlink init
+
+# Sync components
+webflow devlink sync
+```
+
+## CMS Structure
+
+- **Collections** - Content types (like blog posts, team members)
+- **Items** - Individual entries in a collection
+- **Fields** - Data fields on items
+
+## Common Field Types
+
+- `PlainText` - Simple text
+- `RichText` - Formatted content
+- `Image` - Image upload
+- `Link` - URL or page reference
+- `Reference` - Link to another collection
+- `Multi-Reference` - Multiple collection links
+- `Switch` - Boolean toggle
+- `Number` - Numeric value
+- `Date` - Date/time
+
+## When to Use
+
+- Marketing site CMS management
+- Blog/content publishing
+- Form submission handling
+- Automated content updates
+- Programmatic SEO pages
+
+## Rate Limits
+
+- 60 requests/minute (general)
+- 10 requests/minute (publishing)
+
+## Relevant Skills
+
+- programmatic-seo
+- content-strategy
+- page-cro

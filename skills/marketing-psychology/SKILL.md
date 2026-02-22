@@ -1,339 +1,455 @@
-# Marketing Psychology
+---
+name: marketing-psychology
+description: "When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user mentions 'psychology,' 'mental models,' 'cognitive bias,' 'persuasion,' 'behavioral science,' 'why people buy,' 'decision-making,' or 'consumer behavior.' This skill provides 70+ mental models organized for marketing application."
+metadata:
+  version: 1.0.0
+---
 
-## Purpose
-Marketing Psychology applies principles of behavioral science, cognitive psychology, and decision-making research to marketing strategy. This skill helps you understand and influence how people make decisions, perceive value, and take action—making your marketing more persuasive and effective.
+# Marketing Psychology & Mental Models
 
-## When to Use
-- Crafting compelling copy and value propositions
-- Designing pricing strategies and presenting offers
-- Creating landing pages and CTAs
-- Building customer testimonials and social proof
-- Planning promotions and discounts
-- Developing email campaigns
-- Designing product pages or sales processes
-- Understanding why customers choose competitors
-- Wanting to increase conversion rates without increasing traffic
+You are an expert in applying psychological principles and mental models to marketing. Your goal is to help users understand why people buy, how to influence behavior ethically, and how to make better marketing decisions.
 
-## Core Frameworks & Knowledge
+## How to Use This Skill
 
-### Cialdini's 6 Principles of Influence
-These are the most well-researched psychological principles in marketing:
+**Check for product marketing context first:**
+If `.claude/product-marketing-context.md` exists, read it before applying mental models. Use that context to tailor recommendations to the specific product and audience.
 
-**1. Reciprocity**
-- Principle: When someone does something for us, we naturally feel obligated to return the favor
-- Applications:
-  - Free content, tools, audits (people reciprocate by becoming customers)
-  - Give genuine value first before asking for something
-  - Free trial or sample (trial conversion rates are high because of reciprocity)
-  - Free consultation or assessment
-  - Free shipping after $X purchase
-- Example: HubSpot's free tools drive inbound leads because people feel reciprocal obligation
+Mental models are thinking tools that help you make better decisions, understand customer behavior, and create more effective marketing. When helping users:
 
-**2. Commitment & Consistency**
-- Principle: People want to be consistent with their prior commitments/statements
-- Applications:
-  - Start with small asks (email signup → free trial → paid conversion)
-  - Get people to commit publicly (sign petition, post testimonial, join community)
-  - Ask "Do you care about X?" before pitch (gets yes, creates consistency pressure)
-  - Onboarding milestones (each small win creates commitment to product)
-  - Loyalty programs (repeated purchases reinforce commitment)
-- Example: Free trial converts better than direct paid signup because it creates initial commitment
-
-**3. Social Proof**
-- Principle: People look to others' actions to determine correct behavior
-- Applications:
-  - Customer testimonials and case studies (especially from known companies)
-  - Social proof signals (user count, downloads, "X people signed up today")
-  - User-generated content and reviews
-  - Celebrity/influencer endorsements
-  - Crowd behavior ("most popular plan")
-  - Trust badges and certifications
-- Example: Showing "10,000+ happy customers" increases signups because of social proof
-
-**4. Authority**
-- Principle: People defer to experts and authority figures
-- Applications:
-  - Position founder/CEO as expert (thought leadership, content, speaking)
-  - Highlight credentials, experience, expertise
-  - Partner with respected institutions or people
-  - Cite research and data in marketing
-  - Awards and recognition
-  - Media mentions and third-party validation
-- Example: Including "Recommended by Y industry experts" increases credibility
-
-**5. Liking**
-- Principle: We're influenced by people we like
-- Applications:
-  - Founder visibility and personality (humanize your brand)
-  - Similarities (culture fit, values, industry focus)
-  - Compliments (gratitude, appreciation)
-  - Humor and authenticity in communications
-  - Team spotlights and bios
-  - Shared values (environmental, social impact)
-- Example: Founder stories and personalities drive stronger connection than faceless companies
-
-**6. Scarcity**
-- Principle: People perceive scarcity as valuable
-- Applications:
-  - Limited time offers (expires in X hours)
-  - Limited quantities (only X spots available)
-  - Early-bird pricing (ends when date hits)
-  - Exclusive offers (for email subscribers, for beta users)
-  - Urgency language ("Join before X date")
-  - Countdown timers on landing pages
-- Example: "Only 3 spots left" increases purchase intent more than "Spots available"
-
-### Loss Aversion
-- **Principle**: The pain of losing $100 is greater than the pleasure of gaining $100
-- **Applications**:
-  - Frame benefits as losses prevented ("Save X hours per week" vs "Get X hours back")
-  - Highlight what customers lose by not using your product
-  - Free trial emphasizes what they keep vs. what they might lose
-  - Risk reversal ("Money-back guarantee" reduces loss)
-  - Cost of inaction ("What does this inefficiency cost your business?")
-- **Example**: "Avoid X costly mistakes" converts better than "Achieve X positive outcomes"
-
-### Anchoring Effect
-- **Principle**: First number presented acts as anchor, influences subsequent judgments
-- **Applications**:
-  - Show higher price first, then your price looks cheaper ("Was $999, now $299")
-  - Anchor to competitor pricing (position your price favorably)
-  - Anchor to time investment ("Instead of 5 hours of work, this does it in 5 minutes")
-  - Anchor to higher tier to make middle tier look like sweet spot
-  - Anchor to real cost if using manual alternative
-- **Example**: Showing "competitors charge $5,000+" makes your $999 price look amazing
-
-### Framing Effects
-- **Principle**: Same information framed differently creates different decisions
-- **Applications**:
-  - "95% success rate" vs "5% failure rate" (same data, different perception)
-  - Positive framing (what you gain) vs. negative framing (what you avoid)
-  - Frequency framing ("$3 per day" vs "$90 per month")
-  - Relative framing ("Faster than 99% of alternatives")
-  - Concrete vs. abstract (specific benefits vs. vague claims)
-- **Example**: "$1 per day" frames subscription more favorably than "$365 per year"
-
-### IKEA Effect / Endowment Effect
-- **Principle**: People value things more when they've invested effort into them
-- **Applications**:
-  - Onboarding process (the more they set up, the more they value it)
-  - Customer success sequences (help them see their progress)
-  - Customization options (make product "theirs")
-  - Setup process (effort increases commitment)
-  - Milestone celebrations (highlight their achievements)
-- **Example**: Customers who complete full onboarding have 5x higher retention
-
-### Peak-End Rule
-- **Principle**: People judge experiences based on peak moments and how they end, not average
-- **Applications**:
-  - Create peak moments (product breakthrough, customer win)
-  - End interactions strongly (memorable sign-off, surprising delight)
-  - Highlight best use-cases (showcase when product shines)
-  - End emails/calls with clear benefit or next step
-  - Memorable touchpoints in customer journey
-- **Example**: One customer success win can outweigh months of mediocre results
-
-### Paradox of Choice
-- **Principle**: Too many options paralyzes people and decreases satisfaction
-- **Applications**:
-  - Limit pricing tiers (3-4 max, not 10)
-  - Guide customers to "best choice" (highlight most popular)
-  - Simplify feature lists (show top benefits, not everything)
-  - Simplify decision tree (fewer steps, clearer path)
-  - Bundle options (don't make customers choose everything)
-- **Example**: Companies with 3 pricing tiers convert better than those with 5+
-
-### Default Effect / Status Quo Bias
-- **Principle**: People prefer the default option and resist change
-- **Applications**:
-  - Set smart defaults (most popular plan is pre-selected)
-  - Make desired action the easier path (fewer clicks)
-  - Default to opt-in for trials, opt-out for extras
-  - Highlight "recommended" or "most popular"
-  - Change default to influence behavior
-- **Example**: Pre-selecting annual billing increases annual conversions significantly
-
-### Cognitive Biases in Pricing
-- **Charm pricing**: $9.99 feels cheaper than $10 (digits matter)
-- **Prestige pricing**: Higher price signals quality (expensive feels better)
-- **Bundling**: Multiple items together feels like better value
-- **Decoy effect**: Adding third expensive option makes middle option look better
-- **Price gouging perception**: 100% increase feels unfair; 20% gradual increases don't
-
-## Process (Step-by-Step)
-
-### Phase 1: Understand Your Audience Psychology (1-2 weeks)
-1. **Customer research**: Conduct interviews with 10-15 customers (Why did they buy? What almost prevented them? What was the final decision driver?)
-2. **Prospect research**: Survey prospects who didn't convert (What would have convinced them? What were they afraid of?)
-3. **Competitor analysis**: What psychological triggers do competitors use? Where are gaps?
-4. **Objection mapping**: List all customer concerns and hesitations
-5. **Pain point mapping**: What are the deepest pains your product solves?
-6. **Value mapping**: What outcomes do customers care most about? What does this mean for them?
-7. **Document insights**: Summarize psychological drivers and objections
-
-### Phase 2: Identify Applicable Principles (1 week)
-1. **Map Cialdini principles**: Which of the 6 principles apply to your customers?
-   - Reciprocity: Can you give value upfront?
-   - Commitment: Can you get small initial commitments?
-   - Social proof: What social proof do you have access to?
-   - Authority: What expertise can you demonstrate?
-   - Liking: How can you build connection?
-   - Scarcity: What scarcity is legitimate?
-2. **Loss aversion**: What losses can customers avoid with your product?
-3. **Anchoring opportunities**: What anchors make your offer look better?
-4. **Framing opportunities**: How can you frame benefits more compellingly?
-5. **Choice architecture**: How can you simplify decision-making?
-6. **Document**: Create list of applicable principles with specific applications
-
-### Phase 3: Audit Current Marketing (1 week)
-1. **Landing page audit**: Are we using psychological principles? Which are missing?
-2. **Copy audit**: Does our messaging trigger loss aversion? Use social proof? Frame compellingly?
-3. **Pricing audit**: Is pricing optimized? Are we using charm pricing? Anchoring? Best selection highlighted?
-4. **Objection handling**: Do we address common objections? Use risk reversal?
-5. **Social proof audit**: Are we showcasing testimonials, reviews, user count?
-6. **Authority audit**: Are we positioned as experts?
-7. **CTA audit**: Are CTAs clear? Do they create urgency? Reduce friction?
-
-### Phase 4: Implement Psychological Principles (2-4 weeks)
-1. **Copy rewrite**: Reframe benefits using loss aversion and emotional triggers
-2. **Social proof additions**: Add testimonials, user count, trust badges, results
-3. **Scarcity/urgency**: Where legitimate, add scarcity messaging and countdown timers
-4. **Simplify choices**: Reduce pricing tiers, highlight recommended options
-5. **Risk reversal**: Add guarantee, trial, or money-back offer
-6. **Anchor pricing**: Show comparison to higher price or competitor pricing
-7. **Authority signals**: Add credentials, awards, expert endorsements
-8. **Objection handling**: Proactively address common concerns and doubts
-9. **Framing improvements**: Reframe benefits in more compelling ways
-10. **Design improvements**: Use visual hierarchy to guide attention to important elements
-
-### Phase 5: Test & Measure (Ongoing)
-1. **A/B test copy**: Test psychological frames (loss aversion vs. gain framing)
-2. **Test pricing**: Test charm pricing, anchors, tier highlighting
-3. **Test social proof**: Test testimonial placements, counts, specificity
-4. **Test scarcity**: Test countdown timers, limited availability messaging
-5. **Measure results**: Track conversion rate, time to decision, customer satisfaction
-6. **Iterate**: Double down on what works, remove what doesn't
-7. **Document**: Build playbook of what works for your audience
-
-### Phase 6: Scale Winning Elements (Ongoing)
-1. **Apply across channels**: Replicate successful psychology across landing pages, email, ads
-2. **Train team**: Ensure all marketing communications use these principles
-3. **Update sales materials**: Apply psychology to sales decks, proposals
-4. **Educate sales team**: Give them understanding of psychological triggers
-5. **Monitor changes**: Track how principles perform over time
-6. **Evolve**: As market/audience changes, principles may need adjustment
-
-## Output Format
-
-### Psychological Principles Audit Document
-```
-# Marketing Psychology Audit - [Product/Company]
-
-## Current Analysis
-
-### Which Cialdini Principles Are We Using?
-- [ ] Reciprocity: [How are we using it?]
-- [ ] Commitment & Consistency: [How are we using it?]
-- [ ] Social Proof: [How are we using it?]
-- [ ] Authority: [How are we using it?]
-- [ ] Liking: [How are we using it?]
-- [ ] Scarcity: [How are we using it?]
-
-### Opportunities to Implement
-
-#### High Impact
-1. [Principle] - [Specific opportunity] - [Expected impact on conversion]
-2. [Principle] - [Specific opportunity] - [Expected impact on conversion]
-
-#### Medium Impact
-1. [Principle] - [Specific opportunity]
-2. [Principle] - [Specific opportunity]
-
-#### Quick Wins
-1. [Change] - [Implementation time] - [Expected impact]
-2. [Change] - [Implementation time] - [Expected impact]
-
-## Customer Psychology Insights
-
-### Primary Decision Drivers
-1. [Benefit/outcome customers care most about]
-2. [Benefit/outcome customers care most about]
-3. [Benefit/outcome customers care most about]
-
-### Key Objections
-1. [Objection] - [Best counter-argument using psychology]
-2. [Objection] - [Best counter-argument using psychology]
-
-### Losses Customers Fear
-1. [Loss] - [How product prevents this]
-2. [Loss] - [How product prevents this]
-```
-
-### Copy Rewrite Template (Loss Aversion Example)
-```
-# Copy Rewrite - [Page/Email]
-
-## Original Copy
-[Old version]
-
-## Psychological Frame: Loss Aversion
-**Insight**: [What are customers losing without this?]
-
-## Rewritten Copy
-[New version focusing on avoiding losses, preventing problems, or maintaining status]
-
-## Expected Impact
-- Emotional resonance: [How this should feel more important]
-- Conversion impact: [Expected change]
-```
-
-### Pricing Psychology Optimization Checklist
-```
-# Pricing Optimization Using Psychology
-
-## Anchoring
-- [ ] Show competitor pricing (makes yours look better)
-- [ ] Show value of manual alternative
-- [ ] Show previous price if raising
-- [ ] Tier tiers by value to guide selection
-
-## Charm Pricing
-- [ ] Check all prices end in .99 or .95
-- [ ] Avoid round numbers ($100 → $99)
-- [ ] Monthly pricing: $X/month (not $X/year)
-
-## Choice Architecture
-- [ ] Highlight "most popular" tier
-- [ ] Pre-select recommended option
-- [ ] Limit to 3 tiers maximum
-- [ ] Make annual option 15-20% cheaper than monthly
-
-## Social Proof
-- [ ] Show % of users on each tier
-- [ ] Show "most customers choose" option
-- [ ] Display number of customers on tier
-- [ ] Show growth trajectory
-
-## Scarcity
-- [ ] Limited time early-bird pricing
-- [ ] Limited spots available
-- [ ] Grandfather pricing for existing customers
-- [ ] Countdown timer on special offer
-
-## Risk Reversal
-- [ ] Money-back guarantee
-- [ ] Free trial
-- [ ] Satisfaction promise
-- [ ] Easy cancellation
-```
+1. Identify which mental models apply to their situation
+2. Explain the psychology behind the model
+3. Provide specific marketing applications
+4. Suggest how to implement ethically
 
 ---
 
-## Key Takeaways
-- Psychology is most effective when applied authentically—manipulation is obvious and backfires
-- Small psychological tweaks compound—the sum of 20 small improvements drives big conversion gains
-- Test everything—psychology principles apply differently across industries, audiences, and products
-- Loss aversion is powerful—frame benefits as losses prevented, not gains achieved
-- Social proof is scalable—it costs nothing but provides huge conversion lift
-- Scarcity works—but only when it's real and honest
-- Simplify choices—fewer options convert better than more, even if more seems better
+## Foundational Thinking Models
+
+These models sharpen your strategy and help you solve the right problems.
+
+### First Principles
+Break problems down to basic truths and build solutions from there. Instead of copying competitors, ask "why" repeatedly to find root causes. Use the 5 Whys technique to tunnel down to what really matters.
+
+**Marketing application**: Don't assume you need content marketing because competitors do. Ask why you need it, what problem it solves, and whether there's a better solution.
+
+### Jobs to Be Done
+People don't buy products—they "hire" them to get a job done. Focus on the outcome customers want, not features.
+
+**Marketing application**: A drill buyer doesn't want a drill—they want a hole. Frame your product around the job it accomplishes, not its specifications.
+
+### Circle of Competence
+Know what you're good at and stay within it. Venture outside only with proper learning or expert help.
+
+**Marketing application**: Don't chase every channel. Double down where you have genuine expertise and competitive advantage.
+
+### Inversion
+Instead of asking "How do I succeed?", ask "What would guarantee failure?" Then avoid those things.
+
+**Marketing application**: List everything that would make your campaign fail—confusing messaging, wrong audience, slow landing page—then systematically prevent each.
+
+### Occam's Razor
+The simplest explanation is usually correct. Avoid overcomplicating strategies or attributing results to complex causes when simple ones suffice.
+
+**Marketing application**: If conversions dropped, check the obvious first (broken form, page speed) before assuming complex attribution issues.
+
+### Pareto Principle (80/20 Rule)
+Roughly 80% of results come from 20% of efforts. Identify and focus on the vital few.
+
+**Marketing application**: Find the 20% of channels, customers, or content driving 80% of results. Cut or reduce the rest.
+
+### Local vs. Global Optima
+A local optimum is the best solution nearby, but a global optimum is the best overall. Don't get stuck optimizing the wrong thing.
+
+**Marketing application**: Optimizing email subject lines (local) won't help if email isn't the right channel (global). Zoom out before zooming in.
+
+### Theory of Constraints
+Every system has one bottleneck limiting throughput. Find and fix that constraint before optimizing elsewhere.
+
+**Marketing application**: If your funnel converts well but traffic is low, more conversion optimization won't help. Fix the traffic bottleneck first.
+
+### Opportunity Cost
+Every choice has a cost—what you give up by not choosing alternatives. Consider what you're saying no to.
+
+**Marketing application**: Time spent on a low-ROI channel is time not spent on high-ROI activities. Always compare against alternatives.
+
+### Law of Diminishing Returns
+After a point, additional investment yields progressively smaller gains.
+
+**Marketing application**: The 10th blog post won't have the same impact as the first. Know when to diversify rather than double down.
+
+### Second-Order Thinking
+Consider not just immediate effects, but the effects of those effects.
+
+**Marketing application**: A flash sale boosts revenue (first order) but may train customers to wait for discounts (second order).
+
+### Map ≠ Territory
+Models and data represent reality but aren't reality itself. Don't confuse your analytics dashboard with actual customer experience.
+
+**Marketing application**: Your customer persona is a useful model, but real customers are more complex. Stay in touch with actual users.
+
+### Probabilistic Thinking
+Think in probabilities, not certainties. Estimate likelihoods and plan for multiple outcomes.
+
+**Marketing application**: Don't bet everything on one campaign. Spread risk and plan for scenarios where your primary strategy underperforms.
+
+### Barbell Strategy
+Combine extreme safety with small high-risk/high-reward bets. Avoid the mediocre middle.
+
+**Marketing application**: Put 80% of budget into proven channels, 20% into experimental bets. Avoid moderate-risk, moderate-reward middle.
+
+---
+
+## Understanding Buyers & Human Psychology
+
+These models explain how customers think, decide, and behave.
+
+### Fundamental Attribution Error
+People attribute others' behavior to character, not circumstances. "They didn't buy because they're not serious" vs. "The checkout was confusing."
+
+**Marketing application**: When customers don't convert, examine your process before blaming them. The problem is usually situational, not personal.
+
+### Mere Exposure Effect
+People prefer things they've seen before. Familiarity breeds liking.
+
+**Marketing application**: Consistent brand presence builds preference over time. Repetition across channels creates comfort and trust.
+
+### Availability Heuristic
+People judge likelihood by how easily examples come to mind. Recent or vivid events seem more common.
+
+**Marketing application**: Case studies and testimonials make success feel more achievable. Make positive outcomes easy to imagine.
+
+### Confirmation Bias
+People seek information confirming existing beliefs and ignore contradictory evidence.
+
+**Marketing application**: Understand what your audience already believes and align messaging accordingly. Fighting beliefs head-on rarely works.
+
+### The Lindy Effect
+The longer something has survived, the longer it's likely to continue. Old ideas often outlast new ones.
+
+**Marketing application**: Proven marketing principles (clear value props, social proof) outlast trendy tactics. Don't abandon fundamentals for fads.
+
+### Mimetic Desire
+People want things because others want them. Desire is socially contagious.
+
+**Marketing application**: Show that desirable people want your product. Waitlists, exclusivity, and social proof trigger mimetic desire.
+
+### Sunk Cost Fallacy
+People continue investing in something because of past investment, even when it's no longer rational.
+
+**Marketing application**: Know when to kill underperforming campaigns. Past spend shouldn't justify future spend if results aren't there.
+
+### Endowment Effect
+People value things more once they own them.
+
+**Marketing application**: Free trials, samples, and freemium models let customers "own" the product, making them reluctant to give it up.
+
+### IKEA Effect
+People value things more when they've put effort into creating them.
+
+**Marketing application**: Let customers customize, configure, or build something. Their investment increases perceived value and commitment.
+
+### Zero-Price Effect
+Free isn't just a low price—it's psychologically different. "Free" triggers irrational preference.
+
+**Marketing application**: Free tiers, free trials, and free shipping have disproportionate appeal. The jump from $1 to $0 is bigger than $2 to $1.
+
+### Hyperbolic Discounting / Present Bias
+People strongly prefer immediate rewards over future ones, even when waiting is more rational.
+
+**Marketing application**: Emphasize immediate benefits ("Start saving time today") over future ones ("You'll see ROI in 6 months").
+
+### Status-Quo Bias
+People prefer the current state of affairs. Change requires effort and feels risky.
+
+**Marketing application**: Reduce friction to switch. Make the transition feel safe and easy. "Import your data in one click."
+
+### Default Effect
+People tend to accept pre-selected options. Defaults are powerful.
+
+**Marketing application**: Pre-select the plan you want customers to choose. Opt-out beats opt-in for subscriptions (ethically applied).
+
+### Paradox of Choice
+Too many options overwhelm and paralyze. Fewer choices often lead to more decisions.
+
+**Marketing application**: Limit options. Three pricing tiers beat seven. Recommend a single "best for most" option.
+
+### Goal-Gradient Effect
+People accelerate effort as they approach a goal. Progress visualization motivates action.
+
+**Marketing application**: Show progress bars, completion percentages, and "almost there" messaging to drive completion.
+
+### Peak-End Rule
+People judge experiences by the peak (best or worst moment) and the end, not the average.
+
+**Marketing application**: Design memorable peaks (surprise upgrades, delightful moments) and strong endings (thank you pages, follow-up emails).
+
+### Zeigarnik Effect
+Unfinished tasks occupy the mind more than completed ones. Open loops create tension.
+
+**Marketing application**: "You're 80% done" creates pull to finish. Incomplete profiles, abandoned carts, and cliffhangers leverage this.
+
+### Pratfall Effect
+Competent people become more likable when they show a small flaw. Perfection is less relatable.
+
+**Marketing application**: Admitting a weakness ("We're not the cheapest, but...") can increase trust and differentiation.
+
+### Curse of Knowledge
+Once you know something, you can't imagine not knowing it. Experts struggle to explain simply.
+
+**Marketing application**: Your product seems obvious to you but confusing to newcomers. Test copy with people unfamiliar with your space.
+
+### Mental Accounting
+People treat money differently based on its source or intended use, even though money is fungible.
+
+**Marketing application**: Frame costs in favorable mental accounts. "$3/day" feels different than "$90/month" even though it's the same.
+
+### Regret Aversion
+People avoid actions that might cause regret, even if the expected outcome is positive.
+
+**Marketing application**: Address regret directly. Money-back guarantees, free trials, and "no commitment" messaging reduce regret fear.
+
+### Bandwagon Effect / Social Proof
+People follow what others are doing. Popularity signals quality and safety.
+
+**Marketing application**: Show customer counts, testimonials, logos, reviews, and "trending" indicators. Numbers create confidence.
+
+---
+
+## Influencing Behavior & Persuasion
+
+These models help you ethically influence customer decisions.
+
+### Reciprocity Principle
+People feel obligated to return favors. Give first, and people want to give back.
+
+**Marketing application**: Free content, free tools, and generous free tiers create reciprocal obligation. Give value before asking for anything.
+
+### Commitment & Consistency
+Once people commit to something, they want to stay consistent with that commitment.
+
+**Marketing application**: Get small commitments first (email signup, free trial). People who've taken one step are more likely to take the next.
+
+### Authority Bias
+People defer to experts and authority figures. Credentials and expertise create trust.
+
+**Marketing application**: Feature expert endorsements, certifications, "featured in" logos, and thought leadership content.
+
+### Liking / Similarity Bias
+People say yes to those they like and those similar to themselves.
+
+**Marketing application**: Use relatable spokespeople, founder stories, and community language. "Built by marketers for marketers" signals similarity.
+
+### Unity Principle
+Shared identity drives influence. "One of us" is powerful.
+
+**Marketing application**: Position your brand as part of the customer's tribe. Use insider language and shared values.
+
+### Scarcity / Urgency Heuristic
+Limited availability increases perceived value. Scarcity signals desirability.
+
+**Marketing application**: Limited-time offers, low-stock warnings, and exclusive access create urgency. Only use when genuine.
+
+### Foot-in-the-Door Technique
+Start with a small request, then escalate. Compliance with small requests leads to compliance with larger ones.
+
+**Marketing application**: Free trial → paid plan → annual plan → enterprise. Each step builds on the last.
+
+### Door-in-the-Face Technique
+Start with an unreasonably large request, then retreat to what you actually want. The contrast makes the second request seem reasonable.
+
+**Marketing application**: Show enterprise pricing first, then reveal the affordable starter plan. The contrast makes it feel like a deal.
+
+### Loss Aversion / Prospect Theory
+Losses feel roughly twice as painful as equivalent gains feel good. People will work harder to avoid losing than to gain.
+
+**Marketing application**: Frame in terms of what they'll lose by not acting. "Don't miss out" beats "You could gain."
+
+### Anchoring Effect
+The first number people see heavily influences subsequent judgments.
+
+**Marketing application**: Show the higher price first (original price, competitor price, enterprise tier) to anchor expectations.
+
+### Decoy Effect
+Adding a third, inferior option makes one of the original two look better.
+
+**Marketing application**: A "decoy" pricing tier that's clearly worse value makes your preferred tier look like the obvious choice.
+
+### Framing Effect
+How something is presented changes how it's perceived. Same facts, different frames.
+
+**Marketing application**: "90% success rate" vs. "10% failure rate" are identical but feel different. Frame positively.
+
+### Contrast Effect
+Things seem different depending on what they're compared to.
+
+**Marketing application**: Show the "before" state clearly. The contrast with your "after" makes improvements vivid.
+
+---
+
+## Pricing Psychology
+
+These models specifically address how people perceive and respond to prices.
+
+### Charm Pricing / Left-Digit Effect
+Prices ending in 9 seem significantly lower than the next round number. $99 feels much cheaper than $100.
+
+**Marketing application**: Use .99 or .95 endings for value-focused products. The left digit dominates perception.
+
+### Rounded-Price (Fluency) Effect
+Round numbers feel premium and are easier to process. $100 signals quality; $99 signals value.
+
+**Marketing application**: Use round prices for premium products ($500/month), charm prices for value products ($497/month).
+
+### Rule of 100
+For prices under $100, percentage discounts seem larger ("20% off"). For prices over $100, absolute discounts seem larger ("$50 off").
+
+**Marketing application**: $80 product: "20% off" beats "$16 off." $500 product: "$100 off" beats "20% off."
+
+### Price Relativity / Good-Better-Best
+People judge prices relative to options presented. A middle tier seems reasonable between cheap and expensive.
+
+**Marketing application**: Three tiers where the middle is your target. The expensive tier makes it look reasonable; the cheap tier provides an anchor.
+
+### Mental Accounting (Pricing)
+Framing the same price differently changes perception.
+
+**Marketing application**: "$1/day" feels cheaper than "$30/month." "Less than your morning coffee" reframes the expense.
+
+---
+
+## Design & Delivery Models
+
+These models help you design effective marketing systems.
+
+### Hick's Law
+Decision time increases with the number and complexity of choices. More options = slower decisions = more abandonment.
+
+**Marketing application**: Simplify choices. One clear CTA beats three. Fewer form fields beat more.
+
+### AIDA Funnel
+Attention → Interest → Desire → Action. The classic customer journey model.
+
+**Marketing application**: Structure pages and campaigns to move through each stage. Capture attention before building desire.
+
+### Rule of 7
+Prospects need roughly 7 touchpoints before converting. One ad rarely converts; sustained presence does.
+
+**Marketing application**: Build multi-touch campaigns across channels. Retargeting, email sequences, and consistent presence compound.
+
+### Nudge Theory / Choice Architecture
+Small changes in how choices are presented significantly influence decisions.
+
+**Marketing application**: Default selections, strategic ordering, and friction reduction guide behavior without restricting choice.
+
+### BJ Fogg Behavior Model
+Behavior = Motivation × Ability × Prompt. All three must be present for action.
+
+**Marketing application**: High motivation but hard to do = won't happen. Easy to do but no prompt = won't happen. Design for all three.
+
+### EAST Framework
+Make desired behaviors: Easy, Attractive, Social, Timely.
+
+**Marketing application**: Reduce friction (easy), make it appealing (attractive), show others doing it (social), ask at the right moment (timely).
+
+### COM-B Model
+Behavior requires: Capability, Opportunity, Motivation.
+
+**Marketing application**: Can they do it (capability)? Is the path clear (opportunity)? Do they want to (motivation)? Address all three.
+
+### Activation Energy
+The initial energy required to start something. High activation energy prevents action even if the task is easy overall.
+
+**Marketing application**: Reduce starting friction. Pre-fill forms, offer templates, show quick wins. Make the first step trivially easy.
+
+### North Star Metric
+One metric that best captures the value you deliver to customers. Focus creates alignment.
+
+**Marketing application**: Identify your North Star (active users, completed projects, revenue per customer) and align all efforts toward it.
+
+### The Cobra Effect
+When incentives backfire and produce the opposite of intended results.
+
+**Marketing application**: Test incentive structures. A referral bonus might attract low-quality referrals gaming the system.
+
+---
+
+## Growth & Scaling Models
+
+These models explain how marketing compounds and scales.
+
+### Feedback Loops
+Output becomes input, creating cycles. Positive loops accelerate growth; negative loops create decline.
+
+**Marketing application**: Build virtuous cycles: more users → more content → better SEO → more users. Identify and strengthen positive loops.
+
+### Compounding
+Small, consistent gains accumulate into large results over time. Early gains matter most.
+
+**Marketing application**: Consistent content, SEO, and brand building compound. Start early; benefits accumulate exponentially.
+
+### Network Effects
+A product becomes more valuable as more people use it.
+
+**Marketing application**: Design features that improve with more users: shared workspaces, integrations, marketplaces, communities.
+
+### Flywheel Effect
+Sustained effort creates momentum that eventually maintains itself. Hard to start, easy to maintain.
+
+**Marketing application**: Content → traffic → leads → customers → case studies → more content. Each element powers the next.
+
+### Switching Costs
+The price (time, money, effort, data) of changing to a competitor. High switching costs create retention.
+
+**Marketing application**: Increase switching costs ethically: integrations, data accumulation, workflow customization, team adoption.
+
+### Exploration vs. Exploitation
+Balance trying new things (exploration) with optimizing what works (exploitation).
+
+**Marketing application**: Don't abandon working channels for shiny new ones, but allocate some budget to experiments.
+
+### Critical Mass / Tipping Point
+The threshold after which growth becomes self-sustaining.
+
+**Marketing application**: Focus resources on reaching critical mass in one segment before expanding. Depth before breadth.
+
+### Survivorship Bias
+Focusing on successes while ignoring failures that aren't visible.
+
+**Marketing application**: Study failed campaigns, not just successful ones. The viral hit you're copying had 99 failures you didn't see.
+
+---
+
+## Quick Reference
+
+When facing a marketing challenge, consider:
+
+| Challenge | Relevant Models |
+|-----------|-----------------|
+| Low conversions | Hick's Law, Activation Energy, BJ Fogg, Friction |
+| Price objections | Anchoring, Framing, Mental Accounting, Loss Aversion |
+| Building trust | Authority, Social Proof, Reciprocity, Pratfall Effect |
+| Increasing urgency | Scarcity, Loss Aversion, Zeigarnik Effect |
+| Retention/churn | Endowment Effect, Switching Costs, Status-Quo Bias |
+| Growth stalling | Theory of Constraints, Local vs Global Optima, Compounding |
+| Decision paralysis | Paradox of Choice, Default Effect, Nudge Theory |
+| Onboarding | Goal-Gradient, IKEA Effect, Commitment & Consistency |
+
+---
+
+## Task-Specific Questions
+
+1. What specific behavior are you trying to influence?
+2. What does your customer believe before encountering your marketing?
+3. Where in the journey (awareness → consideration → decision) is this?
+4. What's currently preventing the desired action?
+5. Have you tested this with real customers?
+
+---
+
+## Related Skills
+
+- **page-cro**: Apply psychology to page optimization
+- **copywriting**: Write copy using psychological principles
+- **popup-cro**: Use triggers and psychology in popups
+- **pricing-page optimization**: See page-cro for pricing psychology
+- **ab-test-setup**: Test psychological hypotheses

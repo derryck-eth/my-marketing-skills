@@ -1,27 +1,176 @@
 # Shopify
 
-## What It Does
-Shopify is an e-commerce platform for creating online stores, managing products, processing orders, and tracking customer data and sales performance.
+E-commerce platform for online stores and retail.
 
-## Key Capabilities for Marketing
-- **Product management** - Create, organize, and manage product catalog
-- **Orders** - Process and track customer orders
-- **Customers** - Maintain customer profiles and purchase history
-- **Collections** - Organize products into categories
-- **Analytics** - Track sales, traffic, and customer behavior
-- **Marketing tools** - Email marketing, discounts, and campaigns
+## Capabilities
 
-## How to Connect via MCP
-1. Log into Shopify admin
-2. Go to Settings > Apps and Integrations > Develop Apps
-3. Create a custom app
-4. Generate API credentials (access token)
-5. Copy store ID/domain
-6. Configure MCP with credentials
+| Integration | Available | Notes |
+|-------------|-----------|-------|
+| API | ✓ | REST Admin API, Storefront API, GraphQL |
+| MCP | - | Not available |
+| CLI | ✓ | Shopify CLI for themes and apps |
+| SDK | ✓ | Official libraries for multiple languages |
 
-## Example Agent Queries
-- "Show me the top 10 best-selling products this month"
-- "What's the average order value and customer acquisition cost?"
-- "Create a discount code for a marketing campaign"
-- "Find customers who haven't purchased in 6 months"
-- "Get revenue report broken down by product category"
+## Authentication
+
+- **Type**: Access Token (Custom App or OAuth)
+- **Header**: `X-Shopify-Access-Token: {access_token}`
+- **Base URL**: `https://{shop}.myshopify.com/admin/api/2024-01/`
+
+## Common Agent Operations
+
+### Get shop info
+
+```bash
+GET https://{shop}.myshopify.com/admin/api/2024-01/shop.json
+
+X-Shopify-Access-Token: {access_token}
+```
+
+### List products
+
+```bash
+GET https://{shop}.myshopify.com/admin/api/2024-01/products.json?limit=50
+
+X-Shopify-Access-Token: {access_token}
+```
+
+### Get product
+
+```bash
+GET https://{shop}.myshopify.com/admin/api/2024-01/products/{product_id}.json
+
+X-Shopify-Access-Token: {access_token}
+```
+
+### Create product
+
+```bash
+POST https://{shop}.myshopify.com/admin/api/2024-01/products.json
+
+X-Shopify-Access-Token: {access_token}
+
+{
+  "product": {
+    "title": "Product Name",
+    "body_html": "<p>Description</p>",
+    "vendor": "Brand",
+    "product_type": "Category",
+    "variants": [{
+      "price": "99.00",
+      "sku": "SKU-001"
+    }]
+  }
+}
+```
+
+### List orders
+
+```bash
+GET https://{shop}.myshopify.com/admin/api/2024-01/orders.json?status=any&limit=50
+
+X-Shopify-Access-Token: {access_token}
+```
+
+### Get order
+
+```bash
+GET https://{shop}.myshopify.com/admin/api/2024-01/orders/{order_id}.json
+
+X-Shopify-Access-Token: {access_token}
+```
+
+### List customers
+
+```bash
+GET https://{shop}.myshopify.com/admin/api/2024-01/customers.json?limit=50
+
+X-Shopify-Access-Token: {access_token}
+```
+
+### Search customers
+
+```bash
+GET https://{shop}.myshopify.com/admin/api/2024-01/customers/search.json?query=email:user@example.com
+
+X-Shopify-Access-Token: {access_token}
+```
+
+### Get analytics
+
+```bash
+GET https://{shop}.myshopify.com/admin/api/2024-01/reports.json
+
+X-Shopify-Access-Token: {access_token}
+```
+
+## GraphQL API
+
+```graphql
+{
+  products(first: 10) {
+    edges {
+      node {
+        id
+        title
+        totalInventory
+        priceRangeV2 {
+          minVariantPrice {
+            amount
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+## CLI Commands
+
+```bash
+# Login
+shopify login --store={shop}
+
+# Create theme
+shopify theme init
+
+# Push theme
+shopify theme push
+
+# Preview theme
+shopify theme dev
+
+# Create app
+shopify app create node
+```
+
+## Webhook Topics
+
+| Topic | When |
+|-------|------|
+| `orders/create` | New order |
+| `orders/paid` | Order paid |
+| `orders/fulfilled` | Order shipped |
+| `customers/create` | New customer |
+| `products/update` | Product changed |
+| `checkouts/create` | Checkout started |
+
+## When to Use
+
+- E-commerce store management
+- Product catalog operations
+- Order processing
+- Customer data management
+- Inventory tracking
+
+## Rate Limits
+
+- REST: 2 requests/second
+- GraphQL: 50 points/second
+- Bulk operations available
+
+## Relevant Skills
+
+- analytics-tracking
+- email-sequence
+- referral-program

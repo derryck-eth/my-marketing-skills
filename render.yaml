@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: agency-marketing-os
+    env: node
+    plan: starter
+    rootDir: .
+    buildCommand: npm install
+    startCommand: node apps/agency-marketing-os/dev-runner.mjs
+    healthCheckPath: /api/health
+    disk:
+      name: agency-os-data
+      mountPath: /var/data
+      sizeGB: 5
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: HOST
+        value: 0.0.0.0
+      - key: MCP_PROXY_HOST
+        value: 127.0.0.1
+      - key: MCP_PROXY_PORT
+        value: 4000
+      - key: MCP_PROXY_URL
+        value: http://127.0.0.1:4000
+      - key: MCP_PROXY_MODE
+        value: direct
+      - key: MCP_PROXY_TIMEOUT_MS
+        value: 20000
+      - key: AGENCY_OS_DB_PATH
+        value: /var/data/agency_os.db
+      - key: AGENCY_OS_CORS_ORIGIN
+        sync: false
+      - key: MCP_PROXY_CORS_ORIGIN
+        sync: false
+      - key: AGENCY_OS_ENCRYPTION_KEY
+        generateValue: true
+      - key: MCP_PROXY_TOKEN
+        generateValue: true
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-5.3
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ANTHROPIC_MODEL
+        value: claude-opus-4.6

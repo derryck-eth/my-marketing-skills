@@ -1,14 +1,19 @@
 {
   "name": "my-marketing-skills",
-  "version": "2.0.0",
+  "version": "2.7.0",
   "owner": "derryck-eth",
-  "description": "29 marketing AI agent skills covering copywriting, CRO, SEO, paid ads, email, content strategy, and growth — plus 29 tool integrations. SEO skills built on Google Content Warehouse leak analysis.",
+  "description": "31 marketing AI agent skills covering copywriting, CRO, SEO, paid ads, email, content strategy, and growth — plus 29 tool integrations. SEO skills built on Google Content Warehouse leak analysis.",
   "repository": "https://github.com/derryck-eth/my-marketing-skills",
   "skills": [
     {
       "name": "ab-test-setup",
       "description": "Set up and run A/B tests and experiments. Hypothesis creation, sample size calculation, test design, statistical significance, and result analysis.",
       "path": "skills/ab-test-setup"
+    },
+    {
+      "name": "agency-command-center",
+      "description": "Run a marketing agency operating system across multiple clients. Portfolio segmentation, full-funnel diagnostics, initiative prioritization, 30-60-90 planning, and reporting cadence.",
+      "path": "skills/agency-command-center"
     },
     {
       "name": "analytics-tracking",
@@ -129,6 +134,11 @@
       "name": "schema-markup",
       "description": "Add, fix, or optimize schema markup and structured data. JSON-LD for Organization, Product, Article, FAQ, HowTo, Review, LocalBusiness, and more.",
       "path": "skills/schema-markup"
+    },
+    {
+      "name": "seo-toolkit-suite",
+      "description": "Run a full SEO toolkit workflow from scanner diagnostics and bulk URL analysis to competitor comparison, schema/snippet optimization, AI visibility, and execution planning.",
+      "path": "skills/seo-toolkit-suite"
     },
     {
       "name": "seo-audit",

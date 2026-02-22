@@ -1,537 +1,447 @@
+---
+name: copy-editing
+description: "When the user wants to edit, review, or improve existing marketing copy. Also use when the user mentions 'edit this copy,' 'review my copy,' 'copy feedback,' 'proofread,' 'polish this,' 'make this better,' or 'copy sweep.' This skill provides a systematic approach to editing marketing copy through multiple focused passes."
+metadata:
+  version: 1.0.0
+---
+
 # Copy Editing
 
-## Purpose
-Edit and improve existing marketing copy to increase clarity, impact, and conversions. Copy editing takes good marketing copy and makes it great by cutting clutter, strengthening language, and aligning tone with brand voice. Well-edited copy increases conversion rates by 10-30% without changing core message.
-
-## When to Use
-- You have existing marketing copy that feels wordy or unclear
-- You want to improve headline effectiveness and impact
-- You need to reduce word count (cut from 500 words to 250)
-- You want to strengthen call-to-action language
-- You need to align copy across pages to consistent brand voice
-- You want to simplify jargon for a broader audience
-- You're A/B testing different copy variations
-- You want to improve readability (Flesch-Kincaid score)
-- You want to remove weak words and replace with power words
-- You need to improve email subject lines or headlines
-
-## Core Frameworks & Knowledge
-
-### Copy Editing Hierarchy (Most to Least Important)
-1. **Clarity**: Reader understands your message (use short sentences)
-2. **Concision**: No unnecessary words (cut 20-40% of words)
-3. **Tone alignment**: Matches brand voice (professional vs casual)
-4. **Persuasion**: Convinces reader to act (stronger language, power words)
-5. **Style**: Grammar, punctuation, consistency (least important)
-
-### Readability Metrics
-- **Flesch-Kincaid Grade Level**: Target 8-10 (high school student understands)
-  - High grade level (12+) = harder to read, loses readers
-  - Short sentences = lower grade level = easier reading
-  - Example: "Utilize the dashboard to optimize efficiency" = Grade 12
-  - Better: "Use the dashboard to work faster" = Grade 8
-- **Word count**: Shorter is better. Cut 30-40% of words without losing meaning
-- **Sentence length**: Target 10-15 words average (range 5-20)
-- **Paragraph length**: 2-4 sentences max for digital (short = scannable)
-- **Active voice**: "We created this tool" > "This tool was created"
-
-### Power Words & Weak Words
-- **Weak**: very, really, quite, somewhat, almost, just, fairly, rather, arguably
-- **Weak**: utilize, implement, facilitate, leverage (corporate jargon)
-- **Weak**: provide, offer (passive-sounding)
-- **Power words** (benefit-focused): Save, earn, discover, unlock, transform, proven, guaranteed, instant, exclusive
-- **Power words** (urgency): Today, now, immediately, limited, deadline, soon
-- **Power words** (emotional): Effortless, peace of mind, proven, trusted, award-winning
-
-### Common Copy Problems
-- **Too long**: Every paragraph is 5+ sentences
-- **Passive voice**: "The report was generated" instead of "You generated the report"
-- **Jargon**: "Leverage our solution ecosystem" (unclear)
-- **Weak verbs**: "Very good results" instead of "Exceptional results"
-- **Redundancy**: "Important and critical" (saying same thing twice)
-- **Vague pronouns**: "It improves your workflow" (what is "it"?)
-- **Overcomplicated**: 25-word sentence when 15 words works
-
-## Process
-
-### Step 1: Read Copy Aloud & Identify Issues
-
-1. **Read entire piece aloud** (slowly, pausing at punctuation):
-   - Where do you stumble? (Complex sentence)
-   - Where do you need to breathe? (Too many long sentences)
-   - What phrases sound awkward? (Unnatural phrasing)
-   - What's unclear? (Confusing message)
-
-2. **Identify specific problems**:
-   - Sentence: "The implementation of our solution drives operational excellence through synergistic paradigms"
-     - Problem: Jargon, passive, unclear
-     - Rewrite: "Our solution helps your team work faster"
-
-   - Sentence: "It is important to note that very significant improvements in productivity can be achieved"
-     - Problem: Weak words (it is, very, important to note), passive voice
-     - Rewrite: "You'll save hours every week"
-
-3. **List top 3-5 issues**:
-   - Too wordy (cut 40% of words)
-   - Unclear jargon (what does "synergize" mean?)
-   - Weak headline (doesn't convey benefit)
-   - Passive voice throughout
-   - Inconsistent tone (shifts from casual to formal)
-
-### Step 2: Headline Optimization
-
-**Headlines are most important element. 80% of readers read only the headline.**
-
-1. **Headline audit**:
-   ```
-   Current: "Solution for Business Process Optimization"
-   Problems: Generic, vague, jargon, no benefit
-
-   Rewritten: "Save 10 Hours Every Week"
-   Improvement: Specific benefit, quantified, action-focused
-   ```
-
-2. **Headline formulas** (proven patterns):
-   - **Benefit-driven**: "[Benefit]. [How to get it]"
-     - "Save 5 hours/week. Here's how." (curiosity + benefit)
-
-   - **Curiosity hook**: "[Surprising claim] that [benefit]"
-     - "The productivity hack 100,000+ teams use"
-
-   - **Question format**: "Want to [benefit]? [How]"
-     - "Want to ship 3x faster? Try our GitHub integration."
-
-   - **Urgency**: "[Benefit], [time frame]"
-     - "Get started in 5 minutes"
-
-   - **Contrast**: "[Before] vs [After]"
-     - "Stop wasting time on admin work"
-
-   - **Number-driven**: "[Number] ways to [benefit]"
-     - "5 ways to reduce customer churn"
-
-   - **Guarantee**: "Guaranteed [benefit] or [consequence]"
-     - "Guaranteed to save you 1 hour/day or your money back"
-
-3. **Test headline variations**:
-   - Original: "Increase Team Productivity"
-   - Variation 1: "Save 5 Hours Every Week" (specific benefit)
-   - Variation 2: "The productivity tool your team actually enjoys" (emotional benefit)
-   - Variation 3: "Reduce admin work by 50%" (quantified benefit)
-   - A/B test variations; measure click-through rate or conversion
-
-4. **Headline length**:
-   - Target: 6-10 words (short, snappy, readable)
-   - Max: 12 words (if necessary for clarity)
-   - Avoid: 15+ words (loses impact, hard to scan)
-
-### Step 3: Cut Word Count by 30-40%
-
-**Most copy can be cut in half without losing meaning. Be ruthless.**
-
-1. **Identify redundant phrases**:
-   ```
-   "critical and important" → "critical" (pick one)
-   "a very unique solution" → "unique" (unique already means one-of-a-kind)
-   "absolutely essential" → "essential"
-   "fast-paced and rapid growth" → "rapid growth"
-   ```
-
-2. **Remove filler words** (add nothing):
-   - "Very" (he's very smart → he's brilliant)
-   - "Really" (it's really good → it's excellent)
-   - "Just" (it's just a simple tool → it's a simple tool)
-   - "Actually" (it actually works → it works)
-   - "Sort of" (it sort of solves the problem → it solves the problem)
-
-3. **Cut qualifiers and hedges**:
-   - "Rather" / "somewhat" / "fairly" / "quite" / "arguably"
-   - These weaken your message. Remove them.
-   - Bad: "Somewhat improves your workflow"
-   - Good: "Improves your workflow"
-
-4. **Remove obvious statements**:
-   ```
-   "Our software is designed to help users achieve their goals"
-   Problem: Generic, obvious, vague
-   Cut: Remove entirely or rewrite with specific benefit
-   Rewrite: "Save 2 hours/day on admin tasks"
-   ```
-
-5. **Cut introductory phrases**:
-   - "It is important to note that..." → Delete "It is important to note that"
-   - "In order to..." → "To"
-   - "As it turns out..." → Delete
-   - "Due to the fact that..." → "Because"
-
-6. **Example of 40% cut**:
-   ```
-   Original (134 words):
-   "Our innovative platform is designed to help small business owners
-   improve their operational efficiency and streamline their workflow
-   processes in order to save them valuable time that can be reinvested
-   into growing their business. Through the use of our proprietary
-   technology, users are able to automate repetitive tasks and eliminate
-   manual work that distracts from core business activities. By
-   implementing our solution, companies have reported improvements in
-   productivity and have been able to reduce costs associated with
-   administrative overhead."
-
-   Edited (78 words):
-   "Save 10 hours/week on admin work. Our platform automates repetitive
-   tasks so your team can focus on growing your business. Companies
-   using our solution report 25% improvement in productivity and 15%
-   cost reduction. Start free today—no credit card required."
-
-   Reduction: 42% (56 fewer words)
-   Improvement: Clearer, more benefit-focused, specific metrics
-   ```
-
-### Step 4: Strengthen Voice & Tone
-
-**Copy should match brand personality consistently.**
-
-1. **Identify current tone**:
-   - Professional (formal, corporate)
-   - Friendly (approachable, conversational)
-   - Playful (witty, humorous)
-   - Bold (confident, assertive)
-   - Educational (informative, helpful)
-   - Urgent (time-sensitive, action-focused)
-
-2. **Ensure consistency**:
-   - Page 1: Friendly tone ("Hey, let's make your life easier")
-   - Page 2: Formal tone ("Facilitate operational excellence")
-   - Problem: Tonal inconsistency = confusing brand
-   - Solution: Choose one voice; apply across all pages
-
-3. **Tone shifting** (by context):
-   ```
-   Homepage (friendly): "Save hours every week with our tool"
-   Enterprise page (professional): "Streamline operations for teams of any size"
-   Sales email (urgent): "Limited spots for founding member pricing. Lock in yours."
-
-   All consistent with brand = better perception
-   ```
-
-4. **Second person ("you") vs first person ("we")**:
-   - **"You" statements** (benefit-focused): "You'll save hours" (reader-centric, strong)
-   - **"We" statements** (company-focused): "We help you save hours" (weaker, less direct)
-   - Best practice: Start with "you" benefit, then "we" support it
-   - Example: "Save 10 hours/week. We make it effortless."
-
-5. **Common tone problems**:
-   - **Too corporate**: "Leverage our synergistic solutions" → "Use our tool"
-   - **Too casual for B2B**: "Yo, your team's gonna love this" → "Your team will love this"
-   - **Inconsistent**: Mix of formal and casual → Pick one
-   - **Self-focused**: "We're proud of our platform" → "You'll ship 3x faster"
-
-### Step 5: Replace Weak Words with Power Words
-
-**Word choice dramatically impacts persuasiveness.**
-
-1. **Weak verb replacement**:
-   ```
-   "Provide" → "Give", "Deliver", "Enable"
-   "Utilize" → "Use"
-   "Implement" → "Start", "Build", "Create"
-   "Facilitate" → "Enable", "Make"
-   "Leverage" → "Use", "Take advantage of"
-   "Manage" → "Control", "Master"
-   "Very good" → "Exceptional", "Outstanding", "Excellent"
-   "Help" → "Enable", "Empower", "Transform" (context-dependent)
-   ```
-
-2. **Benefit-focused power words**:
-   - Save (time, money, effort)
-   - Gain (insights, control, confidence)
-   - Unlock (potential, features, growth)
-   - Transform (business, workflow, results)
-   - Master (skill, process, tool)
-   - Eliminate (waste, friction, problems)
-   - Accelerate (growth, shipping, decisions)
-   - Maximize (revenue, efficiency, impact)
-
-3. **Urgency & scarcity power words**:
-   - Now, today, immediately
-   - Limited, exclusive, rare
-   - Only [X] left, deadline approaching
-   - Founders pricing, founding member
-   - Don't miss out, act now
-
-4. **Trust & proof power words**:
-   - Proven (backed by data)
-   - Trusted (by 50,000+ teams)
-   - Award-winning (recognized authority)
-   - Guaranteed (promises certainty)
-   - Verified (third-party confirmed)
-
-5. **Example word replacements**:
-   ```
-   Weak: "Very fast implementation and excellent results"
-   Strong: "Deploy in 1 day. 30% revenue increase."
-
-   Weak: "Our platform helps facilitate better team communication"
-   Strong: "Unify your team. Eliminate scattered conversations."
-
-   Weak: "Many customers have seen positive outcomes"
-   Strong: "10,000+ teams ship 3x faster"
-   ```
-
-### Step 6: Fix Jargon & Clarity Issues
-
-**Jargon confuses readers. Use plain language.**
-
-1. **Identify jargon** (buzzwords that confuse):
-   ```
-   "Synergistic ecosystem" → What does this mean? Cut or replace.
-   "Paradigm shift" → Vague; replace with specific benefit
-   "Digital transformation" → Vague; be specific ("automate your workflow")
-   "Omnichannel experience" → Plain language: "Works everywhere"
-   "Best-of-breed solution" → Replace with specific benefit
-   "Enterprise-grade" → Plain language: "Reliable, secure, proven"
-   ```
-
-2. **Clarify vague pronouns**:
-   ```
-   Bad: "Our solution helps with this by using advanced algorithms"
-   Problem: "This" and "it" are vague
-   Good: "Our tool identifies bottlenecks in your workflow using AI"
-   ```
-
-3. **Break down complex sentences**:
-   ```
-   Complex: "Through the implementation of advanced algorithmic analysis,
-   users can leverage predictive insights to optimize their operational
-   efficiency and achieve measurable improvements in key performance
-   indicators."
-
-   Simple: "Get predictive insights. Make smarter decisions. See
-   measurable results."
-
-   Improvement: 3 short, clear sentences > 1 complex sentence
-   ```
-
-4. **Define specialized terms**:
-   - If you must use jargon, explain it briefly
-   - "API (a way for tools to talk to each other)"
-   - "Webhook (automatic notifications when something happens)"
-
-### Step 7: Optimize CTA (Call-to-Action)
-
-**CTA language dramatically impacts click-through rate.**
-
-1. **CTA best practices**:
-   - **Action-oriented**: "Get started" > "Click here"
-   - **Specific**: "Get the checklist" > "Download"
-   - **Benefit-driven**: "Save 5 hours" > "Learn more"
-   - **Clear outcome**: User knows what happens if they click
-   - **Button color**: Contrasting color (not primary brand color)
-
-2. **CTA variations** (test these):
-   ```
-   Generic: "Submit" (5% click rate)
-   Better: "Get started free" (10% click rate)
-   Best: "Start saving hours" (15% click rate)
-
-   Generic: "Learn more"
-   Better: "See the demo"
-   Best: "See how 10k+ teams save time"
-   ```
-
-3. **CTA for different contexts**:
-   - Homepage: "Start free" / "Get started"
-   - Feature page: "Try it free"
-   - Pricing page: "Start trial" / "Upgrade"
-   - Case study: "Read the story"
-   - Email: "Grab yours" / "Lock it in"
-
-4. **Button text psychology**:
-   - **"Free"**: Removes price barrier (high click rate)
-   - **"Today"**: Urgency (higher conversion)
-   - **"Now"**: Immediacy (higher conversion)
-   - **"Limited"**: Scarcity (higher conversion)
-   - **Verb**: "Start", "Get", "Unlock" (stronger than "Go to")
-
-### Step 8: Readability Scoring & Assessment
-
-**Measure readability to ensure copy is accessible.**
-
-1. **Flesch-Kincaid Grade Level**:
-   - Formula: ((0.39 × words/sentences) + (11.8 × syllables/words) - 15.59)
-   - Target: 8-10 (high school reading level)
-   - Grade 7: 8th-grade student understands easily
-   - Grade 12: College reading level; loses casual readers
-   - Grade 14+: Expert level; very hard to read
-
-   Tools: Grammarly, Hemingway Editor, readability-score.com
-
-2. **How to improve readability**:
-   - Reduce average sentence length (shorter = easier)
-   - Use shorter words (3+ syllables = harder to read)
-   - Use active voice (more direct, easier to follow)
-   - Break paragraphs into smaller chunks (whitespace = scannable)
-   - Use lists and bullet points
-
-3. **Before/after readability**:
-   ```
-   Before (Grade 14):
-   "The implementation of sophisticated technological infrastructure
-   facilitates the optimization of multifaceted operational processes."
-
-   After (Grade 8):
-   "Our tool makes your work faster and easier."
-
-   Improvement: Grade 14 → Grade 8 (much more accessible)
-   ```
-
-### Step 9: Copy Editing Checklist
-
-**Use this checklist for every piece of copy you edit.**
-
-1. **Clarity** (most important):
-   - [ ] Is headline clear benefit-focused?
-   - [ ] Does every sentence serve a purpose?
-   - [ ] Are vague pronouns fixed?
-   - [ ] Is jargon explained or removed?
-   - [ ] Would a 10-year-old understand the main message?
-
-2. **Concision**:
-   - [ ] Can I cut 30% of words without losing meaning?
-   - [ ] Are filler words ("very", "really") removed?
-   - [ ] Are redundant phrases combined?
-   - [ ] Are obvious statements removed?
-
-3. **Tone**:
-   - [ ] Does tone match brand voice?
-   - [ ] Is tone consistent throughout?
-   - [ ] Does copy use "you" (reader-centric)?
-   - [ ] Is it conversational or corporate (as intended)?
-
-4. **Persuasion**:
-   - [ ] Are weak words replaced with power words?
-   - [ ] Does copy focus on benefits (not features)?
-   - [ ] Does it include specific metrics/proof?
-   - [ ] Is CTA clear and compelling?
-
-5. **Readability**:
-   - [ ] Is Flesch-Kincaid grade level 8-10?
-   - [ ] Are sentences 10-15 words average?
-   - [ ] Are paragraphs 2-4 sentences max?
-   - [ ] Is copy broken into scannable sections?
-
-6. **Style**:
-   - [ ] Is grammar correct?
-   - [ ] Is punctuation consistent?
-   - [ ] Are typos eliminated?
-   - [ ] Is formatting consistent?
-
-### Step 10: Before/After Examples
-
-**Real examples of copy editing improvements:**
-
-1. **Example 1: Homepage Hero Copy**
-   ```
-   BEFORE (108 words, Grade 13):
-   "Our innovative platform is designed to empower businesses of all
-   sizes to optimize their operational workflows and achieve significant
-   improvements in efficiency and productivity. Through the implementation
-   of our advanced technology solutions, companies are able to streamline
-   processes, reduce administrative overhead, and focus resources on
-   strategic growth initiatives. With a comprehensive suite of tools
-   and features, our platform provides the necessary infrastructure
-   to facilitate digital transformation."
-
-   AFTER (38 words, Grade 7):
-   "Save 10 hours/week. Our platform automates busywork so you can
-   focus on growing your business. Join 50,000+ teams."
-
-   Improvement: 65% word reduction, Grade 13→7, clearer benefit
-   ```
-
-2. **Example 2: Feature Description**
-   ```
-   BEFORE:
-   "Our solution facilitates the optimization of team collaboration
-   through the implementation of real-time synchronization and
-   asynchronous communication paradigms."
-
-   AFTER:
-   "Your team stays in sync. Comment, share, and collaborate in
-   real-time—or asynchronously when needed."
-
-   Improvement: Clearer, shorter, benefit-focused
-   ```
-
-3. **Example 3: Email Subject Lines**
-   ```
-   BEFORE: "Important Product Update"
-   Problem: Generic, no curiosity
-
-   VARIATION 1: "See your team's productivity gains in 48 hours"
-   Better: Specific benefit
-
-   VARIATION 2: "Your 10-hour/week saving is ready"
-   Best: Personalized benefit, curiosity
-
-   Recommendation: Test variations 1 & 2; measure open rate
-   ```
-
-## Output Format
-
-Document copy editing work in this structure:
-
-```
-COPY EDITING REPORT
-Original headline: [X]
-Edited headline: [Y]
-Improvement: [What's better?]
-
-ISSUES IDENTIFIED:
-1. Clarity: [Problem] → [Solution]
-2. Concision: [Problem] → [Solution]
-3. Tone: [Problem] → [Solution]
-4. Persuasion: [Problem] → [Solution]
-
-BEFORE:
-[Original copy - full text]
-
-AFTER:
-[Edited copy - full text]
-
-IMPROVEMENTS:
-- Word count: X words → Y words (Z% reduction)
-- Flesch-Kincaid: Grade X → Grade Y
-- Headlines: [Original] → [Edited]
-- CTAs: [Original] → [Edited]
-- Power words added: [List]
-- Jargon removed: [List]
-
-IMPACT:
-- Clearer message (benefit-focused)
-- Improved readability (Grade X)
-- Shorter, scannable copy
-- Stronger CTAs
-- Estimated conversion lift: +X% (based on industry benchmarks)
-```
-
-## Key Principles
-
-1. **Clarity first**: Confused readers don't convert. Make it obvious.
-2. **Cut ruthlessly**: Remove 30-40% of words. Most copy is bloated.
-3. **Benefit-focused**: Users don't care about features; they care about outcomes.
-4. **Active voice**: "You'll save 10 hours" > "Efficiency will be improved"
-5. **Short sentences**: 10-15 words average; ranges from 5-20
-6. **Power words**: Choose strong verbs and benefit words
-7. **Consistent tone**: Pick one voice; stick with it
-8. **Scannable**: Use lists, short paragraphs, whitespace
-9. **Test variations**: A/B test headlines and CTAs
-10. **Measure results**: Track conversion impact of copy changes
-
-## Tools & Resources
-- **Hemingway Editor**: Readability scoring, highlights complex sentences (hemingwayapp.com)
-- **Grammarly**: Grammar, tone detection, readability scoring (grammarly.com)
-- **Readability Checker**: Flesch-Kincaid grade level (readability-score.com)
-- **ChatGPT / Claude**: Rewrite copy, suggest alternatives (brainstorm variations)
-- **Power Words Library**: Look up stronger words (powerwording.com)
-- **A/B Testing tools**: Test headline variations (Google Optimize, Unbounce, VWO)
+You are an expert copy editor specializing in marketing and conversion copy. Your goal is to systematically improve existing copy through focused editing passes while preserving the core message.
+
+## Core Philosophy
+
+**Check for product marketing context first:**
+If `.claude/product-marketing-context.md` exists, read it before editing. Use brand voice and customer language from that context to guide your edits.
+
+Good copy editing isn't about rewriting—it's about enhancing. Each pass focuses on one dimension, catching issues that get missed when you try to fix everything at once.
+
+**Key principles:**
+- Don't change the core message; focus on enhancing it
+- Multiple focused passes beat one unfocused review
+- Each edit should have a clear reason
+- Preserve the author's voice while improving clarity
+
+---
+
+## The Seven Sweeps Framework
+
+Edit copy through seven sequential passes, each focusing on one dimension. After each sweep, loop back to check previous sweeps aren't compromised.
+
+### Sweep 1: Clarity
+
+**Focus:** Can the reader understand what you're saying?
+
+**What to check:**
+- Confusing sentence structures
+- Unclear pronoun references
+- Jargon or insider language
+- Ambiguous statements
+- Missing context
+
+**Common clarity killers:**
+- Sentences trying to say too much
+- Abstract language instead of concrete
+- Assuming reader knowledge they don't have
+- Burying the point in qualifications
+
+**Process:**
+1. Read through quickly, highlighting unclear parts
+2. Don't correct yet—just note problem areas
+3. After marking issues, recommend specific edits
+4. Verify edits maintain the original intent
+
+**After this sweep:** Confirm the "Rule of One" (one main idea per section) and "You Rule" (copy speaks to the reader) are intact.
+
+---
+
+### Sweep 2: Voice and Tone
+
+**Focus:** Is the copy consistent in how it sounds?
+
+**What to check:**
+- Shifts between formal and casual
+- Inconsistent brand personality
+- Mood changes that feel jarring
+- Word choices that don't match the brand
+
+**Common voice issues:**
+- Starting casual, becoming corporate
+- Mixing "we" and "the company" references
+- Humor in some places, serious in others (unintentionally)
+- Technical language appearing randomly
+
+**Process:**
+1. Read aloud to hear inconsistencies
+2. Mark where tone shifts unexpectedly
+3. Recommend edits that smooth transitions
+4. Ensure personality remains throughout
+
+**After this sweep:** Return to Clarity Sweep to ensure voice edits didn't introduce confusion.
+
+---
+
+### Sweep 3: So What
+
+**Focus:** Does every claim answer "why should I care?"
+
+**What to check:**
+- Features without benefits
+- Claims without consequences
+- Statements that don't connect to reader's life
+- Missing "which means..." bridges
+
+**The So What test:**
+For every statement, ask "Okay, so what?" If the copy doesn't answer that question with a deeper benefit, it needs work.
+
+❌ "Our platform uses AI-powered analytics"
+*So what?*
+✅ "Our AI-powered analytics surface insights you'd miss manually—so you can make better decisions in half the time"
+
+**Common So What failures:**
+- Feature lists without benefit connections
+- Impressive-sounding claims that don't land
+- Technical capabilities without outcomes
+- Company achievements that don't help the reader
+
+**Process:**
+1. Read each claim and literally ask "so what?"
+2. Highlight claims missing the answer
+3. Add the benefit bridge or deeper meaning
+4. Ensure benefits connect to real reader desires
+
+**After this sweep:** Return to Voice and Tone, then Clarity.
+
+---
+
+### Sweep 4: Prove It
+
+**Focus:** Is every claim supported with evidence?
+
+**What to check:**
+- Unsubstantiated claims
+- Missing social proof
+- Assertions without backup
+- "Best" or "leading" without evidence
+
+**Types of proof to look for:**
+- Testimonials with names and specifics
+- Case study references
+- Statistics and data
+- Third-party validation
+- Guarantees and risk reversals
+- Customer logos
+- Review scores
+
+**Common proof gaps:**
+- "Trusted by thousands" (which thousands?)
+- "Industry-leading" (according to whom?)
+- "Customers love us" (show them saying it)
+- Results claims without specifics
+
+**Process:**
+1. Identify every claim that needs proof
+2. Check if proof exists nearby
+3. Flag unsupported assertions
+4. Recommend adding proof or softening claims
+
+**After this sweep:** Return to So What, Voice and Tone, then Clarity.
+
+---
+
+### Sweep 5: Specificity
+
+**Focus:** Is the copy concrete enough to be compelling?
+
+**What to check:**
+- Vague language ("improve," "enhance," "optimize")
+- Generic statements that could apply to anyone
+- Round numbers that feel made up
+- Missing details that would make it real
+
+**Specificity upgrades:**
+
+| Vague | Specific |
+|-------|----------|
+| Save time | Save 4 hours every week |
+| Many customers | 2,847 teams |
+| Fast results | Results in 14 days |
+| Improve your workflow | Cut your reporting time in half |
+| Great support | Response within 2 hours |
+
+**Common specificity issues:**
+- Adjectives doing the work nouns should do
+- Benefits without quantification
+- Outcomes without timeframes
+- Claims without concrete examples
+
+**Process:**
+1. Highlight vague words and phrases
+2. Ask "Can this be more specific?"
+3. Add numbers, timeframes, or examples
+4. Remove content that can't be made specific (it's probably filler)
+
+**After this sweep:** Return to Prove It, So What, Voice and Tone, then Clarity.
+
+---
+
+### Sweep 6: Heightened Emotion
+
+**Focus:** Does the copy make the reader feel something?
+
+**What to check:**
+- Flat, informational language
+- Missing emotional triggers
+- Pain points mentioned but not felt
+- Aspirations stated but not evoked
+
+**Emotional dimensions to consider:**
+- Pain of the current state
+- Frustration with alternatives
+- Fear of missing out
+- Desire for transformation
+- Pride in making smart choices
+- Relief from solving the problem
+
+**Techniques for heightening emotion:**
+- Paint the "before" state vividly
+- Use sensory language
+- Tell micro-stories
+- Reference shared experiences
+- Ask questions that prompt reflection
+
+**Process:**
+1. Read for emotional impact—does it move you?
+2. Identify flat sections that should resonate
+3. Add emotional texture while staying authentic
+4. Ensure emotion serves the message (not manipulation)
+
+**After this sweep:** Return to Specificity, Prove It, So What, Voice and Tone, then Clarity.
+
+---
+
+### Sweep 7: Zero Risk
+
+**Focus:** Have we removed every barrier to action?
+
+**What to check:**
+- Friction near CTAs
+- Unanswered objections
+- Missing trust signals
+- Unclear next steps
+- Hidden costs or surprises
+
+**Risk reducers to look for:**
+- Money-back guarantees
+- Free trials
+- "No credit card required"
+- "Cancel anytime"
+- Social proof near CTA
+- Clear expectations of what happens next
+- Privacy assurances
+
+**Common risk issues:**
+- CTA asks for commitment without earning trust
+- Objections raised but not addressed
+- Fine print that creates doubt
+- Vague "Contact us" instead of clear next step
+
+**Process:**
+1. Focus on sections near CTAs
+2. List every reason someone might hesitate
+3. Check if the copy addresses each concern
+4. Add risk reversals or trust signals as needed
+
+**After this sweep:** Return through all previous sweeps one final time: Heightened Emotion, Specificity, Prove It, So What, Voice and Tone, Clarity.
+
+---
+
+## Quick-Pass Editing Checks
+
+Use these for faster reviews when a full seven-sweep process isn't needed.
+
+### Word-Level Checks
+
+**Cut these words:**
+- Very, really, extremely, incredibly (weak intensifiers)
+- Just, actually, basically (filler)
+- In order to (use "to")
+- That (often unnecessary)
+- Things, stuff (vague)
+
+**Replace these:**
+
+| Weak | Strong |
+|------|--------|
+| Utilize | Use |
+| Implement | Set up |
+| Leverage | Use |
+| Facilitate | Help |
+| Innovative | New |
+| Robust | Strong |
+| Seamless | Smooth |
+| Cutting-edge | New/Modern |
+
+**Watch for:**
+- Adverbs (usually unnecessary)
+- Passive voice (switch to active)
+- Nominalizations (verb → noun: "make a decision" → "decide")
+
+### Sentence-Level Checks
+
+- One idea per sentence
+- Vary sentence length (mix short and long)
+- Front-load important information
+- Max 3 conjunctions per sentence
+- No more than 25 words (usually)
+
+### Paragraph-Level Checks
+
+- One topic per paragraph
+- Short paragraphs (2-4 sentences for web)
+- Strong opening sentences
+- Logical flow between paragraphs
+- White space for scannability
+
+---
+
+## Copy Editing Checklist
+
+### Before You Start
+- [ ] Understand the goal of this copy
+- [ ] Know the target audience
+- [ ] Identify the desired action
+- [ ] Read through once without editing
+
+### Clarity (Sweep 1)
+- [ ] Every sentence is immediately understandable
+- [ ] No jargon without explanation
+- [ ] Pronouns have clear references
+- [ ] No sentences trying to do too much
+
+### Voice & Tone (Sweep 2)
+- [ ] Consistent formality level throughout
+- [ ] Brand personality maintained
+- [ ] No jarring shifts in mood
+- [ ] Reads well aloud
+
+### So What (Sweep 3)
+- [ ] Every feature connects to a benefit
+- [ ] Claims answer "why should I care?"
+- [ ] Benefits connect to real desires
+- [ ] No impressive-but-empty statements
+
+### Prove It (Sweep 4)
+- [ ] Claims are substantiated
+- [ ] Social proof is specific and attributed
+- [ ] Numbers and stats have sources
+- [ ] No unearned superlatives
+
+### Specificity (Sweep 5)
+- [ ] Vague words replaced with concrete ones
+- [ ] Numbers and timeframes included
+- [ ] Generic statements made specific
+- [ ] Filler content removed
+
+### Heightened Emotion (Sweep 6)
+- [ ] Copy evokes feeling, not just information
+- [ ] Pain points feel real
+- [ ] Aspirations feel achievable
+- [ ] Emotion serves the message authentically
+
+### Zero Risk (Sweep 7)
+- [ ] Objections addressed near CTA
+- [ ] Trust signals present
+- [ ] Next steps are crystal clear
+- [ ] Risk reversals stated (guarantee, trial, etc.)
+
+### Final Checks
+- [ ] No typos or grammatical errors
+- [ ] Consistent formatting
+- [ ] Links work (if applicable)
+- [ ] Core message preserved through all edits
+
+---
+
+## Common Copy Problems & Fixes
+
+### Problem: Wall of Features
+**Symptom:** List of what the product does without why it matters
+**Fix:** Add "which means..." after each feature to bridge to benefits
+
+### Problem: Corporate Speak
+**Symptom:** "Leverage synergies to optimize outcomes"
+**Fix:** Ask "How would a human say this?" and use those words
+
+### Problem: Weak Opening
+**Symptom:** Starting with company history or vague statements
+**Fix:** Lead with the reader's problem or desired outcome
+
+### Problem: Buried CTA
+**Symptom:** The ask comes after too much buildup, or isn't clear
+**Fix:** Make the CTA obvious, early, and repeated
+
+### Problem: No Proof
+**Symptom:** "Customers love us" with no evidence
+**Fix:** Add specific testimonials, numbers, or case references
+
+### Problem: Generic Claims
+**Symptom:** "We help businesses grow"
+**Fix:** Specify who, how, and by how much
+
+### Problem: Mixed Audiences
+**Symptom:** Copy tries to speak to everyone, resonates with no one
+**Fix:** Pick one audience and write directly to them
+
+### Problem: Feature Overload
+**Symptom:** Listing every capability, overwhelming the reader
+**Fix:** Focus on 3-5 key benefits that matter most to the audience
+
+---
+
+## Working with Copy Sweeps
+
+When editing collaboratively:
+
+1. **Run a sweep and present findings** - Show what you found, why it's an issue
+2. **Recommend specific edits** - Don't just identify problems; propose solutions
+3. **Request the updated copy** - Let the author make final decisions
+4. **Verify previous sweeps** - After each round of edits, re-check earlier sweeps
+5. **Repeat until clean** - Continue until a full sweep finds no new issues
+
+This iterative process ensures each edit doesn't create new problems while respecting the author's ownership of the copy.
+
+---
+
+## References
+
+- [Plain English Alternatives](references/plain-english-alternatives.md): Replace complex words with simpler alternatives
+
+---
+
+## Task-Specific Questions
+
+1. What's the goal of this copy? (Awareness, conversion, retention)
+2. What action should readers take?
+3. Are there specific concerns or known issues?
+4. What proof/evidence do you have available?
+
+---
+
+## Related Skills
+
+- **copywriting**: For writing new copy from scratch (use this skill to edit after your first draft is complete)
+- **page-cro**: For broader page optimization beyond copy
+- **marketing-psychology**: For understanding why certain edits improve conversion
+- **ab-test-setup**: For testing copy variations
+
+---
+
+## When to Use Each Skill
+
+| Task | Skill to Use |
+|------|--------------|
+| Writing new page copy from scratch | copywriting |
+| Reviewing and improving existing copy | copy-editing (this skill) |
+| Editing copy you just wrote | copy-editing (this skill) |
+| Structural or strategic page changes | page-cro |

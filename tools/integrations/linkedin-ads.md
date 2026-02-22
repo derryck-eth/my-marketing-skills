@@ -1,27 +1,164 @@
 # LinkedIn Ads
 
-## What It Does
-LinkedIn Ads enables B2B advertising through sponsored content, message ads, and text ads. It targets professionals by job title, industry, company, seniority, and skills.
+B2B advertising platform with professional targeting.
 
-## Key Capabilities for Marketing
-- **Sponsored content** - Native ads that appear in LinkedIn feed
-- **InMail campaigns** - Send personalized messages to LinkedIn inboxes
-- **Text ads** - Simple ads in sidebar and top banner placements
-- **Account-based marketing** - Target specific companies and decision-makers
-- **Lead generation forms** - Capture leads directly without website redirect
-- **Audience insights** - Understand professional demographics and behaviors
+## Capabilities
 
-## How to Connect via MCP
-1. Log into LinkedIn Campaign Manager
-2. Navigate to Settings > Integrations
-3. Generate API credentials or use OAuth
-4. Copy Campaign Manager ID
-5. Configure MCP with authentication credentials
-6. Grant access to campaign accounts
+| Integration | Available | Notes |
+|-------------|-----------|-------|
+| API | ✓ | Marketing API for campaigns, audiences, analytics |
+| MCP | - | Not available |
+| CLI | - | Not available |
+| SDK | - | API-only (community libraries available) |
 
-## Example Agent Queries
-- "Create a sponsored content campaign targeting VPs of Sales"
-- "What's the engagement rate for our InMail campaign?"
-- "Build an audience of users at Fortune 500 companies"
-- "What's the conversion rate of lead gen forms vs. website traffic?"
-- "Optimize budget allocation across my campaigns"
+## Authentication
+
+- **Type**: OAuth 2.0
+- **Header**: `Authorization: Bearer {access_token}`
+- **Scopes**: `r_ads`, `r_ads_reporting`, `rw_ads`
+
+## Common Agent Operations
+
+### Get ad accounts
+
+```bash
+GET https://api.linkedin.com/v2/adAccountsV2?q=search
+
+Authorization: Bearer {access_token}
+```
+
+### Get campaigns
+
+```bash
+GET https://api.linkedin.com/v2/adCampaignsV2?q=search&search.account.values[0]=urn:li:sponsoredAccount:{account_id}
+
+Authorization: Bearer {access_token}
+```
+
+### Get campaign analytics
+
+```bash
+GET https://api.linkedin.com/v2/adAnalyticsV2?q=analytics&pivot=CAMPAIGN&dateRange.start.year=2024&dateRange.start.month=1&dateRange.start.day=1&dateRange.end.year=2024&dateRange.end.month=1&dateRange.end.day=31&campaigns=urn:li:sponsoredCampaign:{campaign_id}&fields=impressions,clicks,costInLocalCurrency,conversions
+
+Authorization: Bearer {access_token}
+```
+
+### Create campaign
+
+```bash
+POST https://api.linkedin.com/v2/adCampaignsV2
+
+Authorization: Bearer {access_token}
+
+{
+  "account": "urn:li:sponsoredAccount:{account_id}",
+  "name": "Campaign Name",
+  "type": "SPONSORED_UPDATES",
+  "costType": "CPC",
+  "unitCost": {
+    "amount": "5.00",
+    "currencyCode": "USD"
+  },
+  "dailyBudget": {
+    "amount": "100.00",
+    "currencyCode": "USD"
+  },
+  "status": "PAUSED"
+}
+```
+
+### Update campaign status
+
+```bash
+POST https://api.linkedin.com/v2/adCampaignsV2/{campaign_id}
+
+Authorization: Bearer {access_token}
+
+{
+  "patch": {
+    "$set": {
+      "status": "ACTIVE"
+    }
+  }
+}
+```
+
+### Get creatives
+
+```bash
+GET https://api.linkedin.com/v2/adCreativesV2?q=search&search.campaign.values[0]=urn:li:sponsoredCampaign:{campaign_id}
+
+Authorization: Bearer {access_token}
+```
+
+### Get audience counts
+
+```bash
+POST https://api.linkedin.com/v2/audienceCountsV2
+
+{
+  "audienceCriteria": {
+    "include": {
+      "and": [{
+        "or": {
+          "urn:li:adTargetingFacet:titles": ["urn:li:title:123"]
+        }
+      }]
+    }
+  }
+}
+```
+
+## Key Metrics
+
+| Metric | Description |
+|--------|-------------|
+| `impressions` | Ad impressions |
+| `clicks` | Total clicks |
+| `costInLocalCurrency` | Spend |
+| `conversions` | Conversion count |
+| `leadGenerationMailContactInfoShares` | Lead form submissions |
+
+## Campaign Types
+
+- `SPONSORED_UPDATES` - Sponsored content
+- `TEXT_AD` - Text ads
+- `SPONSORED_INMAILS` - Message ads
+- `DYNAMIC` - Dynamic ads
+
+## Targeting Options
+
+### Job-Based
+- Job titles
+- Job functions
+- Seniority levels
+- Years of experience
+
+### Company-Based
+- Company names
+- Industries
+- Company size
+- Company followers
+
+### Professional
+- Skills
+- Groups
+- Schools
+- Degrees
+
+## When to Use
+
+- B2B advertising
+- Job title targeting
+- Account-based marketing
+- Lead generation campaigns
+
+## Rate Limits
+
+- 100 requests/day (basic)
+- 10,000 requests/day (Marketing Developer Platform)
+
+## Relevant Skills
+
+- paid-ads
+- analytics-tracking

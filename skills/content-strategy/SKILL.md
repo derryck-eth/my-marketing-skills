@@ -1,243 +1,358 @@
+---
+name: content-strategy
+description: When the user wants to plan a content strategy, decide what content to create, or figure out what topics to cover. Also use when the user mentions "content strategy," "what should I write about," "content ideas," "blog strategy," "topic clusters," or "content planning." For writing individual pieces, see copywriting. For SEO-specific audits, see seo-audit.
+metadata:
+  version: 1.0.0
+---
+
 # Content Strategy
 
-## Purpose
-Content Strategy provides a systematic approach to planning, creating, distributing, and measuring content that attracts, engages, and converts your target audience. This skill helps you build a sustainable competitive advantage through valuable, consistent content that drives business outcomes.
+You are a content strategist. Your goal is to help plan content that drives traffic, builds authority, and generates leads by being either searchable, shareable, or both.
 
-## When to Use
-- Launching a content marketing program or blog
-- Struggling with consistency or content direction
-- Needing to justify content investment with ROI metrics
-- Planning content for a new product launch or market expansion
-- Scaling content production across teams
-- Competing in markets where thought leadership matters
-- Wanting to improve organic search visibility and traffic
-- Preparing to pivot or refresh your content approach
+## Before Planning
 
-## Core Frameworks & Knowledge
+**Check for product marketing context first:**
+If `.claude/product-marketing-context.md` exists, read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
 
-### Content Pillars
-- **Definition**: 3-5 core themes that define your brand's content authority
-- **Example pillars for SaaS productivity tool**: Productivity Workflows, Team Collaboration, Work-Life Balance, Best Practices, Industry Trends
-- **Why they matter**: Keep content focused, ensure consistency, make team scaling easier
-- **How to identify**: Overlap between (a) what your audience cares about, (b) what you're expert in, (c) what drives business goals
+Gather this context (ask if not provided):
 
-### Content Types & Formats
-- **Blog posts**: SEO-driven, thought leadership, how-tos (600-2,500 words)
-- **Video content**: YouTube tutorials, explainer videos, testimonials, behind-the-scenes (1-10 minutes)
-- **Podcasts**: Interview series, industry commentary, storytelling (30-60 minutes)
-- **Social media**: Platform-specific formats (LinkedIn articles, Twitter threads, Instagram carousels)
-- **Whitepapers/Guides**: Deep dives, research reports (3,000+ words)
-- **Case studies**: Real customer results, implementation details, ROI proof
-- **Webinars**: Educational, interactive, lead magnets
-- **Email series**: Nurture sequences, educational drips, announcements
+### 1. Business Context
+- What does the company do?
+- Who is the ideal customer?
+- What's the primary goal for content? (traffic, leads, brand awareness, thought leadership)
+- What problems does your product solve?
 
-### Keyword-Driven Content Planning
-- **Research**: Use SEO tools (Ahrefs, SEMrush, Moz) to identify keyword opportunities
-- **Intent matching**: Map keywords to buyer journey stage (awareness, consideration, decision)
-- **Content gap analysis**: Find keywords competitors rank for but you don't
-- **Topic clusters**: Create pillar content (comprehensive) + cluster content (specific keywords linking back)
-- **Search volume vs. difficulty**: Balance high-volume keywords with lower-competition opportunities
-- **User intent**: "How-to" content for informational intent, comparison posts for consideration, product pages for transactional
+### 2. Customer Research
+- What questions do customers ask before buying?
+- What objections come up in sales calls?
+- What topics appear repeatedly in support tickets?
+- What language do customers use to describe their problems?
 
-### Editorial Calendar Strategy
-- **12-month planning**: Align with business goals, product launches, industry events
-- **Content batching**: Batch similar content (e.g., write 5 blog posts in one session)
-- **Lead time planning**: Allow 2-4 weeks for blog production, 6-8 weeks for video
-- **Distribution scheduling**: Plan when/where each piece goes across channels
-- **Review cycles**: Build in review/approval time before publishing
-- **Flexibility**: Keep 20% of calendar open for trending topics and reactive content
+### 3. Current State
+- Do you have existing content? What's working?
+- What resources do you have? (writers, budget, time)
+- What content formats can you produce? (written, video, audio)
 
-### Content Repurposing Framework
-One piece of long-form content can become:
-- Blog post → LinkedIn article + Twitter thread + Email newsletter
-- Video → Blog post transcript + Podcast episode + Quote graphics
-- Webinar → YouTube video + Blog series + Lead magnet + Email sequence
-- Research report → Infographic + Social carousel + Press release + Podcast episode
-- Case study → Blog post + Video testimonial + Email series + LinkedIn article
-
-### Distribution Strategy
-- **Owned channels**: Email list, blog, website, podcast feed (highest ROI)
-- **Earned channels**: Organic search, backlinks, media mentions, shares (highest credibility)
-- **Paid channels**: LinkedIn ads, Google ads, content syndication (fastest scale)
-- **Partner channels**: Guest posts, co-marketing, influencer sharing (leverage)
-- **Community channels**: Twitter, Reddit, Slack communities, forums (authentic)
-- **Distribution timing**: Publish when your audience is most active (varies by platform)
-
-### Content Scoring & Performance Metrics
-- **Traffic quality**: Organic vs paid, new vs returning, bounce rate, time on page
-- **Engagement**: Comments, shares, backlinks, mentions
-- **Lead quality**: Form submissions, demo requests, email signups from content
-- **Revenue impact**: Track which content pieces contribute to sales
-- **Evergreen value**: Some content generates traffic for years; some is time-sensitive
-- **Content ROI formula**: (Revenue attributed - Content cost) / Content cost × 100
-
-### Content Gap Analysis
-- **Audit existing content**: Map all pieces to buyer journey + keywords
-- **Identify white spaces**: Topics you don't cover that competitors do
-- **Customer research**: What questions do prospects ask that you're not answering?
-- **Search data**: Keywords with high traffic you don't rank for
-- **Plan additions**: Prioritize gaps by traffic opportunity + business impact
-
-## Process (Step-by-Step)
-
-### Phase 1: Strategy & Planning (Weeks 1-2)
-1. **Define business goals**: What do you want content to achieve? (leads, brand awareness, thought leadership, organic traffic)
-2. **Identify audience**: Create buyer personas with their pain points, questions, and preferred content formats
-3. **Research competition**: Analyze top 5-10 competitors' content strategies—what topics do they own? Where are gaps?
-4. **Define content pillars**: Create 3-5 core themes that blend audience needs + business goals + your expertise
-5. **Set success metrics**: Choose 3-5 KPIs (organic traffic, MQLs, brand mentions, engagement rate)
-6. **Audit existing content**: Document all current pieces, map to buyer journey, identify gaps and underperformers
-
-### Phase 2: Research & Planning (Weeks 2-3)
-1. **Keyword research**: Use Ahrefs, SEMrush, or Moz to find 100+ target keywords across your pillars
-2. **Cluster keywords**: Group by topic (create content clusters with pillar + cluster content)
-3. **Map to buyer journey**: Awareness (research-focused), Consideration (comparison-focused), Decision (product-focused)
-4. **Identify content gaps**: Find high-volume keywords you don't rank for or topics competitors own
-5. **Content type matching**: Decide which format fits each keyword (blog post, video, guide, comparison, case study)
-6. **Resource assessment**: Estimate production time and resources needed
-
-### Phase 3: Editorial Calendar & Planning (Week 3-4)
-1. **Create 12-month calendar**: Block content themes by month, align with business calendar
-2. **Plan content pillars for each month**: Ensure even distribution across pillars
-3. **Identify key dates**: Product launches, industry events, seasonal peaks, company milestones
-4. **Define publishing cadence**: How many pieces per week? (Balance: 3-4 blog posts/week is typical for growth-stage companies)
-5. **Assign owners & deadlines**: Who writes what? When is first draft due?
-6. **Build review/approval process**: Who approves? How long for revisions?
-
-### Phase 4: Content Production
-1. **Create detailed briefs**: Title, target keyword, keyword density, outline, desired length, CTA
-2. **Set quality standards**: Brand voice guidelines, formatting standards, SEO requirements
-3. **Assign to creators**: Internal team or freelancers with clear expectations
-4. **Review drafts**: Fact-check, ensure brand voice, optimize for keyword
-5. **Revise & finalize**: Incorporate feedback, final copyedit, optimize images
-6. **Schedule publication**: Add metadata, optimize title/description, schedule across channels
-
-### Phase 5: Distribution & Amplification
-1. **Internal promotion**: Share in company Slack, encourage team sharing
-2. **Email marketing**: Send to email list with compelling subject line
-3. **Social promotion**: Create platform-specific assets (LinkedIn article, Twitter thread, Instagram carousel)
-4. **Paid promotion**: Run LinkedIn, Google, or social ads for highest-impact content
-5. **Outreach**: Email relevant people, podcasts, communities
-6. **Guest post pitching**: Find publications in your space, pitch complementary content
-
-### Phase 6: Measurement & Optimization (Monthly & Quarterly)
-1. **Track metrics**: Monitor organic traffic, leads, engagement, rankings
-2. **Content audits**: Which pieces drive results? Which underperform?
-3. **ROI analysis**: Connect content pieces to leads and revenue when possible
-4. **Update underperformers**: Refresh old content, add new information, improve SEO
-5. **Identify winners**: What topics, formats, and distribution methods work best?
-6. **Iterate**: Adjust calendar, pillars, and approach based on data
-
-## Output Format
-
-### Content Strategy Document
-```
-# [Company Name] Content Strategy
-
-## Executive Summary
-- Mission: [1-2 sentence purpose]
-- 2024 goal: [Specific metric target]
-
-## Audience
-- Primary persona: [Description]
-- Pain points: [List]
-- Preferred formats: [List]
-
-## Content Pillars
-- Pillar 1: [Topic + description]
-- Pillar 2: [Topic + description]
-- Pillar 3: [Topic + description]
-- Pillar 4: [Topic + description]
-- Pillar 5: [Topic + description]
-
-## Publishing Cadence
-- Blog: [X posts per week]
-- Video: [X per month]
-- Email: [X per week]
-- Social: [Frequency per platform]
-
-## Success Metrics
-- Metric 1: [Target + current baseline]
-- Metric 2: [Target + current baseline]
-- Metric 3: [Target + current baseline]
-
-## Top Content Opportunities
-1. [Topic + why we should own it]
-2. [Topic + why we should own it]
-3. [Topic + why we should own it]
-
-## 12-Month Editorial Calendar
-[High-level monthly themes and major initiatives]
-```
-
-### Content Brief Template
-```
-# Content Brief: [Title]
-
-Target Keyword: [Primary keyword + search volume + difficulty]
-Audience: [Who is this for?]
-Intent: [Awareness / Consideration / Decision]
-Format: [Blog / Video / Podcast / etc]
-Length: [Word count]
-
-## Outline
-1. [Section]
-2. [Section]
-3. [Section]
-
-## Key Messages
-- [Point 1]
-- [Point 2]
-- [Point 3]
-
-## CTA
-- Primary CTA: [Action]
-- Link: [URL]
-
-## Assets Needed
-- [Graphics / videos / tools / etc]
-```
-
-### Monthly Content Report
-```
-# Content Report - [Month]
-
-## Traffic
-- Organic sessions: [Number] (+/- % vs last month)
-- Organic users: [Number]
-- Page views: [Number]
-- Bounce rate: [Percentage]
-
-## Engagement
-- Top performing content: [Title + traffic]
-- Lowest performing: [Title + recommendations]
-
-## Leads & Revenue
-- Form submissions from content: [Number]
-- Estimated revenue impact: [Amount]
-
-## SEO Performance
-- New keywords ranking in top 10: [Number]
-- Positions improved: [List]
-
-## Content Published
-- Blog posts: [Count]
-- Videos: [Count]
-- Other: [List]
-
-## Next Month Focus
-- [Priority]
-- [Priority]
-- [Priority]
-```
+### 4. Competitive Landscape
+- Who are your main competitors?
+- What content gaps exist in your market?
 
 ---
 
-## Key Takeaways
-- Content strategy is about consistency, not perfection—start small and optimize
-- Focus on topics where you can genuinely provide unique value
-- Measure what matters: traffic + leads + revenue, not just vanity metrics
-- Repurposing content multiplies ROI—one great idea becomes 5+ pieces
-- Distribution matters as much as creation—have a promotion plan before publishing
-- Update and refresh old content regularly—it's easier than creating new
-- Align content with business goals—avoid content marketing as a standalone activity
+## Searchable vs Shareable
+
+Every piece of content must be searchable, shareable, or both. Prioritize in that order—search traffic is the foundation.
+
+**Searchable content** captures existing demand. Optimized for people actively looking for answers.
+
+**Shareable content** creates demand. Spreads ideas and gets people talking.
+
+### When Writing Searchable Content
+
+- Target a specific keyword or question
+- Match search intent exactly—answer what the searcher wants
+- Use clear titles that match search queries
+- Structure with headings that mirror search patterns
+- Place keywords in title, headings, first paragraph, URL
+- Provide comprehensive coverage (don't leave questions unanswered)
+- Include data, examples, and links to authoritative sources
+- Optimize for AI/LLM discovery: clear positioning, structured content, brand consistency across the web
+
+### When Writing Shareable Content
+
+- Lead with a novel insight, original data, or counterintuitive take
+- Challenge conventional wisdom with well-reasoned arguments
+- Tell stories that make people feel something
+- Create content people want to share to look smart or help others
+- Connect to current trends or emerging problems
+- Share vulnerable, honest experiences others can learn from
+
+---
+
+## Content Types
+
+### Searchable Content Types
+
+**Use-Case Content**
+Formula: [persona] + [use-case]. Targets long-tail keywords.
+- "Project management for designers"
+- "Task tracking for developers"
+- "Client collaboration for freelancers"
+
+**Hub and Spoke**
+Hub = comprehensive overview. Spokes = related subtopics.
+```
+/topic (hub)
+├── /topic/subtopic-1 (spoke)
+├── /topic/subtopic-2 (spoke)
+└── /topic/subtopic-3 (spoke)
+```
+Create hub first, then build spokes. Interlink strategically.
+
+**Note:** Most content works fine under `/blog`. Only use dedicated hub/spoke URL structures for major topics with layered depth (e.g., Atlassian's `/agile` guide). For typical blog posts, `/blog/post-title` is sufficient.
+
+**Template Libraries**
+High-intent keywords + product adoption.
+- Target searches like "marketing plan template"
+- Provide immediate standalone value
+- Show how product enhances the template
+
+### Shareable Content Types
+
+**Thought Leadership**
+- Articulate concepts everyone feels but hasn't named
+- Challenge conventional wisdom with evidence
+- Share vulnerable, honest experiences
+
+**Data-Driven Content**
+- Product data analysis (anonymized insights)
+- Public data analysis (uncover patterns)
+- Original research (run experiments, share results)
+
+**Expert Roundups**
+15-30 experts answering one specific question. Built-in distribution.
+
+**Case Studies**
+Structure: Challenge → Solution → Results → Key learnings
+
+**Meta Content**
+Behind-the-scenes transparency. "How We Got Our First $5k MRR," "Why We Chose Debt Over VC."
+
+For programmatic content at scale, see **programmatic-seo** skill.
+
+---
+
+## Content Pillars and Topic Clusters
+
+Content pillars are the 3-5 core topics your brand will own. Each pillar spawns a cluster of related content.
+
+Most of the time, all content can live under `/blog` with good internal linking between related posts. Dedicated pillar pages with custom URL structures (like `/guides/topic`) are only needed when you're building comprehensive resources with multiple layers of depth.
+
+### How to Identify Pillars
+
+1. **Product-led**: What problems does your product solve?
+2. **Audience-led**: What does your ICP need to learn?
+3. **Search-led**: What topics have volume in your space?
+4. **Competitor-led**: What are competitors ranking for?
+
+### Pillar Structure
+
+```
+Pillar Topic (Hub)
+├── Subtopic Cluster 1
+│   ├── Article A
+│   ├── Article B
+│   └── Article C
+├── Subtopic Cluster 2
+│   ├── Article D
+│   ├── Article E
+│   └── Article F
+└── Subtopic Cluster 3
+    ├── Article G
+    ├── Article H
+    └── Article I
+```
+
+### Pillar Criteria
+
+Good pillars should:
+- Align with your product/service
+- Match what your audience cares about
+- Have search volume and/or social interest
+- Be broad enough for many subtopics
+
+---
+
+## Keyword Research by Buyer Stage
+
+Map topics to the buyer's journey using proven keyword modifiers:
+
+### Awareness Stage
+Modifiers: "what is," "how to," "guide to," "introduction to"
+
+Example: If customers ask about project management basics:
+- "What is Agile Project Management"
+- "Guide to Sprint Planning"
+- "How to Run a Standup Meeting"
+
+### Consideration Stage
+Modifiers: "best," "top," "vs," "alternatives," "comparison"
+
+Example: If customers evaluate multiple tools:
+- "Best Project Management Tools for Remote Teams"
+- "Asana vs Trello vs Monday"
+- "Basecamp Alternatives"
+
+### Decision Stage
+Modifiers: "pricing," "reviews," "demo," "trial," "buy"
+
+Example: If pricing comes up in sales calls:
+- "Project Management Tool Pricing Comparison"
+- "How to Choose the Right Plan"
+- "[Product] Reviews"
+
+### Implementation Stage
+Modifiers: "templates," "examples," "tutorial," "how to use," "setup"
+
+Example: If support tickets show implementation struggles:
+- "Project Template Library"
+- "Step-by-Step Setup Tutorial"
+- "How to Use [Feature]"
+
+---
+
+## Content Ideation Sources
+
+### 1. Keyword Data
+
+If user provides keyword exports (Ahrefs, SEMrush, GSC), analyze for:
+- Topic clusters (group related keywords)
+- Buyer stage (awareness/consideration/decision/implementation)
+- Search intent (informational, commercial, transactional)
+- Quick wins (low competition + decent volume + high relevance)
+- Content gaps (keywords competitors rank for that you don't)
+
+Output as prioritized table:
+| Keyword | Volume | Difficulty | Buyer Stage | Content Type | Priority |
+
+### 2. Call Transcripts
+
+If user provides sales or customer call transcripts, extract:
+- Questions asked → FAQ content or blog posts
+- Pain points → problems in their own words
+- Objections → content to address proactively
+- Language patterns → exact phrases to use (voice of customer)
+- Competitor mentions → what they compared you to
+
+Output content ideas with supporting quotes.
+
+### 3. Survey Responses
+
+If user provides survey data, mine for:
+- Open-ended responses (topics and language)
+- Common themes (30%+ mention = high priority)
+- Resource requests (what they wish existed)
+- Content preferences (formats they want)
+
+### 4. Forum Research
+
+Use web search to find content ideas:
+
+**Reddit:** `site:reddit.com [topic]`
+- Top posts in relevant subreddits
+- Questions and frustrations in comments
+- Upvoted answers (validates what resonates)
+
+**Quora:** `site:quora.com [topic]`
+- Most-followed questions
+- Highly upvoted answers
+
+**Other:** Indie Hackers, Hacker News, Product Hunt, industry Slack/Discord
+
+Extract: FAQs, misconceptions, debates, problems being solved, terminology used.
+
+### 5. Competitor Analysis
+
+Use web search to analyze competitor content:
+
+**Find their content:** `site:competitor.com/blog`
+
+**Analyze:**
+- Top-performing posts (comments, shares)
+- Topics covered repeatedly
+- Gaps they haven't covered
+- Case studies (customer problems, use cases, results)
+- Content structure (pillars, categories, formats)
+
+**Identify opportunities:**
+- Topics you can cover better
+- Angles they're missing
+- Outdated content to improve on
+
+### 6. Sales and Support Input
+
+Extract from customer-facing teams:
+- Common objections
+- Repeated questions
+- Support ticket patterns
+- Success stories
+- Feature requests and underlying problems
+
+---
+
+## Prioritizing Content Ideas
+
+Score each idea on four factors:
+
+### 1. Customer Impact (40%)
+- How frequently did this topic come up in research?
+- What percentage of customers face this challenge?
+- How emotionally charged was this pain point?
+- What's the potential LTV of customers with this need?
+
+### 2. Content-Market Fit (30%)
+- Does this align with problems your product solves?
+- Can you offer unique insights from customer research?
+- Do you have customer stories to support this?
+- Will this naturally lead to product interest?
+
+### 3. Search Potential (20%)
+- What's the monthly search volume?
+- How competitive is this topic?
+- Are there related long-tail opportunities?
+- Is search interest growing or declining?
+
+### 4. Resource Requirements (10%)
+- Do you have expertise to create authoritative content?
+- What additional research is needed?
+- What assets (graphics, data, examples) will you need?
+
+### Scoring Template
+
+| Idea | Customer Impact (40%) | Content-Market Fit (30%) | Search Potential (20%) | Resources (10%) | Total |
+|------|----------------------|-------------------------|----------------------|-----------------|-------|
+| Topic A | 8 | 9 | 7 | 6 | 8.0 |
+| Topic B | 6 | 7 | 9 | 8 | 7.1 |
+
+---
+
+## Output Format
+
+When creating a content strategy, provide:
+
+### 1. Content Pillars
+- 3-5 pillars with rationale
+- Subtopic clusters for each pillar
+- How pillars connect to product
+
+### 2. Priority Topics
+For each recommended piece:
+- Topic/title
+- Searchable, shareable, or both
+- Content type (use-case, hub/spoke, thought leadership, etc.)
+- Target keyword and buyer stage
+- Why this topic (customer research backing)
+
+### 3. Topic Cluster Map
+Visual or structured representation of how content interconnects.
+
+---
+
+## Task-Specific Questions
+
+1. What patterns emerge from your last 10 customer conversations?
+2. What questions keep coming up in sales calls?
+3. Where are competitors' content efforts falling short?
+4. What unique insights from customer research aren't being shared elsewhere?
+5. Which existing content drives the most conversions, and why?
+
+---
+
+## Related Skills
+
+- **copywriting**: For writing individual content pieces
+- **seo-audit**: For technical SEO and on-page optimization
+- **ai-seo**: For optimizing content for AI search engines and getting cited by LLMs
+- **programmatic-seo**: For scaled content generation
+- **email-sequence**: For email-based content
+- **social-content**: For social media content

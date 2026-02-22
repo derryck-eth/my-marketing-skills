@@ -1,27 +1,161 @@
 # TikTok Ads
 
-## What It Does
-TikTok Ads manages native advertising through in-feed ads and spark ads. It leverages TikTok's recommendation algorithm to reach highly engaged younger audiences.
+Advertising platform for TikTok's short-form video audience.
 
-## Key Capabilities for Marketing
-- **In-feed ads** - Native ads in user feed with video/image formats
-- **Spark ads** - Promote organic creator videos as paid ads
-- **Creator marketplace** - Partner with TikTok creators for authentic content
-- **Audience targeting** - Target by interests, behaviors, and demographics
-- **Conversion tracking** - Measure website clicks, app installs, and purchases
-- **Lookalike audiences** - Reach users similar to your converters
+## Capabilities
 
-## How to Connect via MCP
-1. Log into TikTok Ads Manager
-2. Go to Settings > API
-3. Create API app or use OAuth credentials
-4. Generate authentication token
-5. Copy Advertiser ID
-6. Configure MCP with credentials
+| Integration | Available | Notes |
+|-------------|-----------|-------|
+| API | ✓ | Marketing API for campaigns, audiences, reporting |
+| MCP | - | Not available |
+| CLI | - | Not available |
+| SDK | ✓ | Python SDK available |
 
-## Example Agent Queries
-- "Create an in-feed video campaign targeting users aged 18-24"
-- "What's the engagement rate on spark ads promoting our product?"
-- "Connect with creators in the fitness niche"
-- "Build an audience of users who visited our landing page"
-- "Measure conversion rate from ad click to purchase"
+## Authentication
+
+- **Type**: Access Token
+- **Header**: `Access-Token: {access_token}`
+- **Setup**: Create app in TikTok for Business, get access token
+
+## Common Agent Operations
+
+### Get advertiser info
+
+```bash
+GET https://business-api.tiktok.com/open_api/v1.3/advertiser/info/?advertiser_ids=["{advertiser_id}"]
+
+Access-Token: {access_token}
+```
+
+### Get campaigns
+
+```bash
+GET https://business-api.tiktok.com/open_api/v1.3/campaign/get/?advertiser_id={advertiser_id}&page=1&page_size=20
+
+Access-Token: {access_token}
+```
+
+### Get campaign report
+
+```bash
+POST https://business-api.tiktok.com/open_api/v1.3/report/integrated/get/
+
+Access-Token: {access_token}
+
+{
+  "advertiser_id": "{advertiser_id}",
+  "report_type": "BASIC",
+  "dimensions": ["campaign_id"],
+  "metrics": ["spend", "impressions", "clicks", "conversion"],
+  "data_level": "AUCTION_CAMPAIGN",
+  "start_date": "2024-01-01",
+  "end_date": "2024-01-31"
+}
+```
+
+### Create campaign
+
+```bash
+POST https://business-api.tiktok.com/open_api/v1.3/campaign/create/
+
+Access-Token: {access_token}
+
+{
+  "advertiser_id": "{advertiser_id}",
+  "campaign_name": "Campaign Name",
+  "objective_type": "CONVERSIONS",
+  "budget_mode": "BUDGET_MODE_DAY",
+  "budget": 100
+}
+```
+
+### Update campaign status
+
+```bash
+POST https://business-api.tiktok.com/open_api/v1.3/campaign/status/update/
+
+Access-Token: {access_token}
+
+{
+  "advertiser_id": "{advertiser_id}",
+  "campaign_ids": ["{campaign_id}"],
+  "opt_status": "ENABLE"
+}
+```
+
+### Get ad groups
+
+```bash
+GET https://business-api.tiktok.com/open_api/v1.3/adgroup/get/?advertiser_id={advertiser_id}&campaign_ids=["{campaign_id}"]
+
+Access-Token: {access_token}
+```
+
+### Get audiences
+
+```bash
+GET https://business-api.tiktok.com/open_api/v1.3/dmp/custom_audience/list/?advertiser_id={advertiser_id}
+
+Access-Token: {access_token}
+```
+
+## Key Metrics
+
+| Metric | Description |
+|--------|-------------|
+| `spend` | Amount spent |
+| `impressions` | Ad impressions |
+| `clicks` | Clicks |
+| `ctr` | Click-through rate |
+| `cpc` | Cost per click |
+| `cpm` | Cost per 1000 impressions |
+| `conversion` | Conversions |
+| `cost_per_conversion` | CPA |
+| `video_play_actions` | Video views |
+| `video_watched_6s` | 6s views |
+
+## Campaign Objectives
+
+- `REACH` - Brand awareness
+- `TRAFFIC` - Website traffic
+- `VIDEO_VIEWS` - Video views
+- `LEAD_GENERATION` - Lead forms
+- `CONVERSIONS` - Website conversions
+- `APP_PROMOTION` - App installs
+
+## Targeting Options
+
+### Demographics
+- Age ranges
+- Gender
+- Languages
+- Locations
+
+### Interests & Behavior
+- Interest categories
+- Video interactions
+- Creator interactions
+- Hashtag interactions
+
+### Custom Audiences
+- Customer file uploads
+- Website visitors (pixel)
+- App activity
+- Engagement audiences
+
+## When to Use
+
+- Reaching younger demographics (18-34)
+- Video-first advertising
+- Viral/creative campaigns
+- App promotion
+
+## Rate Limits
+
+- 10 requests/second
+- 100,000 requests/day
+
+## Relevant Skills
+
+- paid-ads
+- analytics-tracking

@@ -1,479 +1,453 @@
+---
+name: popup-cro
+description: When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also use when the user mentions "exit intent," "popup conversions," "modal optimization," "lead capture popup," "email popup," "announcement banner," or "overlay." For forms outside of popups, see form-cro. For general page conversion optimization, see page-cro.
+metadata:
+  version: 1.0.0
+---
+
 # Popup CRO
 
-## Purpose
-Optimize modals, overlays, slide-ins, and notification bars to capture leads, re-engage visitors, and reduce bounce rate. Popups are high-impact when used strategically; poorly executed popups destroy UX and increase bounce rate by 20-40%. This skill covers intelligent popup deployment that improves conversions without degrading experience.
-
-## When to Use
-- You want to capture email addresses from website visitors
-- Your homepage bounce rate is high (over 50%)
-- You have a lead magnet (checklist, guide, template) to offer
-- You want to announce a promotion, webinar, or limited-time offer
-- You're exiting users without capturing them (exit-intent popups)
-- You want to reduce friction for newsletter signups
-- You need to test popup design, copy, and triggers
-- You want to segment users with popups (different offers for different segments)
-
-## Core Frameworks & Knowledge
-
-### Popup Types & Use Cases
-
-**Exit-Intent Popup**
-- Triggers when mouse exits to browser chrome (about to leave)
-- Best for: Last-chance offer, lead magnet, re-engagement
-- Conversion lift: 10-30% (captures users about to bounce)
-- Desktop-only (mobile doesn't have exit intent)
-
-**Scroll-Triggered Popup**
-- Triggers after user scrolls X% down page (e.g., 50% scroll depth)
-- Best for: Content-driven offers, webinars, deeper engagement
-- Conversion lift: 15-25% (user is engaged; likely to see)
-- Works on mobile; less annoying than immediate popup
-
-**Timed Popup**
-- Triggers after X seconds on page (e.g., 5-10 seconds)
-- Best for: Quick offers, urgent announcements
-- Conversion lift: 5-15% (early trigger may disrupt reading)
-- Risk: Too fast = annoying; too slow = user already decided
-
-**Click-Triggered Popup**
-- Triggers when user clicks specific element (button, link, offer)
-- Best for: Intentional conversions (user explicitly asked for it)
-- Conversion lift: 20-40% (highest intent)
-- No friction; user expected it
-
-**Sticky Header/Footer**
-- Persistent bar at top or bottom of page
-- Best for: Evergreen offers (newsletter, promotion)
-- Conversion lift: 5-10% (less intrusive than modal)
-- Risk: Reduces content real estate
-
-**Slide-In (Right or Left)**
-- Slides in from side of page
-- Best for: Chat, lead forms, secondary offers
-- Conversion lift: 10-20% (less annoying than modal)
-- Works well on mobile
-
-**Notification Bar**
-- Toast notification (small bar, top/bottom)
-- Best for: Announcements, time-sensitive offers
-- Conversion lift: 3-8% (easy to dismiss)
-- Least intrusive option
-
-### Popup Frequency & Capping Strategy
-- Show popup max 1x per visitor per session (unless dismissed and returning)
-- After dismissal, wait 24-48 hours before showing again
-- After 3 dismissals, wait 7-14 days before next show
-- Don't show multiple popups simultaneously (choose highest-intent one)
-- Lower frequency on return visitors (they've seen it; don't annoy them)
-
-### Google Interstitial Penalty
-- Google penalizes sites with intrusive interstitials (mobile)
-- Prohibited: Full-page popups covering content on page load
-- Allowed: Small banners, popups below fold, legitimate dismissal options
-- **Key rule**: Popup must have clear, easily tappable close button
-
-## Process
-
-### Step 1: Audit Current Popups & Lead Capture
-
-1. **Map all current popups**:
-   - Where do popups appear? (homepage, specific pages, all pages)
-   - What trigger? (exit-intent, timed, scroll, click)
-   - What offer? (newsletter, lead magnet, webinar, discount)
-   - What form fields? (email only, email + name, more)
-   - Close button: Obvious? Easy to find?
-   - Mobile experience: Does it work? Is it annoying?
-
-2. **Measure popup performance**:
-   - Popup views: How many visitors see it?
-   - Popup clicks: How many click the CTA?
-   - Popup submissions: How many fill form?
-   - Click-through rate: (Clicks / Views) × 100
-   - Conversion rate: (Submissions / Views) × 100
-   - Impact on bounce rate: Is bounce rate higher with popup?
-   - Email capture rate: Signups from popup / total page visits
-
-3. **User feedback**:
-   - Is popup annoying? Ask in survey
-   - Did it interrupt content? Ask
-   - Would they opt-in without popup? (Measure willingness)
-
-4. **Competitive analysis**:
-   - What popups do competitors use?
-   - What triggers, design, copy?
-   - What offers (freebie, discount)?
-
-### Step 2: Define Popup Offer & Value Prop
-
-**Offer is everything. People won't fill form for nothing.**
-
-1. **Valuable lead magnet**:
-   - Checklist (actionable, downloadable)
-   - Template (saves time, immediately useful)
-   - Guide/E-book (comprehensive, educational)
-   - Tool/Calculator (interactive, produces output)
-   - Video/Webinar (instructional, engaging)
-   - Sample/Trial (product sample, free access)
-   - Discount (dollar amount, % off)
-
-2. **Value proposition for popup**:
-   ```
-   [Lead magnet name]
-
-   One-sentence benefit: "Save 5 hours/week with our team checklist"
-
-   2-3 bullet points of what they'll get:
-   ✓ Ready-to-use checklist (start today)
-   ✓ Best practices from 100+ teams
-   ✓ PDF download + editable template
-   ```
-
-3. **Offer targeting**:
-   - Segment 1: New visitors → General offer (newsletter signup)
-   - Segment 2: Returning visitors → Advanced offer (webinar, case study)
-   - Segment 3: High-engagement visitors → Upgrade offer (trial, demo)
-   - Different offers for different pages (product page → product trial; pricing page → product demo)
-
-### Step 3: Design Popup Anatomy
-
-**Popup structure for maximum conversion:**
-
-```
-╔════════════════════════════════════╗
-│ [X close button]                   │
-├────────────────────────────────────┤
-│                                    │
-│  [Headline icon/emoji]             │
-│  Compelling Headline               │
-│                                    │
-│  2-3 line description of benefit   │
-│                                    │
-│  [Email form field]                │
-│  [Name field (optional)]           │
-│                                    │
-│  [Large CTA button]                │
-│                                    │
-│  Privacy note: "No spam, ever"     │
-│                                    │
-│  [Alternative CTA or close link]   │
-├────────────────────────────────────┤
-│ [Offer preview image, if applicable]
-└════════════════════════════════════┘
-```
-
-### Step 4: Popup Copy Best Practices
-
-1. **Headline** (most important; 40-60 characters):
-   - Benefit-focused: "Save 5 hours every week"
-   - Curiosity-focused: "The checklist top teams use"
-   - Fear-based: "Don't miss out on productivity gains"
-   - Urgency: "Get instant access (only 50 spots)"
-   - Test variations; A/B test top performers
-
-2. **Subheading** (1-2 sentences; reinforce headline):
-   - Restate benefit: "Learn the exact checklist used by Slack and Notion"
-   - Show proof: "Used by 10k+ teams worldwide"
-   - Answer "why": "Because most teams waste time on meetings"
-
-3. **Form field labels**:
-   - Honest approach: "Email" (not "Work email" or "Corporate email")
-   - Benefit approach: "Your email for instant access"
-   - Privacy approach: "Email (we hate spam too)"
-
-4. **CTA button text** (test these variations):
-   - Action-oriented: "Get My Checklist" (specific, clear)
-   - Benefit-driven: "Save Me 5 Hours" (outcome-focused)
-   - Urgency: "Get Instant Access" (now, not later)
-   - Simple: "Download" (short, clear)
-   - Avoid: "Submit", "OK", "Next" (generic, boring)
-
-5. **Privacy copy** (builds trust; essential):
-   - "No spam, just great content"
-   - "Privacy policy: We won't share your email"
-   - "Unsubscribe anytime" (if newsletter)
-   - Link to privacy policy
-
-### Step 5: Trigger Strategy
-
-**Timing of popup matters more than design. Choose trigger based on goal.**
-
-1. **Exit-Intent Popup** (desktop only):
-   - Triggers when mouse moves to browser chrome (leaving page)
-   - Best for: Last-chance conversions
-   - Timing: Natural; user already decided to leave
-   - Frequency: Show once per session (often)
-   - Success rate: 10-30% higher than standard popup
-   - Copy tone: "Hold on! Before you go..."
-
-   ```
-   "Wait, don't go yet!"
-
-   Our team checklist helps managers save 5 hours/week.
-   Get it free.
-
-   [Email] [Get Checklist] [×]
-   ```
-
-2. **Scroll-Triggered Popup**:
-   - Triggers after user scrolls 50-75% down page (or after 5 pieces of content)
-   - Best for: Content-driven conversions (blog, long-form page)
-   - Timing: User engaged; likely interested
-   - Frequency: Show once per visit
-   - Delay: 2-3 seconds after scroll trigger (let page breathe)
-
-   ```
-   Headline: "Keep learning (for free)"
-   Copy: "Weekly tips from marketing leaders"
-   CTA: "Subscribe to newsletter"
-   ```
-
-3. **Timed Popup**:
-   - Triggers after X seconds (typically 5-15 seconds)
-   - Best for: Quick announcements, urgent offers
-   - Timing: Risk of interrupting reader
-   - Frequency: Once per session
-   - Sweet spot: 10-15 seconds (user has time to orient)
-   - Avoid: <5 seconds (too aggressive)
-
-4. **Click-Triggered Popup**:
-   - Triggers when user clicks specific link/button
-   - Best for: Intentional conversions (user expects modal)
-   - Timing: Perfectly timed (user decided)
-   - Frequency: Always (user explicitly asked)
-   - Success rate: 20-40% (highest intent)
-
-   Example: "Get Demo" button → opens demo request form in popup
-
-5. **Behavioral Trigger**:
-   - Triggers based on user behavior (inactivity, mouse movement)
-   - Inactive 30+ seconds: User might be confused → offer help
-   - Hovering on exit element: User is leaving → exit-intent popup
-   - Viewing pricing page: User evaluating → offer trial/demo
-
-### Step 6: Mobile Popup Optimization
-
-**Mobile popups have different constraints; design differently than desktop.**
-
-1. **Mobile-friendly design**:
-   - Width: 90% of viewport (20px margins)
-   - Height: 50-70% of viewport (don't fill entire screen)
-   - Exit button: Large (40px+), easy to tap
-   - Form fields: Large (44px height minimum for touch)
-   - Text size: 16px+ (mobile default, prevents auto-zoom)
-   - Single column layout only
-
-2. **Mobile form optimization**:
-   - Email field only (name is optional; can collect later)
-   - type="email" (shows @ keyboard)
-   - Autocomplete enabled (browser fills from saved data)
-   - Submit button: "Get Free [Offer]" not generic "Submit"
-   - Avoid: Multi-select, complex fields, date pickers
-
-3. **Google Interstitial Compliance** (CRITICAL):
-   - Exit button MUST be visible, easy to tap (40x40px minimum)
-   - Popup MUST be dismissible with back button or X
-   - Content MUST be accessible (no scroll required to dismiss)
-   - Avoid: Popup on page load that covers content
-   - Allowed: Popup after user scrolls 30%+
-   - Result: Avoid ranking penalty; maintain mobile UX
-
-4. **Mobile triggers** (different from desktop):
-   - No exit-intent (mobile doesn't have mouse exit)
-   - Scroll-triggered: 30% scroll depth (more aggressive than desktop)
-   - Timed: 8-15 seconds (similar to desktop)
-   - Click-triggered: Preferred (user explicitly asks)
-
-### Step 7: Design & Copy A/B Testing
-
-**Run tests to find highest-converting popup variation.**
-
-1. **High-impact tests** (expect 10-30% impact):
-   - Popup type: Exit-intent vs scroll-triggered vs timed
-   - Form fields: Email only vs email + name
-   - Offer: Lead magnet vs newsletter vs discount
-   - Headline: Benefit-driven vs urgency vs curiosity
-
-2. **Medium-impact tests** (expect 5-15% impact):
-   - CTA button text: "Get Checklist" vs "Save Me 5 Hours"
-   - Color: Primary color vs contrasting color for button
-   - Image: With product screenshot vs without
-   - Copy tone: Casual vs professional
-
-3. **Testing process**:
-   - Run test for 1-2 weeks (minimum 500 conversions)
-   - Track popup views, submissions, conversion rate
-   - Calculate statistical significance
-   - Implement winner
-   - Test next variation against winner
-
-4. **Example test plan**:
-   ```
-   Week 1-2: Exit-intent popup with "Get Checklist" CTA vs Control (no popup)
-   Result: +25% email capture, implement winner
-
-   Week 3-4: Test form fields - Email only vs Email + Name
-   Result: Email only converts 8% higher, keep email-only
-
-   Week 5-6: Test headline - "Save 5 hours/week" vs "The checklist top teams use"
-   Result: Urgency-based wins; implement
-   ```
-
-### Step 8: Popup Performance Measurement
-
-**Track these metrics to evaluate popup effectiveness:**
-
-1. **Core metrics**:
-   - Popup views: # visitors who see popup
-   - Popup submissions: # who fill form and submit
-   - Conversion rate: (Submissions / Views) × 100
-   - Email capture rate: # emails captured / total page visits
-   - CTR: (Clicks / Views) × 100 (for non-form popups)
-
-2. **Secondary metrics**:
-   - Page bounce rate: Is popup increasing bounce? (should decrease or stay flat)
-   - Time on page: Are users leaving faster? (monitor for negative impact)
-   - Scroll depth: Are users reading less? (monitor for cannibalization)
-   - Return rate: Are popup visitors returning? (measure repeat visits)
-
-3. **Email list metrics** (post-popup):
-   - Email open rate from popup subscribers
-   - Click rate (actions from popup email)
-   - Unsubscribe rate (if newsletter)
-   - Conversion rate (popup subscriber → customer)
-
-4. **ROI calculation**:
-   ```
-   Monthly emails captured from popup: X emails
-   Monthly conversion rate (email → customer): Y%
-   Customers from popup: X × Y
-   Revenue per customer: Z
-   Monthly revenue from popup: X × Y × Z
-   Popup cost: $0 (if using free tool)
-   ROI: Infinite (or very high)
-   ```
-
-### Step 9: Popup Frequency & Capping
-
-**Show popups strategically; don't annoy users.**
-
-1. **First-time visitor**:
-   - Show popup after 10-30 seconds or 50% scroll (they're engaged)
-   - Exit-intent popup if they're leaving (last-chance capture)
-
-2. **Returning visitor** (tracked via cookie):
-   - Show different offer (don't repeat same popup)
-   - Wait 24-48 hours from last popup
-   - Reduce frequency (returning visitors = less likely to convert)
-
-3. **Dismissed popup**:
-   - Wait 24 hours before showing again
-   - After 3 dismissals, wait 7-14 days (user said no 3x)
-
-4. **Converted user** (email captured):
-   - Never show same popup (they already converted)
-   - Show different popup max 1x per 7 days (don't overdo it)
-
-5. **Implementation in tools**:
-   - Use cookie to track: popup_view_count, last_popup_date
-   - Use cookie to track: email_captured_from_popup
-   - Set expiration dates for cookies
-
-### Step 10: Privacy & Legal Compliance
-
-1. **GDPR Compliance** (if EU users):
-   - Opt-in by default (don't pre-check email signup)
-   - Clear privacy notice: "We respect your privacy"
-   - Link to privacy policy
-   - Easy unsubscribe from future emails
-   - Don't capture email without explicit consent
-
-2. **CAN-SPAM Compliance** (if US email list):
-   - Physical mailing address in emails
-   - Clear unsubscribe mechanism
-   - Honor unsubscribe within 10 days
-   - Accurate subject lines
-
-3. **Privacy policy link**:
-   - Include in every popup with email capture
-   - "By signing up, you agree to our privacy policy"
-   - Link directly to policy
+You are an expert in popup and modal optimization. Your goal is to create popups that convert without annoying users or damaging brand perception.
+
+## Initial Assessment
+
+**Check for product marketing context first:**
+If `.claude/product-marketing-context.md` exists, read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
+
+Before providing recommendations, understand:
+
+1. **Popup Purpose**
+   - Email/newsletter capture
+   - Lead magnet delivery
+   - Discount/promotion
+   - Announcement
+   - Exit intent save
+   - Feature promotion
+   - Feedback/survey
+
+2. **Current State**
+   - Existing popup performance?
+   - What triggers are used?
+   - User complaints or feedback?
+   - Mobile experience?
+
+3. **Traffic Context**
+   - Traffic sources (paid, organic, direct)
+   - New vs. returning visitors
+   - Page types where shown
+
+---
+
+## Core Principles
+
+### 1. Timing Is Everything
+- Too early = annoying interruption
+- Too late = missed opportunity
+- Right time = helpful offer at moment of need
+
+### 2. Value Must Be Obvious
+- Clear, immediate benefit
+- Relevant to page context
+- Worth the interruption
+
+### 3. Respect the User
+- Easy to dismiss
+- Don't trap or trick
+- Remember preferences
+- Don't ruin the experience
+
+---
+
+## Trigger Strategies
+
+### Time-Based
+- **Not recommended**: "Show after 5 seconds"
+- **Better**: "Show after 30-60 seconds" (proven engagement)
+- Best for: General site visitors
+
+### Scroll-Based
+- **Typical**: 25-50% scroll depth
+- Indicates: Content engagement
+- Best for: Blog posts, long-form content
+- Example: "You're halfway through—get more like this"
+
+### Exit Intent
+- Detects cursor moving to close/leave
+- Last chance to capture value
+- Best for: E-commerce, lead gen
+- Mobile alternative: Back button or scroll up
+
+### Click-Triggered
+- User initiates (clicks button/link)
+- Zero annoyance factor
+- Best for: Lead magnets, gated content, demos
+- Example: "Download PDF" → Popup form
+
+### Page Count / Session-Based
+- After visiting X pages
+- Indicates research/comparison behavior
+- Best for: Multi-page journeys
+- Example: "Been comparing? Here's a summary..."
+
+### Behavior-Based
+- Add to cart abandonment
+- Pricing page visitors
+- Repeat page visits
+- Best for: High-intent segments
+
+---
+
+## Popup Types
+
+### Email Capture Popup
+**Goal**: Newsletter/list subscription
+
+**Best practices:**
+- Clear value prop (not just "Subscribe")
+- Specific benefit of subscribing
+- Single field (email only)
+- Consider incentive (discount, content)
+
+**Copy structure:**
+- Headline: Benefit or curiosity hook
+- Subhead: What they get, how often
+- CTA: Specific action ("Get Weekly Tips")
+
+### Lead Magnet Popup
+**Goal**: Exchange content for email
+
+**Best practices:**
+- Show what they get (cover image, preview)
+- Specific, tangible promise
+- Minimal fields (email, maybe name)
+- Instant delivery expectation
+
+### Discount/Promotion Popup
+**Goal**: First purchase or conversion
+
+**Best practices:**
+- Clear discount (10%, $20, free shipping)
+- Deadline creates urgency
+- Single use per visitor
+- Easy to apply code
+
+### Exit Intent Popup
+**Goal**: Last-chance conversion
+
+**Best practices:**
+- Acknowledge they're leaving
+- Different offer than entry popup
+- Address common objections
+- Final compelling reason to stay
+
+**Formats:**
+- "Wait! Before you go..."
+- "Forget something?"
+- "Get 10% off your first order"
+- "Questions? Chat with us"
+
+### Announcement Banner
+**Goal**: Site-wide communication
+
+**Best practices:**
+- Top of page (sticky or static)
+- Single, clear message
+- Dismissable
+- Links to more info
+- Time-limited (don't leave forever)
+
+### Slide-In
+**Goal**: Less intrusive engagement
+
+**Best practices:**
+- Enters from corner/bottom
+- Doesn't block content
+- Easy to dismiss or minimize
+- Good for chat, support, secondary CTAs
+
+---
+
+## Design Best Practices
+
+### Visual Hierarchy
+1. Headline (largest, first seen)
+2. Value prop/offer (clear benefit)
+3. Form/CTA (obvious action)
+4. Close option (easy to find)
+
+### Sizing
+- Desktop: 400-600px wide typical
+- Don't cover entire screen
+- Mobile: Full-width bottom or center, not full-screen
+- Leave space to close (visible X, click outside)
+
+### Close Button
+- Always visible (top right is convention)
+- Large enough to tap on mobile
+- "No thanks" text link as alternative
+- Click outside to close
+
+### Mobile Considerations
+- Can't detect exit intent (use alternatives)
+- Full-screen overlays feel aggressive
+- Bottom slide-ups work well
+- Larger touch targets
+- Easy dismiss gestures
+
+### Imagery
+- Product image or preview
+- Face if relevant (increases trust)
+- Minimal for speed
+- Optional—copy can work alone
+
+---
+
+## Copy Formulas
+
+### Headlines
+- Benefit-driven: "Get [result] in [timeframe]"
+- Question: "Want [desired outcome]?"
+- Command: "Don't miss [thing]"
+- Social proof: "Join [X] people who..."
+- Curiosity: "The one thing [audience] always get wrong about [topic]"
+
+### Subheadlines
+- Expand on the promise
+- Address objection ("No spam, ever")
+- Set expectations ("Weekly tips in 5 min")
+
+### CTA Buttons
+- First person works: "Get My Discount" vs "Get Your Discount"
+- Specific over generic: "Send Me the Guide" vs "Submit"
+- Value-focused: "Claim My 10% Off" vs "Subscribe"
+
+### Decline Options
+- Polite, not guilt-trippy
+- "No thanks" / "Maybe later" / "I'm not interested"
+- Avoid manipulative: "No, I don't want to save money"
+
+---
+
+## Frequency and Rules
+
+### Frequency Capping
+- Show maximum once per session
+- Remember dismissals (cookie/localStorage)
+- 7-30 days before showing again
+- Respect user choice
+
+### Audience Targeting
+- New vs. returning visitors (different needs)
+- By traffic source (match ad message)
+- By page type (context-relevant)
+- Exclude converted users
+- Exclude recently dismissed
+
+### Page Rules
+- Exclude checkout/conversion flows
+- Consider blog vs. product pages
+- Match offer to page context
+
+---
+
+## Compliance and Accessibility
+
+### GDPR/Privacy
+- Clear consent language
+- Link to privacy policy
+- Don't pre-check opt-ins
+- Honor unsubscribe/preferences
+
+### Accessibility
+- Keyboard navigable (Tab, Enter, Esc)
+- Focus trap while open
+- Screen reader compatible
+- Sufficient color contrast
+- Don't rely on color alone
+
+### Google Guidelines
+- Intrusive interstitials hurt SEO
+- Mobile especially sensitive
+- Allow: Cookie notices, age verification, reasonable banners
+- Avoid: Full-screen before content on mobile
+
+---
+
+## Measurement
+
+### Key Metrics
+- **Impression rate**: Visitors who see popup
+- **Conversion rate**: Impressions → Submissions
+- **Close rate**: How many dismiss immediately
+- **Engagement rate**: Interaction before close
+- **Time to close**: How long before dismissing
+
+### What to Track
+- Popup views
+- Form focus
+- Submission attempts
+- Successful submissions
+- Close button clicks
+- Outside clicks
+- Escape key
+
+### Benchmarks
+- Email popup: 2-5% conversion typical
+- Exit intent: 3-10% conversion
+- Click-triggered: Higher (10%+, self-selected)
+
+---
 
 ## Output Format
 
-Document popup optimization in this structure:
+### Popup Design
+- **Type**: Email capture, lead magnet, etc.
+- **Trigger**: When it appears
+- **Targeting**: Who sees it
+- **Frequency**: How often shown
+- **Copy**: Headline, subhead, CTA, decline
+- **Design notes**: Layout, imagery, mobile
 
-```
-POPUP CRO REPORT
-Website: [Domain]
-Current popup conversion rate: X%
-Current email capture rate: Y/month
-Bounce rate with popup: Z%
+### Multiple Popup Strategy
+If recommending multiple popups:
+- Popup 1: [Purpose, trigger, audience]
+- Popup 2: [Purpose, trigger, audience]
+- Conflict rules: How they don't overlap
 
-CURRENT STATE AUDIT:
-Popup types: [List - exit-intent, scroll-triggered, etc.]
-Trigger conditions: [Describe when popups show]
-Form fields: [Email, name, etc.]
-Current offer: [What's being offered?]
-Mobile compliance: [Google interstitial status]
+### Test Hypotheses
+Ideas to A/B test with expected outcomes
 
-IDENTIFIED ISSUES:
-1. [Issue]: [Impact on conversion]
-2. [Issue]: [Impact]
-3. [Issue]: [Impact]
+---
 
-OPTIMIZATION ROADMAP:
-Quick Wins (1-week):
-1. Add exit-intent popup: Expected capture increase +X%
-2. Simplify form (email only): Expected conversion +X%
-3. Improve CTA copy: Expected lift +X%
+## Common Popup Strategies
 
-A/B Tests (2-4 weeks):
-1. Test: Exit-intent vs scroll-triggered popup (hypothesis: +X% captures)
-2. Test: Headline "Save 5 hours" vs "The checklist top teams use" (hypothesis: +X%)
-3. Test: Lead magnet vs newsletter signup (hypothesis: +X% conversion)
+### E-commerce
+1. Entry/scroll: First-purchase discount
+2. Exit intent: Bigger discount or reminder
+3. Cart abandonment: Complete your order
 
-Medium-term (4-8 weeks):
-1. Implement segmented popups: Different offers for different pages
-2. Add behavioral triggers: Inactivity, hover detection
-3. Implement frequency capping: Smart show/hide logic
+### B2B SaaS
+1. Click-triggered: Demo request, lead magnets
+2. Scroll: Newsletter/blog subscription
+3. Exit intent: Trial reminder or content offer
 
-EXPECTED IMPACT:
-Current email capture: Y/month
-With optimizations: +X% (new rate: Y+X/month)
-Additional emails/month: [X]
-Revenue impact: [Y subscribers × Z conversion rate × A revenue/customer]
+### Content/Media
+1. Scroll-based: Newsletter after engagement
+2. Page count: Subscribe after multiple visits
+3. Exit intent: Don't miss future content
 
-IMPLEMENTATION TIMELINE:
-Phase 1 (Week 1): Remove current popup, implement exit-intent test [Date]
-Phase 2 (Week 2-3): A/B test form fields [Date]
-Phase 3 (Week 4-5): A/B test copy variations [Date]
-Phase 4 (Week 6+): Implement winner; layer segmented offers [Date]
+### Lead Generation
+1. Time-delayed: General list building
+2. Click-triggered: Specific lead magnets
+3. Exit intent: Final capture attempt
 
-MAINTENANCE:
-- Monitor conversion rate monthly
-- A/B test 1 new variation per month
-- Update offers quarterly (keep fresh)
-- Monitor bounce rate (ensure popup isn't hurting UX)
-```
+---
 
-## Common Popup Mistakes to Avoid
+## Experiment Ideas
 
-1. **Popup on page load**: Annoying; blocks content. Trigger after 10+ seconds instead.
-2. **No exit button**: Increases frustration. Always include clear X.
-3. **Too many fields**: Email only. Name can be collected later.
-4. **Generic CTA**: "Submit" is boring. Use specific, benefit-driven CTAs.
-5. **Weak offer**: "Subscribe to newsletter" isn't compelling. Offer real value (checklist, guide).
-6. **Mobile disaster**: Full-screen popup on mobile = bounce. Make it mobile-friendly.
-7. **No frequency cap**: Showing same popup 5x = annoyance. Cap at 1x per 24h.
-8. **Doesn't match page**: Popup on product page offering "newsletter" doesn't convert. Match offer to page intent.
-9. **No social proof**: Add "10k+ teams use this checklist" to build credibility.
-10. **Not A/B testing**: Design popups based on data, not guesses.
+### Placement & Format Experiments
 
-## Tools & Resources
-- **Intercom, Drift**: In-app messages, popups, live chat
-- **Privy**: Popups, banners, forms (good for e-commerce)
-- **ConvertKit**: Email popups with lead magnets
-- **Optinmonster**: Popup builder with triggers and animations
-- **Unbounce**: Landing pages with built-in popup features
-- **Sumo**: Popups, heat maps, conversion tools
-- **GetResponse**: Email popups, automation sequences
+**Banner Variations**
+- Top bar vs. banner below header
+- Sticky banner vs. static banner
+- Full-width vs. contained banner
+- Banner with countdown timer vs. without
+
+**Popup Formats**
+- Center modal vs. slide-in from corner
+- Full-screen overlay vs. smaller modal
+- Bottom bar vs. corner popup
+- Top announcements vs. bottom slideouts
+
+**Position Testing**
+- Test popup sizes on desktop and mobile
+- Left corner vs. right corner for slide-ins
+- Test visibility without blocking content
+
+---
+
+### Trigger Experiments
+
+**Timing Triggers**
+- Exit intent vs. 30-second delay vs. 50% scroll depth
+- Test optimal time delay (10s vs. 30s vs. 60s)
+- Test scroll depth percentage (25% vs. 50% vs. 75%)
+- Page count trigger (show after X pages viewed)
+
+**Behavior Triggers**
+- Show based on user intent prediction
+- Trigger based on specific page visits
+- Return visitor vs. new visitor targeting
+- Show based on referral source
+
+**Click Triggers**
+- Click-triggered popups for lead magnets
+- Button-triggered vs. link-triggered modals
+- Test in-content triggers vs. sidebar triggers
+
+---
+
+### Messaging & Content Experiments
+
+**Headlines & Copy**
+- Test attention-grabbing vs. informational headlines
+- "Limited-time offer" vs. "New feature alert" messaging
+- Urgency-focused copy vs. value-focused copy
+- Test headline length and specificity
+
+**CTAs**
+- CTA button text variations
+- Button color testing for contrast
+- Primary + secondary CTA vs. single CTA
+- Test decline text (friendly vs. neutral)
+
+**Visual Content**
+- Add countdown timers to create urgency
+- Test with/without images
+- Product preview vs. generic imagery
+- Include social proof in popup
+
+---
+
+### Personalization Experiments
+
+**Dynamic Content**
+- Personalize popup based on visitor data
+- Show industry-specific content
+- Tailor content based on pages visited
+- Use progressive profiling (ask more over time)
+
+**Audience Targeting**
+- New vs. returning visitor messaging
+- Segment by traffic source
+- Target based on engagement level
+- Exclude already-converted visitors
+
+---
+
+### Frequency & Rules Experiments
+
+- Test frequency capping (once per session vs. once per week)
+- Cool-down period after dismissal
+- Test different dismiss behaviors
+- Show escalating offers over multiple visits
+
+---
+
+## Task-Specific Questions
+
+1. What's the primary goal for this popup?
+2. What's your current popup performance (if any)?
+3. What traffic sources are you optimizing for?
+4. What incentive can you offer?
+5. Are there compliance requirements (GDPR, etc.)?
+6. Mobile vs. desktop traffic split?
+
+---
+
+## Related Skills
+
+- **form-cro**: For optimizing the form inside the popup
+- **page-cro**: For the page context around popups
+- **email-sequence**: For what happens after popup conversion
+- **ab-test-setup**: For testing popup variations

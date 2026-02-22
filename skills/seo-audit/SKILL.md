@@ -1,222 +1,411 @@
-# SEO Audit Framework
+---
+name: seo-audit
+description: When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions "SEO audit," "technical SEO," "why am I not ranking," "SEO issues," "on-page SEO," "meta tags review," or "SEO health check." For building pages at scale to target keywords, see programmatic-seo. For adding structured data, see schema-markup.
+metadata:
+  version: 1.0.0
+---
 
-## Purpose
-Conduct a comprehensive 31-task SEO audit mapped to Google's five ranking signal pillars revealed in the Content Warehouse leak. This framework diagnoses ranking obstacles and optimization opportunities by analyzing how Google evaluates Trust, Experience, Expertise, Authoritativeness, and Image SEO factors. The audit transforms scattered SEO metrics into a cohesive diagnostic tool aligned with Google's actual ranking pipeline.
+# SEO Audit
 
-## When to Use
-- Launching a new optimization initiative requiring baseline diagnostics
-- Investigating sudden ranking drops or stagnation
-- Competitive analysis to identify performance gaps vs. top-ranking competitors
-- Site restructuring or technical migration planning
-- Pre-campaign audits before major content launches
-- Quarterly performance reviews with quantifiable benchmarks
-- Identifying which ranking pillar is the primary constraint on visibility
+You are an expert in search engine optimization. Your goal is to identify SEO issues and provide actionable recommendations to improve organic search performance.
 
-## Core Frameworks
+## Initial Assessment
 
-### The Five Pillars Model
-Google's ranking algorithm evaluates content across five primary dimensions. Each pillar contains measurable signals that directly impact positioning:
+**Check for product marketing context first:**
+If `.claude/product-marketing-context.md` exists, read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
 
-**PILLAR 1: TRUST (Credibility & Safety Signals)**
-- NavBoost Integration: User click patterns determine which pages Google surfaces to more users
-- Mobile Clutter Penalty: ClutterScore evaluates UI/UX interference on mobile
-- Indexing Tier System: Pages classified as low/medium/high value affect crawl budget and ranking
-- Spam/Deception Detection: Automated systems flag keyword stuffing, cloaking, schema abuse
-- Sandbox Effect: New domains receive restricted SERP visibility until proving topical relevance
-- Canonicalization Integrity: Incorrect canonical tags dilute ranking signals across duplicate content
+Before auditing, understand:
 
-**PILLAR 2: EXPERIENCE (User Satisfaction Metrics)**
-- ContentEffort Signal: Measures time/resources invested in content (word count, media, originality)
-- Authorship Clarity: Bylines, author bios, and documented expertise strengthen attribution
-- Freshness Signals: Publication date, update frequency, and content recency factor into rankings
-- Original Multimedia: Original images/videos rank higher than stock or scraped media
-- Core Web Vitals: LCP, FID, CLS thresholds directly correlate with ranking boosts
+1. **Site Context**
+   - What type of site? (SaaS, e-commerce, blog, etc.)
+   - What's the primary business goal for SEO?
+   - What keywords/topics are priorities?
 
-**PILLAR 3: EXPERTISE (Knowledge Authority)**
-- Signal Coherence: Alignment between title, H1, URL, and intro paragraph validates topical focus
-- Semantic Comprehensiveness: Content coverage depth using entity-based understanding
-- Topical Focus Consistency: Pages should concentrate on primary topic, not scatter keywords
-- Internal Prominence: H1 positioning and internal linking emphasize key expertise areas
-- YMYL Determination: Medical, financial, legal content receives stricter expertise scrutiny
+2. **Current State**
+   - Any known issues or concerns?
+   - Current organic traffic level?
+   - Recent changes or migrations?
 
-**PILLAR 4: AUTHORITATIVENESS (Domain Power)**
-- SiteAuthority: Overall domain trust score derived from link profile and brand signals
-- Link-Based Authority: Quantity and quality of inbound links from trusted domains
-- Anchor Text Distribution: Optimal anchor text mix prevents spam signals
-- Brand Signals: Branded search volume, mentions, and direct traffic indicate authority
+3. **Scope**
+   - Full site audit or specific pages?
+   - Technical + on-page, or one focus area?
+   - Access to Search Console / analytics?
 
-**PILLAR 5: IMAGE SEO (Visual Content Ranking)**
-- Provenance: Original publication date and first-crawl timestamp
-- Semantic Understanding: OCR, alt text, surrounding context for image comprehension
-- Quality Assessment: NIMA scores for technical and aesthetic quality
-- User Engagement: Click rates and dwell time on image results
-- Licensing: Proper IPTC metadata and usage rights documentation
+---
 
-## Process
+## Audit Framework
 
-### Phase 1: Technical Foundations Audit (6 Tasks)
-**Indexing & Crawlability:**
-1. Verify all priority pages pass Google's indexing tier requirements (check Search Console coverage vs. XML sitemaps)
-2. Audit robots.txt and meta robots tags for unintended blockages
-3. Test mobile rendering for clutter signals using Page Experience tools
-4. Validate canonical tag placement (one per page, self-referential on pagination)
-5. Check for hreflang implementation if serving multiple languages/regions
-6. Confirm Core Web Vitals compliance (LCP <2.5s, FID <100ms, CLS <0.1)
+### ⚠️ Important: Schema Markup Detection Limitation
 
-### Phase 2: Trust Signal Evaluation (6 Tasks)
-**Credibility Assessment:**
-7. Analyze NavBoost patterns: measure click-through rates from search results to identify pages Google ranks but users avoid
-8. Audit mobile UI for clutter (intrusive ads, sticky headers, poor button spacing)
-9. Search for manual actions in Search Console indicating spam/deception detection
-10. Test for sandbox conditions on new domain (compare SERP position by age of domain)
-11. Verify link profile for toxic backlinks (assess anchor text diversity against AnchorSpamPenalizer thresholds)
-12. Map brand signals (branded search volume, direct traffic, branded mentions) for authority benchmarking
+**`web_fetch` and `curl` cannot reliably detect structured data / schema markup.**
 
-### Phase 3: Content Experience Analysis (6 Tasks)
-**Quality & Effort Measurement:**
-13. Calculate ContentEffort scores: evaluate word count, multimedia volume, original vs. syndicated content
-14. Review authorship documentation: check author bios, credentials, byline consistency
-15. Analyze freshness patterns: identify content that hasn't been updated in 6+ months vs. competitors
-16. Audit original media: compare percentage of original images/videos to stock content
-17. Perform readability assessment: measure paragraph length, sentence complexity, formatting
-18. Track engagement metrics: assess time-on-page, scroll depth, and internal link click rates
+Many CMS plugins (AIOSEO, Yoast, RankMath) inject JSON-LD via client-side JavaScript — it won't appear in static HTML or `web_fetch` output (which strips `<script>` tags during conversion).
 
-### Phase 4: Expertise & Topicality Verification (7 Tasks)
-**Knowledge Authority Assessment:**
-19. Conduct signal coherence audit: verify title-H1-URL-intro paragraph alignment on all key pages
-20. Build semantic topology: map entity relationships and topical subtopics using NLP analysis
-21. Evaluate topical focus consistency: identify off-topic content diluting site radius
-22. Assess internal linking hierarchy: confirm hub pages receive maximum internal link equity
-23. Determine YMYL classification: flag medical/financial/legal content for stricter expertise review
-24. Benchmark expertise against competitors: compare content depth, subheading structure, definition coverage
-25. Audit E-E-A-T signals: verify author credentials, publisher authority, content update frequency
+**To accurately check for schema markup, use one of these methods:**
+1. **Browser tool** — render the page and run: `document.querySelectorAll('script[type="application/ld+json"]')`
+2. **Google Rich Results Test** — https://search.google.com/test/rich-results
+3. **Screaming Frog export** — if the client provides one, use it (SF renders JavaScript)
 
-### Phase 5: Authority & Link Profile Audit (3 Tasks)
-**Backlink Performance:**
-26. Calculate siteAuthority score: aggregate link quality, anchor text distribution, referring domain authority
-27. Analyze link freshness: identify which links are recent vs. stale using FreshnessTwiddler metrics
-28. Audit anchor text distribution: check for over-optimized keywords that trigger AnchorSpamPenalizer
-29. Benchmark against competitors: compare total link volume, quality distribution, and topical relevance
-30. Evaluate brand mentions: track unlinked brand references that boost authority signals
-31. Review link velocity: measure rate of new link acquisition and pace of old link decay
+**Never report "no schema found" based solely on `web_fetch` or `curl`.** This has led to false audit findings in production.
 
-### Phase 6: Image Optimization Assessment (2 Tasks)
-**Visual Content Analysis:**
-31. Audit image provenance: verify first-crawl dates to identify original vs. republished images
-32. Assess image quality: review NIMA scores for technical and aesthetic quality benchmarks
+### Priority Order
+1. **Crawlability & Indexation** (can Google find and index it?)
+2. **Technical Foundations** (is the site fast and functional?)
+3. **On-Page Optimization** (is content optimized?)
+4. **Content Quality** (does it deserve to rank?)
+5. **Authority & Links** (does it have credibility?)
+
+---
+
+## Technical SEO Audit
+
+### Crawlability
+
+**Robots.txt**
+- Check for unintentional blocks
+- Verify important pages allowed
+- Check sitemap reference
+
+**XML Sitemap**
+- Exists and accessible
+- Submitted to Search Console
+- Contains only canonical, indexable URLs
+- Updated regularly
+- Proper formatting
+
+**Site Architecture**
+- Important pages within 3 clicks of homepage
+- Logical hierarchy
+- Internal linking structure
+- No orphan pages
+
+**Crawl Budget Issues** (for large sites)
+- Parameterized URLs under control
+- Faceted navigation handled properly
+- Infinite scroll with pagination fallback
+- Session IDs not in URLs
+
+### Indexation
+
+**Index Status**
+- site:domain.com check
+- Search Console coverage report
+- Compare indexed vs. expected
+
+**Indexation Issues**
+- Noindex tags on important pages
+- Canonicals pointing wrong direction
+- Redirect chains/loops
+- Soft 404s
+- Duplicate content without canonicals
+
+**Canonicalization**
+- All pages have canonical tags
+- Self-referencing canonicals on unique pages
+- HTTP → HTTPS canonicals
+- www vs. non-www consistency
+- Trailing slash consistency
+
+### Site Speed & Core Web Vitals
+
+**Core Web Vitals**
+- LCP (Largest Contentful Paint): < 2.5s
+- INP (Interaction to Next Paint): < 200ms
+- CLS (Cumulative Layout Shift): < 0.1
+
+**Speed Factors**
+- Server response time (TTFB)
+- Image optimization
+- JavaScript execution
+- CSS delivery
+- Caching headers
+- CDN usage
+- Font loading
+
+**Tools**
+- PageSpeed Insights
+- WebPageTest
+- Chrome DevTools
+- Search Console Core Web Vitals report
+
+### Mobile-Friendliness
+
+- Responsive design (not separate m. site)
+- Tap target sizes
+- Viewport configured
+- No horizontal scroll
+- Same content as desktop
+- Mobile-first indexing readiness
+
+### Security & HTTPS
+
+- HTTPS across entire site
+- Valid SSL certificate
+- No mixed content
+- HTTP → HTTPS redirects
+- HSTS header (bonus)
+
+### URL Structure
+
+- Readable, descriptive URLs
+- Keywords in URLs where natural
+- Consistent structure
+- No unnecessary parameters
+- Lowercase and hyphen-separated
+
+---
+
+## On-Page SEO Audit
+
+### Title Tags
+
+**Check for:**
+- Unique titles for each page
+- Primary keyword near beginning
+- 50-60 characters (visible in SERP)
+- Compelling and click-worthy
+- Brand name placement (end, usually)
+
+**Common issues:**
+- Duplicate titles
+- Too long (truncated)
+- Too short (wasted opportunity)
+- Keyword stuffing
+- Missing entirely
+
+### Meta Descriptions
+
+**Check for:**
+- Unique descriptions per page
+- 150-160 characters
+- Includes primary keyword
+- Clear value proposition
+- Call to action
+
+**Common issues:**
+- Duplicate descriptions
+- Auto-generated garbage
+- Too long/short
+- No compelling reason to click
+
+### Heading Structure
+
+**Check for:**
+- One H1 per page
+- H1 contains primary keyword
+- Logical hierarchy (H1 → H2 → H3)
+- Headings describe content
+- Not just for styling
+
+**Common issues:**
+- Multiple H1s
+- Skip levels (H1 → H3)
+- Headings used for styling only
+- No H1 on page
+
+### Content Optimization
+
+**Primary Page Content**
+- Keyword in first 100 words
+- Related keywords naturally used
+- Sufficient depth/length for topic
+- Answers search intent
+- Better than competitors
+
+**Thin Content Issues**
+- Pages with little unique content
+- Tag/category pages with no value
+- Doorway pages
+- Duplicate or near-duplicate content
+
+### Image Optimization
+
+**Check for:**
+- Descriptive file names
+- Alt text on all images
+- Alt text describes image
+- Compressed file sizes
+- Modern formats (WebP)
+- Lazy loading implemented
+- Responsive images
+
+### Internal Linking
+
+**Check for:**
+- Important pages well-linked
+- Descriptive anchor text
+- Logical link relationships
+- No broken internal links
+- Reasonable link count per page
+
+**Common issues:**
+- Orphan pages (no internal links)
+- Over-optimized anchor text
+- Important pages buried
+- Excessive footer/sidebar links
+
+### Keyword Targeting
+
+**Per Page**
+- Clear primary keyword target
+- Title, H1, URL aligned
+- Content satisfies search intent
+- Not competing with other pages (cannibalization)
+
+**Site-Wide**
+- Keyword mapping document
+- No major gaps in coverage
+- No keyword cannibalization
+- Logical topical clusters
+
+---
+
+## Content Quality Assessment
+
+### E-E-A-T Signals
+
+**Experience**
+- First-hand experience demonstrated
+- Original insights/data
+- Real examples and case studies
+
+**Expertise**
+- Author credentials visible
+- Accurate, detailed information
+- Properly sourced claims
+
+**Authoritativeness**
+- Recognized in the space
+- Cited by others
+- Industry credentials
+
+**Trustworthiness**
+- Accurate information
+- Transparent about business
+- Contact information available
+- Privacy policy, terms
+- Secure site (HTTPS)
+
+### Content Depth
+
+- Comprehensive coverage of topic
+- Answers follow-up questions
+- Better than top-ranking competitors
+- Updated and current
+
+### User Engagement Signals
+
+- Time on page
+- Bounce rate in context
+- Pages per session
+- Return visits
+
+---
+
+## Common Issues by Site Type
+
+### SaaS/Product Sites
+- Product pages lack content depth
+- Blog not integrated with product pages
+- Missing comparison/alternative pages
+- Feature pages thin on content
+- No glossary/educational content
+
+### E-commerce
+- Thin category pages
+- Duplicate product descriptions
+- Missing product schema
+- Faceted navigation creating duplicates
+- Out-of-stock pages mishandled
+
+### Content/Blog Sites
+- Outdated content not refreshed
+- Keyword cannibalization
+- No topical clustering
+- Poor internal linking
+- Missing author pages
+
+### Local Business
+- Inconsistent NAP
+- Missing local schema
+- No Google Business Profile optimization
+- Missing location pages
+- No local content
+
+---
 
 ## Output Format
 
-### Executive Summary (1 page)
-- Overall health score (0-100) based on weighted pillar performance
-- Top 3 highest-impact optimization opportunities with estimated traffic impact
-- Risk assessment: identify any manual action indicators or spam flags
-- Competitive position summary: overall visibility vs. top 3 competitors
+### Audit Report Structure
 
-### Pillar Performance Dashboard
-```
-TRUST SIGNALS: 72/100
-├─ NavBoost Status: CTR 3.2% (benchmark: 4.1%)
-├─ Mobile Clutter: ClutterScore 0.18 (good: <0.25)
-├─ Indexing Tier: 94% medium/high (target: 98%+)
-├─ Spam Signals: 0 manual actions detected
-├─ Sandbox Status: Domain age 2.3 years (graduated)
-└─ Canonicalization: 100% valid implementation
+**Executive Summary**
+- Overall health assessment
+- Top 3-5 priority issues
+- Quick wins identified
 
-EXPERIENCE SIGNALS: 68/100
-├─ ContentEffort: Avg 2,400 words, 4.2 media/page
-├─ Authorship: 73% of content with author bios
-├─ Freshness: 42% updated within 90 days
-├─ Original Media: 67% original images (benchmark: 80%+)
-└─ Core Web Vitals: LCP 2.1s, FID 89ms, CLS 0.08
+**Technical SEO Findings**
+For each issue:
+- **Issue**: What's wrong
+- **Impact**: SEO impact (High/Medium/Low)
+- **Evidence**: How you found it
+- **Fix**: Specific recommendation
+- **Priority**: 1-5 or High/Medium/Low
 
-EXPERTISE SIGNALS: 81/100
-├─ Signal Coherence: 89% strong alignment
-├─ Semantic Comprehensiveness: 156 entities avg per page
-├─ Topical Focus: SiteRadius 0.42 (good: <0.5)
-├─ Internal Prominence: Hub pages avg 23 internal links
-└─ YMYL Classification: 12 YMYL pages identified
+**On-Page SEO Findings**
+Same format as above
 
-AUTHORITATIVENESS: 58/100
-├─ SiteAuthority: 42/100 vs. competitor avg 67
-├─ Total Backlinks: 1,240 (benchmark: 2,100+)
-├─ Anchor Text: 34% branded, 22% exact match (high-risk)
-└─ Brand Signals: 1,200 branded searches/month
+**Content Findings**
+Same format as above
 
-IMAGE SEO: 64/100
-├─ Original Images: 58% original (benchmark: 75%+)
-├─ NIMA Quality Scores: Avg VQ 0.58, AVA 0.62
-├─ Licensing: 34% missing IPTC metadata
-└─ Alt Text Coverage: 92% complete (good)
-```
-
-### Detailed Findings by Pillar
-
-**PILLAR 1: TRUST** (Analysis of 6 core trust factors)
-- Finding: NavBoost shows 0.9% gap to competitor average
-  - Root cause: 23% of ranking pages have CTR <2%
-  - Action: A/B test title/meta descriptions on 45 underperforming pages
-  - Expected impact: +1.2% avg CTR, +18% visibility on "medium difficulty" keywords
-
-**PILLAR 2: EXPERIENCE** (Analysis of user satisfaction factors)
-- Finding: ContentEffort below category benchmark
-  - Root cause: 34% of pages have <1,500 words vs. competitor avg 2,100 words
-  - Action: Expand 28 key money pages with additional sections and multimedia
-  - Expected impact: +12-18% ranking improvement on target keywords
-
-**PILLAR 3: EXPERTISE** (Analysis of knowledge signals)
-- Finding: Signal coherence issues on 12 pages
-  - Root cause: Title and H1 mismatch creating semantic confusion
-  - Action: Align 12 pages' title-H1-URL structure using checklist template
-  - Expected impact: +2-3 position improvement per affected page
-
-**PILLAR 4: AUTHORITATIVENESS** (Analysis of authority factors)
-- Finding: SiteAuthority gap vs. competitors
-  - Root cause: 34% lower link volume, lower-quality source distribution
-  - Action: Launch 24-month link building campaign targeting 40 high-authority domains
-  - Expected impact: +15-22 position improvements across competitive keywords
-
-**PILLAR 5: IMAGE SEO** (Analysis of visual content)
-- Finding: Stock image usage limiting organic image search visibility
-  - Root cause: 67% non-original images reducing provenance signal strength
-  - Action: Commission 12 custom images for top-traffic pages
-  - Expected impact: +8-12% image search traffic
-
-### Competitive Benchmarking Table
-```
-Metric                    Your Site    Competitor A    Competitor B    Benchmark
----
-Avg ContentEffort (words)      2,100          2,840          2,650        2,700
-% Original Media              58%            79%            81%           75%+
-NavBoost CTR                  3.2%           4.1%           4.3%          4.1%
-BackLink Count              1,240          3,120          2,840         2,100+
-SiteAuthority Score           42/100         67/100         71/100        60/100+
-Core Web Vitals Pass           95%            98%            97%           95%+
-Topical Focus (SiteRadius)    0.42           0.31           0.35          <0.4
-Signal Coherence              89%            96%            97%           95%+
-```
-
-### Implementation Roadmap (Prioritized by Impact)
-1. **Quick Wins (30 days):** Signal coherence fixes, title/meta optimization, Core Web Vitals tuning
-2. **Medium-term (90 days):** ContentEffort expansion, author credibility enhancement, fresh content updates
-3. **Long-term (180+ days):** Link building campaign, original media production, topical authority consolidation
-
-### Monthly Tracking Dashboard
-- NavBoost CTR trend line with competitor comparison
-- ContentEffort metric by page cluster
-- Core Web Vitals compliance percentage
-- SiteAuthority growth trajectory
-- Link acquisition velocity and quality distribution
-- Image quality (NIMA) average scores
-- Search visibility and ranking distribution
-
-## Key Metrics to Monitor Quarterly
-- **Trust Score:** NavBoost CTR, manual actions, sandbox status, mobile clutter score
-- **Experience Score:** Core Web Vitals performance, ContentEffort average, media freshness rate
-- **Expertise Score:** Signal coherence percentage, semantic entity count, topical focus consistency
-- **Authority Score:** SiteAuthority rank, backlink growth rate, anchor text health
-- **Image Score:** Original image percentage, NIMA quality averages, image search clicks
+**Prioritized Action Plan**
+1. Critical fixes (blocking indexation/ranking)
+2. High-impact improvements
+3. Quick wins (easy, immediate benefit)
+4. Long-term recommendations
 
 ---
 
-*Framework based on Google Content Warehouse leak analysis. Metrics align with documented ranking signals including NavBoost, siteAuthority, ContentEffort, and semantic coherence systems.*
+## References
+
+- [AI Writing Detection](references/ai-writing-detection.md): Common AI writing patterns to avoid (em dashes, overused phrases, filler words)
+- For AI search optimization (AEO, GEO, LLMO, AI Overviews), see the **ai-seo** skill
+
+---
+
+## Tools Referenced
+
+**Free Tools**
+- Google Search Console (essential)
+- Google PageSpeed Insights
+- Bing Webmaster Tools
+- Rich Results Test (**use this for schema validation — it renders JavaScript**)
+- Mobile-Friendly Test
+- Schema Validator
+
+> **Note on schema detection:** `web_fetch` strips `<script>` tags (including JSON-LD) and cannot detect JS-injected schema. Always use the browser tool, Rich Results Test, or Screaming Frog for schema checks. See the warning at the top of the Audit Framework section.
+
+**Paid Tools** (if available)
+- Screaming Frog
+- Ahrefs / Semrush
+- Sitebulb
+- ContentKing
+
+---
+
+## Task-Specific Questions
+
+1. What pages/keywords matter most?
+2. Do you have Search Console access?
+3. Any recent changes or migrations?
+4. Who are your top organic competitors?
+5. What's your current organic traffic baseline?
+
+---
+
+## Related Skills
+
+- **ai-seo**: For optimizing content for AI search engines (AEO, GEO, LLMO)
+- **programmatic-seo**: For building SEO pages at scale
+- **schema-markup**: For implementing structured data
+- **page-cro**: For optimizing pages for conversion (not just ranking)
+- **analytics-tracking**: For measuring SEO performance

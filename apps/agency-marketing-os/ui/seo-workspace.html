@@ -1,0 +1,1344 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anything Marketing · SEO Workspace</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+    :root {
+      --bg: #f4f7f2;
+      --panel: #ffffff;
+      --ink: #18211b;
+      --muted: #5b6a60;
+      --line: #dae2d9;
+      --brand: #0f766e;
+      --brand-2: #0d5e58;
+      --brand-soft: #e6f5f3;
+      --good: #059669;
+      --warn: #d97706;
+      --bad: #dc2626;
+      --radius: 12px;
+      --shadow: 0 10px 30px rgba(16, 24, 40, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Manrope', 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      background-image:
+        radial-gradient(circle at 0% 0%, rgba(15, 118, 110, 0.1) 0, transparent 35%),
+        radial-gradient(circle at 100% 10%, rgba(245, 158, 11, 0.08) 0, transparent 40%);
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 264px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background: var(--panel);
+      border-right: 1px solid var(--line);
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+    }
+
+    .brand {
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .project-box {
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+
+    .project-btn {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: left;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--ink);
+    }
+
+    .project-btn:hover { border-color: var(--brand); }
+
+    .project-menu {
+      position: absolute;
+      top: 62px;
+      left: 14px;
+      right: 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      z-index: 20;
+      display: none;
+      max-height: 240px;
+      overflow: auto;
+    }
+
+    .project-menu.open { display: block; }
+
+    .project-item {
+      width: 100%;
+      text-align: left;
+      border: 0;
+      background: transparent;
+      padding: 10px;
+      font-size: 12px;
+      cursor: pointer;
+      color: var(--ink);
+    }
+
+    .project-item:hover { background: #f9fafb; }
+
+    .project-create {
+      border-top: 1px solid var(--line);
+      color: var(--brand);
+      font-weight: 600;
+    }
+
+    .nav {
+      padding: 14px;
+      overflow: auto;
+    }
+
+    .nav-group {
+      margin-bottom: 20px;
+    }
+
+    .nav-label {
+      font-size: 11px;
+      color: #9ca3af;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin: 0 8px 8px;
+    }
+
+    .nav-link {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      border-radius: 10px;
+      text-align: left;
+      padding: 10px;
+      margin-bottom: 4px;
+      cursor: pointer;
+      display: grid;
+      gap: 2px;
+      color: #1f2937;
+      border-left: 3px solid transparent;
+    }
+
+    .nav-link:hover { background: #f9fafb; }
+
+    .nav-link.active {
+      background: var(--brand-soft);
+      color: var(--brand);
+      border-left-color: var(--brand);
+    }
+
+    .nav-link .title { font-size: 13px; font-weight: 600; }
+    .nav-link .sub { font-size: 11px; color: var(--muted); }
+
+    .status {
+      padding: 12px 14px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .main {
+      padding: 24px;
+      overflow: auto;
+    }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .header p {
+      margin: 8px 0 0;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      margin-top: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(160px, 1fr));
+      gap: 12px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .stat .k {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .stat .v {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .field {
+      margin-bottom: 12px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid #d1d5db;
+      background: #fff;
+      color: var(--ink);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 13px;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 96px;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--brand);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: end;
+    }
+
+    .btn {
+      border: 0;
+      background: var(--brand);
+      color: white;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn:hover { background: var(--brand-2); }
+    .btn:disabled { opacity: 0.55; cursor: not-allowed; }
+    .btn.danger { background: #b91c1c; }
+    .btn.danger:hover { background: #991b1b; }
+
+    .btn.secondary {
+      background: #fff;
+      color: #1f2937;
+      border: 1px solid var(--line);
+    }
+
+    .btn.secondary:hover { background: #f9fafb; }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      background: #fff;
+      cursor: pointer;
+      color: #374151;
+    }
+
+    .chip.selected {
+      border-color: var(--brand);
+      color: var(--brand);
+      background: var(--brand-soft);
+    }
+
+    .result {
+      margin-top: 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      padding: 14px;
+      font-size: 13px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      max-height: 640px;
+      overflow: auto;
+    }
+
+    .error {
+      margin-top: 12px;
+      border: 1px solid #fecaca;
+      background: #fef2f2;
+      color: #b91c1c;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 12px;
+    }
+
+    .ok {
+      margin-top: 12px;
+      border: 1px solid #bbf7d0;
+      background: #f0fdf4;
+      color: #166534;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 12px;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .table th,
+    .table td {
+      border-bottom: 1px solid var(--line);
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .table th {
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+    }
+
+    .muted { color: var(--muted); }
+    .pill {
+      display: inline-flex;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    @media (max-width: 1080px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        grid-template-rows: auto;
+      }
+      .nav { display: none; }
+      .main { padding: 14px; }
+      .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">Anything Marketing · SEO Workspace</div>
+      <div class="project-box">
+        <button id="projectBtn" class="project-btn">
+          <span id="projectBtnLabel">Add project</span>
+          <span>▾</span>
+        </button>
+        <div id="projectMenu" class="project-menu"></div>
+      </div>
+      <nav class="nav">
+        <div class="nav-group">
+          <div class="nav-label">DISCOVER</div>
+          <button class="nav-link active" data-page="dashboard"><span class="title">Dashboard</span><span class="sub">Overview & insights</span></button>
+          <button class="nav-link" data-page="audit"><span class="title">Site audit</span><span class="sub">Check website health</span></button>
+          <button class="nav-link" data-page="keywords"><span class="title">Keywords</span><span class="sub">Find search terms</span></button>
+        </div>
+        <div class="nav-group">
+          <div class="nav-label">GROW</div>
+          <button class="nav-link" data-page="content"><span class="title">Content analysis</span><span class="sub">Analyze your pages</span></button>
+          <button class="nav-link" data-page="backlinks"><span class="title">Backlinks</span><span class="sub">Track who links to you</span></button>
+          <button class="nav-link" data-page="competitors"><span class="title">Competitors</span><span class="sub">Compare & outperform</span></button>
+        </div>
+        <div class="nav-group" style="border-top:1px solid var(--line);padding-top:12px;">
+          <button class="nav-link" data-page="reports"><span class="title">Reports</span><span class="sub">Generate report packs</span></button>
+          <button class="nav-link" data-page="settings"><span class="title">Settings</span><span class="sub">Integrations & security</span></button>
+        </div>
+      </nav>
+      <div id="apiStatus" class="status">API: checking…</div>
+    </aside>
+
+    <main class="main">
+      <section id="page-dashboard" class="page active">
+        <div class="header">
+          <h1>Welcome back</h1>
+          <p>Zip-foundation SEO command center with live intelligence workflows.</p>
+        </div>
+        <div class="card grid-3" id="dashboardStats"></div>
+        <div class="card">
+          <h3 style="margin:0 0 8px;">Recent Runs</h3>
+          <div id="recentRuns" class="muted">Loading…</div>
+        </div>
+      </section>
+
+      <section id="page-audit" class="page">
+        <div class="header">
+          <h1>Check Your Website Health</h1>
+          <p>Multi-module audit across technical, content, authority, and AI visibility.</p>
+        </div>
+        <div class="card">
+          <div class="row">
+            <div class="field" style="margin:0;">
+              <label>Website URL</label>
+              <input id="auditUrl" placeholder="https://example.com" />
+            </div>
+            <button id="runAuditBtn" class="btn">Run Full Audit</button>
+          </div>
+          <div id="auditMeta" class="muted" style="margin-top:10px;"></div>
+          <div id="auditError" class="error" style="display:none;"></div>
+          <div id="auditOut" class="result" style="display:none;"></div>
+        </div>
+      </section>
+
+      <section id="page-keywords" class="page">
+        <div class="header">
+          <h1>Find What People Search For</h1>
+          <p>Keyword and opportunity extraction from market-research intelligence.</p>
+        </div>
+        <div class="card">
+          <div class="field">
+            <label>Seed market / offer</label>
+            <input id="kwSeed" placeholder="commercial roofing lead generation" />
+          </div>
+          <div class="field">
+            <label>Competitor URLs (comma separated)</label>
+            <textarea id="kwCompetitors" placeholder="https://competitor1.com, https://competitor2.com"></textarea>
+          </div>
+          <button id="runKeywordsBtn" class="btn">Research Keywords</button>
+          <div id="kwMeta" class="muted" style="margin-top:10px;"></div>
+          <div id="kwError" class="error" style="display:none;"></div>
+          <div id="kwOut" class="result" style="display:none;"></div>
+        </div>
+      </section>
+
+      <section id="page-content" class="page">
+        <div class="header">
+          <h1>Content Analysis</h1>
+          <p>Hobo-Web benchmark layer + live top-5 SERP structural comparison.</p>
+        </div>
+        <div class="card">
+          <div class="field">
+            <label>Page URL</label>
+            <input id="contentUrl" placeholder="https://example.com/services/page" />
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label>Primary Query (optional)</label>
+              <input id="contentQuery" placeholder="commercial roofing services" />
+            </div>
+            <div class="field">
+              <label>Competitor URLs (optional)</label>
+              <input id="contentCompetitors" placeholder="https://competitor1.com/page, https://competitor2.com/page" />
+            </div>
+          </div>
+          <button id="runContentBtn" class="btn">Analyze Content</button>
+          <div id="contentMeta" class="muted" style="margin-top:10px;"></div>
+          <div id="contentError" class="error" style="display:none;"></div>
+          <div id="contentOut" class="result" style="display:none;"></div>
+        </div>
+      </section>
+
+      <section id="page-backlinks" class="page">
+        <div class="header">
+          <h1>See Who Links to Your Website</h1>
+          <p>Authority and backlink opportunity lens from competitor intelligence.</p>
+        </div>
+        <div class="card">
+          <div class="field">
+            <label>Primary domain URL</label>
+            <input id="backlinksUrl" placeholder="https://example.com" />
+          </div>
+          <div class="field">
+            <label>Competitor domains (comma separated)</label>
+            <input id="backlinksCompetitors" placeholder="https://competitor1.com, https://competitor2.com" />
+          </div>
+          <button id="runBacklinksBtn" class="btn">Analyze Backlink Landscape</button>
+          <div id="backlinksMeta" class="muted" style="margin-top:10px;"></div>
+          <div id="backlinksError" class="error" style="display:none;"></div>
+          <div id="backlinksOut" class="result" style="display:none;"></div>
+        </div>
+      </section>
+
+      <section id="page-competitors" class="page">
+        <div class="header">
+          <h1>Compare and Outperform</h1>
+          <p>Page-level competitive gap analysis with actions.</p>
+        </div>
+        <div class="card">
+          <div class="field">
+            <label>Your page URL</label>
+            <input id="comparePrimary" placeholder="https://example.com/service-page" />
+          </div>
+          <div class="field">
+            <label>Competitor page URLs (comma separated)</label>
+            <textarea id="compareCompetitors" placeholder="https://competitor1.com/page, https://competitor2.com/page"></textarea>
+          </div>
+          <button id="runCompareBtn" class="btn">Compare Pages</button>
+          <div id="compareMeta" class="muted" style="margin-top:10px;"></div>
+          <div id="compareError" class="error" style="display:none;"></div>
+          <div id="compareOut" class="result" style="display:none;"></div>
+        </div>
+      </section>
+
+      <section id="page-reports" class="page">
+        <div class="header">
+          <h1>Generate Reports</h1>
+          <p>Build master SEO reports for client-ready execution.</p>
+        </div>
+        <div class="card">
+          <div class="row">
+            <div class="field" style="margin:0;">
+              <label>Primary URL</label>
+              <input id="reportUrl" placeholder="https://example.com" />
+            </div>
+            <button id="runReportBtn" class="btn">Generate Report</button>
+          </div>
+          <div id="reportMeta" class="muted" style="margin-top:10px;"></div>
+          <div id="reportError" class="error" style="display:none;"></div>
+          <div id="reportOut" class="result" style="display:none;"></div>
+        </div>
+      </section>
+
+      <section id="page-settings" class="page">
+        <div class="header">
+          <h1>Settings and Integrations</h1>
+          <p>Control the intelligence stack and safe handling defaults.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 10px;">Selected Integrations</h3>
+          <div id="integrationChips" class="chips"></div>
+          <div class="ok" style="margin-top:14px;">
+            Integration selections and credentials are persisted to backend storage (credentials encrypted at rest) and applied to SEO module runs.
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 10px;">Integration Credentials</h3>
+          <div class="grid-2">
+            <div class="field">
+              <label>Integration</label>
+              <select id="integrationNameInput"></select>
+            </div>
+            <div class="field">
+              <label>API Key / Token (stored as masked hint)</label>
+              <input id="integrationKeyInput" placeholder="Paste key to store masked reference" />
+            </div>
+          </div>
+          <div class="field">
+            <label>Advanced Config JSON (optional)</label>
+            <textarea id="integrationConfigInput" placeholder='{"propertyId":"123456789","siteUrl":"sc-domain:example.com","serviceAccountJson":{"type":"service_account", "...":"..."}}'></textarea>
+          </div>
+          <button id="saveIntegrationBtn" class="btn">Save Integration</button>
+          <button id="testIntegrationBtn" class="btn secondary" style="margin-left:8px;">Test Selected</button>
+          <div id="integrationMeta" class="muted" style="margin-top:10px;"></div>
+          <div style="margin-top:10px;overflow:auto;">
+            <table class="table" id="integrationTable">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Status</th>
+                  <th>Key Hint</th>
+                  <th>Updated</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 10px;">Project Management</h3>
+          <div class="grid-2">
+            <div class="field">
+              <label>Project Name</label>
+              <input id="newProjectName" placeholder="Northline Roofing" />
+            </div>
+            <div class="field">
+              <label>Project Domain</label>
+              <input id="newProjectDomain" placeholder="northline.com" />
+            </div>
+          </div>
+          <button id="createProjectBtn" class="btn">Add Project</button>
+          <button id="clearProjectsBtn" class="btn secondary" style="margin-left:8px;">Delete All Projects</button>
+          <div id="settingsMeta" class="muted" style="margin-top:10px;"></div>
+          <div style="margin-top:10px;overflow:auto;">
+            <table class="table" id="projectTable">
+              <thead>
+                <tr>
+                  <th>Project</th>
+                  <th>Domain</th>
+                  <th>Updated</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const apiBase = "";
+    const integrationCatalog = [
+      "google-search-console",
+      "ga4",
+      "semrush",
+      "ahrefs",
+      "google-ads",
+      "meta-ads",
+      "hubspot"
+    ];
+
+    const state = {
+      page: "dashboard",
+      projects: [],
+      selectedProjectId: null,
+      integrations: [],
+      selectedIntegrations: []
+    };
+
+    function normalizeUrl(value) {
+      const raw = String(value || "").trim();
+      if (!raw) return "";
+      return /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
+    }
+
+    function parseList(text) {
+      return String(text || "")
+        .split(/[\n,]+/)
+        .map((v) => v.trim())
+        .filter(Boolean);
+    }
+
+    function toPretty(obj) {
+      return JSON.stringify(obj, null, 2);
+    }
+
+    async function request(path, { method = "GET", payload = null } = {}) {
+      const res = await fetch(`${apiBase}${path}`, {
+        method,
+        headers: payload ? { "Content-Type": "application/json" } : undefined,
+        body: payload ? JSON.stringify(payload) : undefined
+      });
+      const text = await res.text();
+      let json = {};
+      try { json = JSON.parse(text); } catch { json = { raw: text }; }
+      if (!res.ok || json.ok === false) {
+        throw new Error(json.error || json.detail || `Request failed (${res.status})`);
+      }
+      return json;
+    }
+
+    function selectedProject() {
+      return state.projects.find((p) => Number(p.id) === Number(state.selectedProjectId)) || state.projects[0] || null;
+    }
+
+    function applyProjectToInputs(force = false) {
+      const project = selectedProject();
+      const domain = project?.domain || "";
+      const mappings = [
+        ["auditUrl", domain],
+        ["contentUrl", domain],
+        ["backlinksUrl", domain],
+        ["comparePrimary", domain],
+        ["reportUrl", domain]
+      ];
+      for (const [id, value] of mappings) {
+        const input = document.getElementById(id);
+        if (!input) continue;
+        if (force || !input.value.trim()) {
+          input.value = value;
+        }
+      }
+    }
+
+    function updateProjectButton() {
+      const project = selectedProject();
+      const label = project ? `${project.name} · ${project.domain}` : "Add project";
+      document.getElementById("projectBtnLabel").textContent = label;
+      applyProjectToInputs(true);
+    }
+
+    function renderProjectMenu() {
+      const menu = document.getElementById("projectMenu");
+      menu.innerHTML = "";
+      for (const project of state.projects) {
+        const btn = document.createElement("button");
+        const active = Number(project.id) === Number(state.selectedProjectId);
+        btn.className = "project-item";
+        btn.textContent = `${active ? "● " : ""}${project.name} · ${project.domain}`;
+        btn.addEventListener("click", () => {
+          state.selectedProjectId = Number(project.id);
+          menu.classList.remove("open");
+          updateProjectButton();
+          refreshDashboard();
+        });
+        menu.appendChild(btn);
+      }
+      const addBtn = document.createElement("button");
+      addBtn.className = "project-item project-create";
+      addBtn.textContent = "+ New project";
+      addBtn.addEventListener("click", () => {
+        menu.classList.remove("open");
+        navigate("settings");
+      });
+      menu.appendChild(addBtn);
+    }
+
+    function renderProjectTable() {
+      const tbody = document.querySelector("#projectTable tbody");
+      if (!tbody) return;
+      tbody.innerHTML = "";
+      if (!state.projects.length) {
+        tbody.innerHTML = `<tr><td colspan="4" class="muted">No projects yet.</td></tr>`;
+        return;
+      }
+      for (const project of state.projects) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = [
+          `<td>${project.name}${Number(project.id) === Number(state.selectedProjectId) ? ' <span class="pill">active</span>' : ""}</td>`,
+          `<td>${project.domain || "-"}</td>`,
+          `<td>${project.updatedAt ? new Date(project.updatedAt).toLocaleString() : "-"}</td>`,
+          "<td></td>"
+        ].join("");
+        const cell = tr.querySelector("td:last-child");
+        const del = document.createElement("button");
+        del.className = "btn secondary";
+        del.style.padding = "6px 10px";
+        del.textContent = "Delete";
+        del.addEventListener("click", () => deleteProject(project.id));
+        cell.appendChild(del);
+        tbody.appendChild(tr);
+      }
+    }
+
+    function syncSelectedIntegrations() {
+      state.selectedIntegrations = state.integrations
+        .filter((x) => x.isActive)
+        .map((x) => x.integrationName);
+    }
+
+    function renderIntegrations() {
+      const wrap = document.getElementById("integrationChips");
+      wrap.innerHTML = "";
+      for (const name of integrationCatalog) {
+        const selected = state.selectedIntegrations.includes(name);
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = `chip ${selected ? "selected" : ""}`;
+        chip.textContent = name;
+        chip.addEventListener("click", () => toggleIntegration(name));
+        wrap.appendChild(chip);
+      }
+    }
+
+    function renderIntegrationTable() {
+      const tbody = document.querySelector("#integrationTable tbody");
+      if (!tbody) return;
+      tbody.innerHTML = "";
+      if (!state.integrations.length) {
+        tbody.innerHTML = `<tr><td colspan="5" class="muted">No integrations configured.</td></tr>`;
+        return;
+      }
+      for (const item of state.integrations) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = [
+          `<td>${item.integrationName}</td>`,
+          `<td>${item.isActive ? '<span class="pill">active</span>' : '<span class="pill">inactive</span>'}</td>`,
+          `<td>${item.integrationKeyHint || "-"}</td>`,
+          `<td>${item.updatedAt ? new Date(item.updatedAt).toLocaleString() : "-"}</td>`,
+          "<td></td>"
+        ].join("");
+        const cell = tr.querySelector("td:last-child");
+        const del = document.createElement("button");
+        del.className = "btn secondary";
+        del.style.padding = "6px 10px";
+        del.textContent = "Delete";
+        del.addEventListener("click", () => deleteIntegration(item.id));
+        const test = document.createElement("button");
+        test.className = "btn secondary";
+        test.style.padding = "6px 10px";
+        test.style.marginRight = "6px";
+        test.textContent = "Test";
+        test.addEventListener("click", () => testIntegration(item.integrationName));
+        cell.appendChild(test);
+        cell.appendChild(del);
+        tbody.appendChild(tr);
+      }
+    }
+
+    function initIntegrationSelect() {
+      const select = document.getElementById("integrationNameInput");
+      if (!select) return;
+      select.innerHTML = integrationCatalog.map((name) => `<option value="${name}">${name}</option>`).join("");
+    }
+
+    function basePayload(overrides = {}) {
+      const project = selectedProject() || {};
+      const website = normalizeUrl(project.domain || "https://example.com");
+      return {
+        projectId: project?.id ? Number(project.id) : null,
+        agencyName: "Anything Marketing",
+        businessName: project.name || "Business",
+        website,
+        geography: "United States",
+        industry: "service",
+        product: "Marketing services",
+        targetCustomer: "B2B decision makers",
+        market: "B2B lead generation",
+        goal: "organic",
+        budget: 15000,
+        capacity: 120,
+        selectedIntegrations: state.selectedIntegrations,
+        ...overrides
+      };
+    }
+
+    function setOutput(metaId, outId, errId, metaText, content, isError = false) {
+      document.getElementById(metaId).textContent = metaText || "";
+      const errEl = document.getElementById(errId);
+      const outEl = document.getElementById(outId);
+      if (isError) {
+        errEl.style.display = "block";
+        errEl.textContent = content;
+        outEl.style.display = "none";
+      } else {
+        errEl.style.display = "none";
+        outEl.style.display = "block";
+        outEl.textContent = content;
+      }
+    }
+
+    function navigate(page) {
+      state.page = page;
+      document.querySelectorAll(".page").forEach((el) => el.classList.remove("active"));
+      const active = document.getElementById(`page-${page}`);
+      if (active) active.classList.add("active");
+      document.querySelectorAll(".nav-link").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.page === page);
+      });
+      if (page === "dashboard") refreshDashboard();
+    }
+
+    async function checkHealth() {
+      const status = document.getElementById("apiStatus");
+      try {
+        const health = await request("/api/health");
+        const llm = health.llm?.providerOrder?.join(" -> ") || "n/a";
+        const mcp = health.mcpRuntime?.reachable ? "proxy ok" : "proxy offline";
+        status.textContent = `API online · ${mcp} · LLM order ${llm}`;
+      } catch (error) {
+        status.textContent = `API offline (${error.message})`;
+      }
+    }
+
+    async function loadProjects() {
+      const res = await request("/api/seo/projects?limit=200");
+      state.projects = Array.isArray(res.projects) ? res.projects : [];
+      if (!state.projects.length) {
+        const created = await request("/api/seo/projects", {
+          method: "POST",
+          payload: { name: "Demo Project", domain: "https://example.com", ownerAgency: "Anything Marketing" }
+        });
+        state.projects = created.project ? [created.project] : [];
+      }
+      if (!state.selectedProjectId || !state.projects.some((p) => Number(p.id) === Number(state.selectedProjectId))) {
+        state.selectedProjectId = state.projects[0]?.id ?? null;
+      }
+      renderProjectMenu();
+      renderProjectTable();
+      updateProjectButton();
+    }
+
+    async function loadIntegrations() {
+      const res = await request("/api/seo/integrations");
+      state.integrations = Array.isArray(res.integrations) ? res.integrations : [];
+      syncSelectedIntegrations();
+      renderIntegrations();
+      renderIntegrationTable();
+    }
+
+    async function toggleIntegration(name) {
+      try {
+        const active = state.selectedIntegrations.includes(name);
+        await request("/api/seo/integrations", {
+          method: "POST",
+          payload: {
+            integrationName: name,
+            isActive: !active,
+            metadata: { source: "chip-toggle", toggledAt: new Date().toISOString() }
+          }
+        });
+        await loadIntegrations();
+        document.getElementById("integrationMeta").textContent = `${name} ${active ? "disabled" : "enabled"}.`;
+      } catch (error) {
+        document.getElementById("integrationMeta").textContent = `Integration toggle failed: ${error.message}`;
+      }
+    }
+
+    async function saveIntegration() {
+      const name = String(document.getElementById("integrationNameInput").value || "").trim().toLowerCase();
+      const apiKey = String(document.getElementById("integrationKeyInput").value || "").trim();
+      const rawConfig = String(document.getElementById("integrationConfigInput").value || "").trim();
+      if (!name) {
+        document.getElementById("integrationMeta").textContent = "Choose an integration.";
+        return;
+      }
+      let config = {};
+      if (rawConfig) {
+        try {
+          config = JSON.parse(rawConfig);
+        } catch {
+          document.getElementById("integrationMeta").textContent = "Advanced config must be valid JSON.";
+          return;
+        }
+      }
+      try {
+        await request("/api/seo/integrations", {
+          method: "POST",
+          payload: {
+            integrationName: name,
+            apiKey,
+            config,
+            isActive: true,
+            metadata: { source: "settings-form", savedAt: new Date().toISOString() }
+          }
+        });
+        document.getElementById("integrationKeyInput").value = "";
+        document.getElementById("integrationConfigInput").value = "";
+        document.getElementById("integrationMeta").textContent = `${name} saved.`;
+        await loadIntegrations();
+      } catch (error) {
+        document.getElementById("integrationMeta").textContent = `Save failed: ${error.message}`;
+      }
+    }
+
+    async function deleteIntegration(id) {
+      try {
+        await request(`/api/seo/integrations/${Number(id)}`, { method: "DELETE" });
+        await loadIntegrations();
+        document.getElementById("integrationMeta").textContent = "Integration deleted.";
+      } catch (error) {
+        document.getElementById("integrationMeta").textContent = `Delete failed: ${error.message}`;
+      }
+    }
+
+    async function testIntegration(name) {
+      const integrationName = String(name || document.getElementById("integrationNameInput").value || "").trim().toLowerCase();
+      if (!integrationName) {
+        document.getElementById("integrationMeta").textContent = "Choose an integration to test.";
+        return;
+      }
+      document.getElementById("integrationMeta").textContent = `Testing ${integrationName}...`;
+      try {
+        const res = await request("/api/seo/integrations/test", {
+          method: "POST",
+          payload: {
+            integrationName,
+            website: selectedProject()?.domain || ""
+          }
+        });
+        const result = Array.isArray(res?.mcp?.results) ? res.mcp.results[0] : null;
+        const status = result?.status || res?.mcp?.status || "unknown";
+        const detail = result?.summary || result?.note || res?.mcp?.note || "";
+        document.getElementById("integrationMeta").textContent = `${integrationName} test: ${status}${detail ? ` · ${detail}` : ""}`;
+      } catch (error) {
+        document.getElementById("integrationMeta").textContent = `Test failed: ${error.message}`;
+      }
+    }
+
+    async function addProject() {
+      const name = document.getElementById("newProjectName").value.trim();
+      const domain = normalizeUrl(document.getElementById("newProjectDomain").value.trim());
+      if (!name || !domain) {
+        document.getElementById("settingsMeta").textContent = "Provide project name and domain.";
+        return;
+      }
+      try {
+        const res = await request("/api/seo/projects", {
+          method: "POST",
+          payload: { name, domain, ownerAgency: "Anything Marketing", metadata: { createdFrom: "seo-workspace" } }
+        });
+        if (res.project?.id) {
+          state.selectedProjectId = Number(res.project.id);
+        }
+        document.getElementById("newProjectName").value = "";
+        document.getElementById("newProjectDomain").value = "";
+        document.getElementById("settingsMeta").textContent = `Added project ${name}.`;
+        await loadProjects();
+        await refreshDashboard();
+      } catch (error) {
+        document.getElementById("settingsMeta").textContent = `Add project failed: ${error.message}`;
+      }
+    }
+
+    async function deleteProject(id) {
+      try {
+        await request(`/api/seo/projects/${Number(id)}`, { method: "DELETE" });
+        if (Number(state.selectedProjectId) === Number(id)) {
+          state.selectedProjectId = null;
+        }
+        await loadProjects();
+        await refreshDashboard();
+        document.getElementById("settingsMeta").textContent = "Project deleted.";
+      } catch (error) {
+        document.getElementById("settingsMeta").textContent = `Delete failed: ${error.message}`;
+      }
+    }
+
+    async function clearProjects() {
+      if (!state.projects.length) return;
+      try {
+        await Promise.all(state.projects.map((p) => request(`/api/seo/projects/${Number(p.id)}`, { method: "DELETE" })));
+        state.selectedProjectId = null;
+        document.getElementById("settingsMeta").textContent = "All projects deleted.";
+        await loadProjects();
+        await refreshDashboard();
+      } catch (error) {
+        document.getElementById("settingsMeta").textContent = `Bulk delete failed: ${error.message}`;
+      }
+    }
+
+    async function refreshDashboard() {
+      const stats = document.getElementById("dashboardStats");
+      const runsWrap = document.getElementById("recentRuns");
+      stats.innerHTML = "";
+      runsWrap.textContent = "Loading…";
+      try {
+        const projectId = selectedProject()?.id ? `&projectId=${Number(selectedProject().id)}` : "";
+        const [health, history, tasks] = await Promise.all([
+          request("/api/health"),
+          request(`/api/seo/history?limit=10${projectId}`),
+          request("/api/tasks?limit=20")
+        ]);
+        const cards = [
+          { k: "SEO Module Runs", v: String(health.db?.seoModuleRuns || 0) },
+          { k: "Connected Integrations", v: String(state.selectedIntegrations.length) },
+          { k: "Task Backlog", v: String((tasks.tasks || []).length) }
+        ];
+        for (const card of cards) {
+          const el = document.createElement("div");
+          el.className = "stat";
+          el.innerHTML = `<div class="k">${card.k}</div><div class="v">${card.v}</div>`;
+          stats.appendChild(el);
+        }
+        const list = history.history || [];
+        if (!list.length) {
+          runsWrap.textContent = "No SEO module runs yet. Run an audit or content analysis to populate this table.";
+          return;
+        }
+        runsWrap.innerHTML = `<table class="table"><thead><tr><th>ID</th><th>Module</th><th>URL</th><th>Confidence</th><th>Created</th></tr></thead><tbody>${list.map((run) => `<tr><td>#${run.id}</td><td>${run.moduleId || "-"}</td><td>${run.targetUrl || "-"}</td><td>${run.confidence == null ? "-" : `${Math.round(run.confidence * 100)}%`}</td><td>${new Date(run.createdAt).toLocaleString()}</td></tr>`).join("")}</tbody></table>`;
+      } catch (error) {
+        runsWrap.textContent = `Dashboard load error: ${error.message}`;
+      }
+    }
+
+    async function runAudit() {
+      const url = normalizeUrl(document.getElementById("auditUrl").value || selectedProject()?.domain);
+      setOutput("auditMeta", "auditOut", "auditError", "Running full audit…", "", false);
+      try {
+        const res = await request("/api/seo/full-audit", {
+          method: "POST",
+          payload: basePayload({
+            primaryUrl: url,
+            urls: [url, `${url}/services`, `${url}/contact`],
+            competitorUrls: []
+          })
+        });
+        const result = res.result || {};
+        const summary = [
+          `Overall score: ${result.overallScore || "n/a"}`,
+          "",
+          "Executive summary:",
+          ...(result.executiveSummary || []).map((x) => `- ${x}`),
+          "",
+          "Priority plan:",
+          "Days 1-14:",
+          ...((result.priorityPlan?.days1to14 || []).map((x) => `- ${x}`)),
+          "Days 15-45:",
+          ...((result.priorityPlan?.days15to45 || []).map((x) => `- ${x}`)),
+          "Days 46-90:",
+          ...((result.priorityPlan?.days46to90 || []).map((x) => `- ${x}`)),
+          "",
+          "Workflow:",
+          ...((res.workflow || []).map((w) => `- [${w.status}] ${w.step}: ${w.detail}`)),
+          "",
+          "Raw:",
+          toPretty(result)
+        ].join("\n");
+        setOutput("auditMeta", "auditOut", "auditError", `Completed · run #${res.seoRunId || "n/a"} · confidence ${Math.round((res.confidence || 0) * 100)}%`, summary, false);
+        refreshDashboard();
+      } catch (error) {
+        setOutput("auditMeta", "auditOut", "auditError", "Audit failed", error.message, true);
+      }
+    }
+
+    async function runKeywords() {
+      const seed = document.getElementById("kwSeed").value.trim();
+      const competitorUrls = parseList(document.getElementById("kwCompetitors").value).map(normalizeUrl);
+      setOutput("kwMeta", "kwOut", "kwError", "Researching keyword opportunities…", "", false);
+      try {
+        const res = await request("/api/seo/market-research", {
+          method: "POST",
+          payload: basePayload({
+            product: seed || "service",
+            competitors: competitorUrls,
+            competitorUrls
+          })
+        });
+        const result = res.result || {};
+        const queries = res.evidence?.webSignals?.highIntentQueries || [];
+        const text = [
+          "High-intent query ideas:",
+          ...(queries.length ? queries.map((q) => `- ${q}`) : ["- none returned"]),
+          "",
+          "Market opportunities:",
+          ...((result.marketOpportunities || []).map((m) => `- ${m.theme}: ${m.rationale}`)),
+          "",
+          "Facet priorities:",
+          ...((result.facetPriorities || []).map((f) => `- ${f.facet} (${f.priority}) target ${f.targetDelta90d}`)),
+          "",
+          "Raw:",
+          toPretty(result)
+        ].join("\n");
+        setOutput("kwMeta", "kwOut", "kwError", `Completed · run #${res.seoRunId || "n/a"} · ${(res.sourcesUsed || []).length} sources`, text, false);
+        refreshDashboard();
+      } catch (error) {
+        setOutput("kwMeta", "kwOut", "kwError", "Keyword research failed", error.message, true);
+      }
+    }
+
+    async function runContentAnalysis() {
+      const url = normalizeUrl(document.getElementById("contentUrl").value || selectedProject()?.domain);
+      const primaryQuery = document.getElementById("contentQuery").value.trim();
+      const competitorUrls = parseList(document.getElementById("contentCompetitors").value).map(normalizeUrl);
+      setOutput("contentMeta", "contentOut", "contentError", "Running deep content analysis…", "", false);
+      try {
+        const res = await request("/api/seo/content-analysis", {
+          method: "POST",
+          payload: basePayload({ url, primaryQuery, competitorUrls })
+        });
+        const result = res.result || {};
+        const text = [
+          `Detected query: ${result.detectedPrimaryQuery || "n/a"}`,
+          `Intent: ${result.searchIntent || "n/a"}`,
+          `Benchmark overall: ${result.benchmarkScore?.overall || "n/a"}`,
+          "",
+          "Top SERP pages analyzed:",
+          ...((result.topPagesAnalyzed || []).map((p) => `- #${p.rank || "?"} ${p.domain || ""} · ${p.title || p.url || ""}`)),
+          "",
+          "Comparative findings:",
+          ...((result.comparativeFindings || []).map((f) => `- ${f.area}: ${f.gap} -> ${f.recommendation}`)),
+          "",
+          "Prioritized fixes:",
+          ...((result.prioritizedFixes || []).map((f) => `- [${f.priority}] ${f.fix} (owner: ${f.owner || "-"})`)),
+          "",
+          "Workflow:",
+          ...((res.workflow || []).map((w) => `- [${w.status}] ${w.step}: ${w.detail}`)),
+          "",
+          "Raw:",
+          toPretty(result)
+        ].join("\n");
+        setOutput("contentMeta", "contentOut", "contentError", `Completed · run #${res.seoRunId || "n/a"} · confidence ${Math.round((res.confidence || 0) * 100)}%`, text, false);
+        refreshDashboard();
+      } catch (error) {
+        setOutput("contentMeta", "contentOut", "contentError", "Content analysis failed", error.message, true);
+      }
+    }
+
+    async function runBacklinks() {
+      const url = normalizeUrl(document.getElementById("backlinksUrl").value || selectedProject()?.domain);
+      const competitorUrls = parseList(document.getElementById("backlinksCompetitors").value).map(normalizeUrl);
+      setOutput("backlinksMeta", "backlinksOut", "backlinksError", "Analyzing backlink landscape…", "", false);
+      try {
+        const res = await request("/api/seo/market-research", {
+          method: "POST",
+          payload: basePayload({ website: url, competitorUrls, competitors: competitorUrls })
+        });
+        const landscape = res.result?.competitorLandscape || [];
+        const text = [
+          "Competitor authority landscape:",
+          ...landscape.map((c) => `- ${c.competitor}: SOV ${c.estimatedShareOfVoice || "n/a"}% | authority ${c.strengths?.authority || "n/a"}`),
+          "",
+          "Strategy implications:",
+          ...((res.result?.strategyImplications || []).map((s) => `- ${s}`)),
+          "",
+          "Raw:",
+          toPretty(res.result || {})
+        ].join("\n");
+        setOutput("backlinksMeta", "backlinksOut", "backlinksError", `Completed · run #${res.seoRunId || "n/a"} · ${(res.sourcesUsed || []).length} sources`, text, false);
+        refreshDashboard();
+      } catch (error) {
+        setOutput("backlinksMeta", "backlinksOut", "backlinksError", "Backlink analysis failed", error.message, true);
+      }
+    }
+
+    async function runCompare() {
+      const primaryUrl = normalizeUrl(document.getElementById("comparePrimary").value || selectedProject()?.domain);
+      const competitorUrls = parseList(document.getElementById("compareCompetitors").value).map(normalizeUrl);
+      setOutput("compareMeta", "compareOut", "compareError", "Comparing pages…", "", false);
+      try {
+        const res = await request("/api/seo/compare", {
+          method: "POST",
+          payload: basePayload({ primaryUrl, competitorUrls })
+        });
+        const result = res.result || {};
+        const text = [
+          `Primary URL: ${result.primaryUrl || primaryUrl}`,
+          `Competitors: ${(result.competitorUrls || []).join(", ") || "n/a"}`,
+          "",
+          "Gap table:",
+          ...((result.comparison || []).map((r) => `- ${r.dimension}: you ${r.yourScore} vs comp ${r.competitorAverage} (gap ${r.gap}) -> ${r.action}`)),
+          "",
+          "Recommendations:",
+          ...((result.strategicRecommendations || []).map((r) => `- ${r}`)),
+          "",
+          "Raw:",
+          toPretty(result)
+        ].join("\n");
+        setOutput("compareMeta", "compareOut", "compareError", `Completed · run #${res.seoRunId || "n/a"}`, text, false);
+        refreshDashboard();
+      } catch (error) {
+        setOutput("compareMeta", "compareOut", "compareError", "Comparison failed", error.message, true);
+      }
+    }
+
+    async function runReport() {
+      const primaryUrl = normalizeUrl(document.getElementById("reportUrl").value || selectedProject()?.domain);
+      setOutput("reportMeta", "reportOut", "reportError", "Generating master report…", "", false);
+      try {
+        const res = await request("/api/seo/report", {
+          method: "POST",
+          payload: basePayload({ primaryUrl })
+        });
+        const r = res.result || {};
+        const text = [
+          `Overall SEO health: ${r.overallSeoHealth || "n/a"}`,
+          "",
+          "Top opportunities:",
+          ...((r.topOpportunities || []).map((x) => `- ${x}`)),
+          "",
+          "Roadmap Days 1-30:",
+          ...((r.roadmap?.days1to30 || []).map((x) => `- ${x}`)),
+          "Roadmap Days 31-60:",
+          ...((r.roadmap?.days31to60 || []).map((x) => `- ${x}`)),
+          "Roadmap Days 61-90:",
+          ...((r.roadmap?.days61to90 || []).map((x) => `- ${x}`)),
+          "",
+          "Workflow:",
+          ...((res.workflow || []).map((w) => `- [${w.status}] ${w.step}: ${w.detail}`)),
+          "",
+          "Raw:",
+          toPretty(r)
+        ].join("\n");
+        setOutput("reportMeta", "reportOut", "reportError", `Completed · run #${res.seoRunId || "n/a"}`, text, false);
+        refreshDashboard();
+      } catch (error) {
+        setOutput("reportMeta", "reportOut", "reportError", "Report generation failed", error.message, true);
+      }
+    }
+
+    document.querySelectorAll(".nav-link").forEach((btn) => {
+      btn.addEventListener("click", () => navigate(btn.dataset.page));
+    });
+
+    document.getElementById("projectBtn").addEventListener("click", () => {
+      document.getElementById("projectMenu").classList.toggle("open");
+    });
+
+    document.addEventListener("click", (e) => {
+      const menu = document.getElementById("projectMenu");
+      const btn = document.getElementById("projectBtn");
+      if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.remove("open");
+      }
+    });
+
+    document.getElementById("runAuditBtn").addEventListener("click", runAudit);
+    document.getElementById("runKeywordsBtn").addEventListener("click", runKeywords);
+    document.getElementById("runContentBtn").addEventListener("click", runContentAnalysis);
+    document.getElementById("runBacklinksBtn").addEventListener("click", runBacklinks);
+    document.getElementById("runCompareBtn").addEventListener("click", runCompare);
+    document.getElementById("runReportBtn").addEventListener("click", runReport);
+    document.getElementById("createProjectBtn").addEventListener("click", addProject);
+    document.getElementById("clearProjectsBtn").addEventListener("click", clearProjects);
+    document.getElementById("saveIntegrationBtn").addEventListener("click", saveIntegration);
+    document.getElementById("testIntegrationBtn").addEventListener("click", () => testIntegration(""));
+
+    async function bootstrap() {
+      initIntegrationSelect();
+      await checkHealth();
+      await loadProjects();
+      await loadIntegrations();
+      await refreshDashboard();
+    }
+
+    bootstrap();
+  </script>
+</body>
+</html>

@@ -1,27 +1,137 @@
 # Mixpanel
 
-## What It Does
-Mixpanel provides event-based analytics with advanced funnel analysis, user segmentation, A/B testing, and revenue tracking. It's designed for product and marketing analytics.
+Product analytics platform for tracking user behavior and retention.
 
-## Key Capabilities for Marketing
-- **Event analytics** - Analyze custom events with properties and metrics
-- **Funnel analysis** - Track conversion flows and identify drop-off points
-- **User segmentation** - Create segments based on behavior and properties
-- **A/B testing** - Run experiments and measure impact on conversions
-- **Retention analysis** - Measure how users engage over time
-- **Revenue tracking** - Understand monetization and lifetime value
+## Capabilities
 
-## How to Connect via MCP
-1. Log into Mixpanel dashboard
-2. Go to Settings > Project > Access Keys
-3. Obtain your Project Token
-4. Create a service account for API access
-5. Configure MCP with token and credentials
-6. Verify data access permissions
+| Integration | Available | Notes |
+|-------------|-----------|-------|
+| API | ✓ | Ingestion API, Query API, Data Export |
+| MCP | - | Not available |
+| CLI | - | Not available |
+| SDK | ✓ | JavaScript, iOS, Android, Python, etc. |
 
-## Example Agent Queries
-- "Show me the conversion funnel from view to purchase"
-- "Create a segment of power users based on event frequency"
-- "What's the average revenue per user by acquisition channel?"
-- "Analyze the impact of feature X on user retention"
-- "Which user cohort has the highest lifetime value?"
+## Authentication
+
+- **Ingestion**: Project token (public)
+- **Query API**: Service Account (username:secret as Basic auth)
+- **Export**: API Secret
+
+## Common Agent Operations
+
+### Track event (Ingestion API)
+
+```bash
+POST https://api.mixpanel.com/track
+
+{
+  "event": "signup_completed",
+  "properties": {
+    "token": "{project_token}",
+    "distinct_id": "user_123",
+    "plan": "pro",
+    "time": 1705312800
+  }
+}
+```
+
+### Set user profile
+
+```bash
+POST https://api.mixpanel.com/engage
+
+{
+  "$token": "{project_token}",
+  "$distinct_id": "user_123",
+  "$set": {
+    "$email": "user@example.com",
+    "$name": "John Doe",
+    "plan": "pro"
+  }
+}
+```
+
+### Query events (Query API)
+
+```bash
+POST https://mixpanel.com/api/2.0/insights
+
+{
+  "project_id": {project_id},
+  "bookmark_id": null,
+  "params": {
+    "events": [{"event": "signup_completed"}],
+    "time_range": {
+      "from_date": "2024-01-01",
+      "to_date": "2024-01-31"
+    }
+  }
+}
+```
+
+### Get funnel data
+
+```bash
+GET https://mixpanel.com/api/2.0/funnels?funnel_id={funnel_id}&from_date=2024-01-01&to_date=2024-01-31
+```
+
+### Export raw events
+
+```bash
+GET https://data.mixpanel.com/api/2.0/export?from_date=2024-01-01&to_date=2024-01-01
+```
+
+### Get retention data
+
+```bash
+GET https://mixpanel.com/api/2.0/retention?from_date=2024-01-01&to_date=2024-01-31&retention_type=birth&born_event=signup_completed
+```
+
+## JavaScript SDK
+
+```javascript
+// Initialize
+mixpanel.init('YOUR_TOKEN');
+
+// Identify user
+mixpanel.identify('user_123');
+
+// Set user properties
+mixpanel.people.set({
+  '$email': 'user@example.com',
+  'plan': 'pro'
+});
+
+// Track event
+mixpanel.track('Feature Used', {
+  'feature_name': 'export'
+});
+```
+
+## Key Concepts
+
+- **Events** - User actions (signup, purchase, etc.)
+- **Properties** - Attributes on events
+- **User Profiles** - Persistent user data
+- **Cohorts** - Saved user segments
+- **Funnels** - Conversion sequences
+- **Retention** - User return patterns
+
+## When to Use
+
+- Tracking product usage events
+- Analyzing conversion funnels
+- Measuring feature adoption
+- Retention analysis
+- User segmentation
+
+## Rate Limits
+
+- Ingestion: No hard limit (batch recommended)
+- Query API: Varies by plan
+
+## Relevant Skills
+
+- analytics-tracking
+- ab-test-setup
+- onboarding-cro

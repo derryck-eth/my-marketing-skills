@@ -1,27 +1,142 @@
 # Ahrefs
 
-## What It Does
-Ahrefs is an SEO tool providing backlink analysis, keyword research, competitor tracking, and rank monitoring. It helps understand search visibility and competitive positioning.
+SEO toolset for backlink analysis, keyword research, and competitive research.
 
-## Key Capabilities for Marketing
-- **Backlink analysis** - Discover linking domains and anchor text
-- **Keyword research** - Find search volume, difficulty, and ranking opportunities
-- **Site audit** - Identify technical SEO issues and fix them
-- **Rank tracking** - Monitor keyword positions over time
-- **Competitor analysis** - See what keywords competitors rank for
-- **Content ideas** - Find trending topics and content gaps
+## Capabilities
 
-## How to Connect via MCP
-1. Log into Ahrefs dashboard
-2. Navigate to Account > API
-3. Generate API token
-4. Copy token and account ID
-5. Configure MCP with credentials
-6. Select data access permissions
+| Integration | Available | Notes |
+|-------------|-----------|-------|
+| API | ✓ | REST API for Site Explorer, Keywords Explorer |
+| MCP | - | Not available |
+| CLI | - | Not available |
+| SDK | - | API-only |
 
-## Example Agent Queries
-- "Show me the top 100 backlinks to our site"
-- "What keywords does our competitor rank for that we don't?"
-- "Find high-volume keywords with low competition in our niche"
-- "What's the ranking position for [keyword] and who's above us?"
-- "Generate a content gap analysis for our market"
+## Authentication
+
+- **Type**: API Token
+- **Header**: `Authorization: Bearer {api_token}`
+- **Get token**: Account Settings > API in Ahrefs dashboard
+
+## Common Agent Operations
+
+### Domain rating
+
+```bash
+GET https://api.ahrefs.com/v3/site-explorer/domain-rating?target=example.com
+
+Authorization: Bearer {api_token}
+```
+
+### Backlinks overview
+
+```bash
+GET https://api.ahrefs.com/v3/site-explorer/backlinks-stats?target=example.com&mode=domain
+
+Authorization: Bearer {api_token}
+```
+
+### Referring domains
+
+```bash
+GET https://api.ahrefs.com/v3/site-explorer/refdomains?target=example.com&mode=domain&limit=100
+
+Authorization: Bearer {api_token}
+```
+
+### Backlinks list
+
+```bash
+GET https://api.ahrefs.com/v3/site-explorer/backlinks?target=example.com&mode=domain&limit=100
+
+Authorization: Bearer {api_token}
+```
+
+### Organic keywords
+
+```bash
+GET https://api.ahrefs.com/v3/site-explorer/organic-keywords?target=example.com&mode=domain&country=us&limit=100
+
+Authorization: Bearer {api_token}
+```
+
+### Top pages
+
+```bash
+GET https://api.ahrefs.com/v3/site-explorer/top-pages?target=example.com&mode=domain&country=us&limit=50
+
+Authorization: Bearer {api_token}
+```
+
+### Keyword overview
+
+```bash
+GET https://api.ahrefs.com/v3/keywords-explorer/overview?keywords=keyword1,keyword2&country=us
+
+Authorization: Bearer {api_token}
+```
+
+### Keyword suggestions
+
+```bash
+GET https://api.ahrefs.com/v3/keywords-explorer/matching-terms?keyword=seed+keyword&country=us&limit=100
+
+Authorization: Bearer {api_token}
+```
+
+### SERP overview
+
+```bash
+GET https://api.ahrefs.com/v3/keywords-explorer/serp-overview?keyword=target+keyword&country=us
+
+Authorization: Bearer {api_token}
+```
+
+## Key Metrics
+
+### Domain Metrics
+- `domain_rating` - Domain Rating (DR)
+- `ahrefs_rank` - Ahrefs Rank
+- `referring_domains` - Referring domains count
+- `backlinks` - Total backlinks
+- `organic_traffic` - Estimated organic traffic
+
+### Keyword Metrics
+- `volume` - Monthly search volume
+- `keyword_difficulty` - KD score (0-100)
+- `cpc` - Cost per click
+- `clicks` - Estimated monthly clicks
+- `global_volume` - Global search volume
+
+### Backlink Fields
+- `url_from` - Source URL
+- `url_to` - Target URL
+- `anchor` - Anchor text
+- `domain_rating_source` - Source DR
+- `first_seen` - First discovery date
+
+## Modes
+
+- `domain` - Entire domain
+- `subdomains` - Domain + subdomains
+- `prefix` - URL prefix
+- `exact` - Exact URL
+
+## When to Use
+
+- Backlink analysis
+- Link building research
+- Keyword research
+- Competitive analysis
+- Content gap analysis
+- Site audits
+
+## Rate Limits
+
+- Varies by plan
+- 500-5000 rows per request
+
+## Relevant Skills
+
+- seo-audit
+- content-strategy
+- competitor-alternatives

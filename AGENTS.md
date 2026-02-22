@@ -1,62 +1,269 @@
-# Agent Instructions
+# AGENTS.md
 
-Instructions for AI agents on how to use the 29 marketing skills in this repository.
+Guidelines for AI agents working in this repository.
 
-## How Skills Work
+## Repository Overview
 
-Each skill in `skills/` contains a `SKILL.md` file with structured marketing knowledge. When a user's request matches a skill's domain, read the relevant SKILL.md and follow its instructions.
+This repository contains **Agent Skills** for AI agents following the [Agent Skills specification](https://agentskills.io/specification.md). It also serves as a **Claude Code plugin marketplace** via `.claude-plugin/marketplace.json`.
 
-## Skill Selection Guide
+- **Name**: Marketing Skills
+- **GitHub**: [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills)
+- **Creator**: Corey Haines
+- **License**: MIT
 
-| User Request | Skill |
-|---|---|
-| "Write copy for my landing page" | copywriting |
-| "Create an email drip campaign" | email-sequence |
-| "Audit my homepage for conversions" | page-cro |
-| "Optimize my signup form" | form-cro |
-| "Improve my onboarding flow" | onboarding-cro |
-| "Create a popup for email capture" | popup-cro |
-| "Optimize my paywall" | paywall-upgrade-cro |
-| "Set up an A/B test" | ab-test-setup |
-| "Do an SEO audit" | seo-audit |
-| "Optimize my page for search" | on-page-seo |
-| "Help me build backlinks" | link-building |
-| "Build topical authority" | topical-authority |
-| "Optimize my images for SEO" | image-seo |
-| "Improve my E-E-A-T" | eeat-optimization |
-| "Create pages at scale" | programmatic-seo |
-| "Add schema markup" | schema-markup |
-| "Create a competitor comparison page" | competitor-alternatives |
-| "Create a Google Ads campaign" | paid-ads |
-| "Help with pricing" | pricing-strategy |
-| "Plan a product launch" | launch-strategy |
-| "Set up a referral program" | referral-program |
-| "Build a free tool for marketing" | free-tool-strategy |
-| "Brainstorm marketing ideas" | marketing-ideas |
-| "Apply psychology to marketing" | marketing-psychology |
-| "Set up analytics tracking" | analytics-tracking |
-| "Create social media content" | social-content |
-| "Plan a content strategy" | content-strategy |
-| "Edit my marketing copy" | copy-editing |
-| "Optimize my signup flow" | signup-flow-cro |
+## Repository Structure
 
-## Using Multiple Skills
+```
+marketingskills/
+├── .claude-plugin/
+│   └── marketplace.json   # Claude Code plugin marketplace manifest
+├── skills/                # Agent Skills
+│   └── skill-name/
+│       └── SKILL.md       # Required skill file
+├── tools/
+│   ├── clis/              # Zero-dependency Node.js CLI tools (51 tools)
+│   ├── integrations/      # API integration guides per tool
+│   └── REGISTRY.md        # Tool index with capabilities
+├── CONTRIBUTING.md
+├── LICENSE
+└── README.md
+```
 
-Some tasks require combining skills:
+## Build / Lint / Test Commands
 
-- **"Rewrite my landing page"** → page-cro (structure/audit) + copywriting (actual copy)
-- **"Create a launch campaign"** → launch-strategy (plan) + email-sequence (emails) + social-content (social posts) + paid-ads (ad campaigns)
-- **"Full SEO overhaul"** → seo-audit (diagnosis) + on-page-seo (page optimization) + link-building (authority) + topical-authority (content architecture)
-- **"Optimize my funnel"** → page-cro (landing page) + signup-flow-cro (registration) + onboarding-cro (activation) + email-sequence (nurture)
+**Skills** are content-only (no build step). Verify manually:
+- YAML frontmatter is valid
+- `name` field matches directory name exactly
+- `name` is 1-64 chars, lowercase alphanumeric and hyphens only
+- `description` is 1-1024 characters
+
+**CLI tools** (`tools/clis/*.js`) are zero-dependency Node.js scripts (Node 18+). Verify with:
+```bash
+node --check tools/clis/<name>.js   # Syntax check
+node tools/clis/<name>.js           # Show usage (no args = help)
+node tools/clis/<name>.js <cmd> --dry-run  # Preview request without sending
+```
+
+## Agent Skills Specification
+
+Skills follow the [Agent Skills spec](https://agentskills.io/specification.md).
+
+### Required Frontmatter
+
+```yaml
+---
+name: skill-name
+description: What this skill does and when to use it. Include trigger phrases.
+---
+```
+
+### Frontmatter Field Constraints
+
+| Field         | Required | Constraints                                                      |
+|---------------|----------|------------------------------------------------------------------|
+| `name`        | Yes      | 1-64 chars, lowercase `a-z`, numbers, hyphens. Must match dir.   |
+| `description` | Yes      | 1-1024 chars. Describe what it does and when to use it.          |
+| `license`     | No       | License name (default: MIT)                                      |
+| `metadata`    | No       | Key-value pairs (author, version, etc.)                          |
+
+### Name Field Rules
+
+- Lowercase letters, numbers, and hyphens only
+- Cannot start or end with hyphen
+- No consecutive hyphens (`--`)
+- Must match parent directory name exactly
+
+**Valid**: `page-cro`, `email-sequence`, `ab-test-setup`
+**Invalid**: `Page-CRO`, `-page`, `page--cro`
+
+### Optional Skill Directories
+
+```
+skills/skill-name/
+├── SKILL.md        # Required - main instructions (<500 lines)
+├── references/     # Optional - detailed docs loaded on demand
+├── scripts/        # Optional - executable code
+└── assets/         # Optional - templates, data files
+```
+
+## Writing Style Guidelines
+
+### Structure
+
+- Keep `SKILL.md` under 500 lines (move details to `references/`)
+- Use H2 (`##`) for main sections, H3 (`###`) for subsections
+- Use bullet points and numbered lists liberally
+- Short paragraphs (2-4 sentences max)
+
+### Tone
+
+- Direct and instructional
+- Second person ("You are a conversion rate optimization expert")
+- Professional but approachable
+
+### Formatting
+
+- Bold (`**text**`) for key terms
+- Code blocks for examples and templates
+- Tables for reference data
+- No excessive emojis
+
+### Clarity Principles
+
+- Clarity over cleverness
+- Specific over vague
+- Active voice over passive
+- One idea per section
+
+### Description Field Best Practices
+
+The `description` is critical for skill discovery. Include:
+1. What the skill does
+2. When to use it (trigger phrases)
+3. Related skills for scope boundaries
+
+```yaml
+description: When the user wants to optimize conversions on any marketing page. Use when the user says "CRO," "conversion rate optimization," "this page isn't converting." For signup flows, see signup-flow-cro.
+```
+
+## Claude Code Plugin
+
+This repo also serves as a plugin marketplace. The manifest at `.claude-plugin/marketplace.json` lists all skills for installation via:
+
+```bash
+/plugin marketplace add coreyhaines31/marketingskills
+/plugin install marketing-skills
+```
+
+See [Claude Code plugins documentation](https://code.claude.com/docs/en/plugins.md) for details.
+
+## Git Workflow
+
+### Branch Naming
+
+- New skills: `feature/skill-name`
+- Improvements: `fix/skill-name-description`
+- Documentation: `docs/description`
+
+### Commit Messages
+
+Follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
+
+- `feat: add skill-name skill`
+- `fix: improve clarity in page-cro`
+- `docs: update README`
+
+### Pull Request Checklist
+
+- [ ] `name` matches directory name exactly
+- [ ] `name` follows naming rules (lowercase, hyphens, no `--`)
+- [ ] `description` is 1-1024 chars with trigger phrases
+- [ ] `SKILL.md` is under 500 lines
+- [ ] No sensitive data or credentials
 
 ## Tool Integrations
 
-If MCP tools are available (see `tools/REGISTRY.md`), use them to pull real data before making recommendations. Tools are optional — all skills work without them.
+This repository includes a tools registry for agent-compatible marketing tools.
 
-## General Rules
+- **Tool discovery**: Read `tools/REGISTRY.md` to see available tools and their capabilities
+- **Integration details**: See `tools/integrations/{tool}.md` for API endpoints, auth, and common operations
+- **MCP-enabled tools**: ga4, stripe, mailchimp, google-ads, resend, zapier
 
-1. Always gather context before producing output
-2. Follow the output format in each SKILL.md
-3. Provide specific, actionable recommendations — not vague advice
-4. Offer 2-3 alternatives for headlines and CTAs
-5. Adapt frameworks to the user's specific situation
+### Registry Structure
+
+```
+tools/
+├── REGISTRY.md              # Index of all tools with capabilities
+└── integrations/            # Detailed integration guides
+    ├── ga4.md
+    ├── stripe.md
+    ├── rewardful.md
+    └── ...
+```
+
+### When to Use Tools
+
+Skills reference relevant tools for implementation. For example:
+- `referral-program` skill → rewardful, tolt, dub-co, mention-me guides
+- `analytics-tracking` skill → ga4, mixpanel, segment guides
+- `email-sequence` skill → customer-io, mailchimp, resend guides
+- `paid-ads` skill → google-ads, meta-ads, linkedin-ads guides
+
+## Checking for Updates
+
+When using any skill from this repository:
+
+1. **Once per session**, on first skill use, check for updates:
+   - Fetch `VERSIONS.md` from GitHub: https://raw.githubusercontent.com/coreyhaines31/marketingskills/main/VERSIONS.md
+   - Compare versions against local skill files
+
+2. **Only prompt if meaningful**:
+   - 2 or more skills have updates, OR
+   - Any skill has a major version bump (e.g., 1.x to 2.x)
+
+3. **Non-blocking notification** at end of response:
+   ```
+   ---
+   Skills update available: X marketing skills have updates.
+   Say "update skills" to update automatically, or run `git pull` in your marketingskills folder.
+   ```
+
+4. **If user says "update skills"**:
+   - Run `git pull` in the marketingskills directory
+   - Confirm what was updated
+
+## Skill Categories
+
+See `README.md` for the current list of skills organized by category. When adding new skills, follow the naming patterns of existing skills in that category.
+
+## Workspace Skill Map (36 Skills)
+
+This workspace intentionally uses a superset of upstream + legacy skills. Use the mapping below for fast routing.
+
+| Skill ID | Use When User Asks For |
+|---|---|
+| `ab-test-setup` | A/B testing plan, hypotheses, experiment design, test backlog |
+| `ad-creative` | Ad concepts, static/video ad variations, creative testing matrix |
+| `agency-command-center` | Agency operating system, cross-channel orchestration, client command center |
+| `ai-seo` | AI-search visibility, LLM discovery optimization, answer-engine strategy |
+| `analytics-tracking` | GA4/event tracking setup, attribution QA, analytics implementation |
+| `churn-prevention` | Retention strategy, churn reduction playbook, save flows |
+| `cold-email` | Outbound cold email campaigns, sequencing, personalization at scale |
+| `competitor-alternatives` | Competitor comparison pages, alternatives landing pages |
+| `content-strategy` | Editorial roadmap, topic planning, content calendar |
+| `copy-editing` | Improve existing copy clarity, style, and conversion quality |
+| `copywriting` | New landing page copy, sales copy, messaging drafts |
+| `eeat-optimization` | Trust signals, authority proof, E-E-A-T improvements |
+| `email-sequence` | Email drips, lifecycle sequences, nurture flows |
+| `form-cro` | Form conversion optimization, friction reduction, completion lift |
+| `free-tool-strategy` | Build free marketing tool strategy for lead generation |
+| `image-seo` | Image optimization for search visibility and performance |
+| `launch-strategy` | Product or feature launch plan and GTM rollout |
+| `link-building` | Link acquisition strategy, outreach, authority growth |
+| `marketing-ideas` | Marketing idea generation and campaign brainstorming |
+| `marketing-psychology` | Behavior/psychology-based messaging and persuasion framing |
+| `on-page-seo` | Title/meta/H1/internal link optimization for a page |
+| `onboarding-cro` | Onboarding activation flow optimization |
+| `page-cro` | Landing page conversion audit and optimization |
+| `paid-ads` | Paid search/social campaign setup and optimization |
+| `paywall-upgrade-cro` | Paywall pricing/offer optimization and upgrade rate lift |
+| `popup-cro` | Pop-up strategy, timing, targeting, and conversion improvements |
+| `pricing-strategy` | Pricing model, packaging, and monetization strategy |
+| `product-marketing-context` | Product positioning context, ICP/use-case mapping, PMM brief |
+| `programmatic-seo` | Scaled SEO page generation strategy and template systems |
+| `referral-program` | Referral loop design, incentives, and viral mechanics |
+| `schema-markup` | Structured data schema recommendation and implementation |
+| `seo-audit` | Full SEO audit (technical/content/authority opportunities) |
+| `seo-toolkit-suite` | End-to-end SEO toolkit workflow and orchestration |
+| `signup-flow-cro` | Signup funnel optimization and registration completion improvements |
+| `social-content` | Social media post/campaign content planning and drafts |
+| `topical-authority` | Topic cluster architecture and authority-building content map |
+
+### Multi-Skill Routing Defaults
+
+- Landing page rewrite: `page-cro` + `copywriting`
+- Full SEO overhaul: `seo-audit` + `on-page-seo` + `link-building` + `topical-authority` + `schema-markup`
+- SEO platform workflow: `seo-toolkit-suite` + `seo-audit` + `ai-seo`
+- Paid growth execution: `paid-ads` + `ad-creative` + `analytics-tracking`
+- Retention and lifecycle: `churn-prevention` + `email-sequence` + `onboarding-cro`
+- Outbound pipeline: `cold-email` + `copywriting` + `pricing-strategy`

@@ -1,0 +1,14 @@
+{
+  "name": "my-marketing-skills-workspace",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Local tooling for the marketing skills repository.",
+  "scripts": {
+    "agency-os": "node apps/agency-marketing-os/server.mjs",
+    "agency-os:mcp": "node apps/agency-marketing-os/mcp-proxy/server.mjs",
+    "agency-os:dev": "node apps/agency-marketing-os/dev-runner.mjs",
+    "agency-os:smoke": "node apps/agency-marketing-os/smoke.mjs",
+    "agency-os:db:export": "node apps/agency-marketing-os/scripts/db-export.mjs",
+    "agency-os:db:import": "node apps/agency-marketing-os/scripts/db-import.mjs"
+  }
+}
